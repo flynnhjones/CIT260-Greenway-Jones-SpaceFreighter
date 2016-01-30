@@ -5,11 +5,14 @@
  */
 package spacefreighter;
 
+import byui.cit260.spacefreighter.model.CrewSkillPoints;
+import byui.cit260.spacefreighter.model.Inventory;
 import byui.cit260.spacefreighter.model.Player;
+import byui.cit260.spacefreighter.model.SpaceShip;
 
 /**
  *
- * @author Daddy
+ * @author Benjamin
  */
 public class SpaceFreighter {
 
@@ -18,6 +21,7 @@ public class SpaceFreighter {
      */
     public static void main(String[] args) {
         
+        //Player class test
         Player playerName = new Player();
         
         playerName.setPlayerName("Flynn The Man");
@@ -25,6 +29,34 @@ public class SpaceFreighter {
         
         String playerInfo = playerName.toString();
         System.out.println(playerInfo);
+
+        //Inventory class test
+        Inventory coolingFan = new Inventory();
+        
+        coolingFan.setQuantity(1);
+        coolingFan.setInventoryType("enginePart");
+        
+        String playerInv = coolingFan.toString();
+        System.out.println(playerInv);
+        
+        //Space ship class test
+        SpaceShip playerShip = new SpaceShip();
+        
+        playerShip.setShipName("Space Virgin");
+        playerShip.setDurability(75);
+        playerShip.setFuelCapacity(100);
+        
+        String playerShipInfo = playerShip.toString();
+        System.out.println(playerShipInfo);
+        
+        //Crew skill point test
+        CrewSkillPoints point = new CrewSkillPoints();
+        
+        point.setSkillQuantity(5);
+        point.setSkillType("Pilot");
+        
+        String CrewSkillPoints = point.toString();
+        System.out.println(CrewSkillPoints);
         
     }
     
