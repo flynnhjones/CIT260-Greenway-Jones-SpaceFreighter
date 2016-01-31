@@ -5,9 +5,15 @@
  */
 package spacefreighter;
 
+import byui.cit260.spacefreighter.model.BattleScene;
 import byui.cit260.spacefreighter.model.CrewSkillPoints;
+import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.Inventory;
+import byui.cit260.spacefreighter.model.JobBoardScene;
+import byui.cit260.spacefreighter.model.Locations;
 import byui.cit260.spacefreighter.model.Player;
+import byui.cit260.spacefreighter.model.RegularScene;
+import byui.cit260.spacefreighter.model.ShopScene;
 import byui.cit260.spacefreighter.model.SpaceShip;
 
 /**
@@ -57,6 +63,69 @@ public class SpaceFreighter {
         
         String CrewSkillPoints = point.toString();
         System.out.println(CrewSkillPoints);
+        
+        //Game class test
+        Game game1 = new Game();
+        
+        game1.setNewGame("Game 1");
+        game1.setSavedGame("Game 2");
+        game1.setHelpMenu("You Need Help!");
+        
+        String GameInfo = game1.toString();
+        System.out.println(GameInfo);
+        
+        //Locations class test
+        Locations earth = new Locations();
+        
+        earth.setJobs("Find a Mechanic");
+        earth.setLocationName("Earth");
+        
+        String earthLocation = earth.toString();
+        System.out.println(earthLocation);
+        
+        //JobBoardScene class test
+        JobBoardScene earthJobBoard = new JobBoardScene();
+        
+        earthJobBoard.setJobLocation("Mars");
+        earthJobBoard.setJobType("Battle");
+        earthJobBoard.setNumberOfJobs(3);
+        
+        String earthJobs = earthJobBoard.toString();
+        System.out.println(earthJobs);
+        
+        //RegularScene class test
+        RegularScene earthRegular = new RegularScene();
+        
+        earthRegular.setActors("Billybob, Giant Tortoise, Filbjok");
+        earthRegular.setAvailableActions("Examine, Explore, Start Battle");
+        earthRegular.setDescription("Earth is your home, but it's pretty run down. Maybe if those darn 21st century dolts had not gone to such extreme measures to fix global warming everything would be good. There's some folks here, and an empty bag on the floor.");
+        
+        String earthRegularScene = earthRegular.toString();
+        System.out.println(earthRegularScene);
+        
+        //ShopScene class test
+        ShopScene earthShopScene = new ShopScene();
+        
+        earthShopScene.setItemForSale("Sandwich");
+        earthShopScene.setItemPrice(50);
+        
+        String earthShop = earthShopScene.toString();
+        System.out.println(earthShop);
+        
+        //BattleScene class test
+        BattleScene earthBattleScene = new BattleScene();
+        
+        earthBattleScene.setAvailableActions("Fight, Item, Flee");
+        earthBattleScene.setEnemyAttack(10);
+        earthBattleScene.setEnemyDefense(10);
+        earthBattleScene.setEnemyType("Ruffian");
+        earthBattleScene.setEnemyexp(10);
+        earthBattleScene.setEnemygold(100);
+        earthBattleScene.setPlayerAttack(15);
+        earthBattleScene.setPlayerDefense(15);
+        
+        String earthBattle = earthBattleScene.toString();
+        System.out.println(earthBattle);
         
     }
     
