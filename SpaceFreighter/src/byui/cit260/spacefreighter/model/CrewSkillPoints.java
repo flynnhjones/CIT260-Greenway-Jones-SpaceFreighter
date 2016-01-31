@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Flynn
+ * @author Benjamin
  */
 public class CrewSkillPoints implements Serializable {
     
