@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author Flynn
  */
-public class CrewSkillPoints {
+public class CrewSkillPoints implements Serializable {
     
     private String skillType;
     private int skillQuantity;

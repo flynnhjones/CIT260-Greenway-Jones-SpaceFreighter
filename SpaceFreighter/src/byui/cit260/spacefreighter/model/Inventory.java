@@ -18,6 +18,7 @@ public class Inventory implements Serializable{
     //class instance variables
     private int quantity;
     private String inventoryType;
+    private String itemName;
 
     public Inventory() {
     }
@@ -38,17 +39,26 @@ public class Inventory implements Serializable{
         this.inventoryType = inventoryType;
     }
 
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.quantity;
-        hash = 97 * hash + Objects.hashCode(this.inventoryType);
+        int hash = 7;
+        hash = 41 * hash + this.quantity;
+        hash = 41 * hash + Objects.hashCode(this.inventoryType);
+        hash = 41 * hash + Objects.hashCode(this.itemName);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Inventory{" + "quantity=" + quantity + ", inventoryType=" + inventoryType + '}';
+        return "Inventory{" + "quantity=" + quantity + ", inventoryType=" + inventoryType + ", itemName=" + itemName + '}';
     }
     
     @Override
@@ -69,10 +79,10 @@ public class Inventory implements Serializable{
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
+        if (!Objects.equals(this.itemName, other.itemName)) {
+            return false;
+        }
         return true;
     }
-    
-    
-    
     
 }

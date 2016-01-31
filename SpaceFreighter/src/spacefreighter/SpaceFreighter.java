@@ -5,6 +5,7 @@
  */
 package spacefreighter;
 
+import byui.cit260.spacefreighter.model.Actor;
 import byui.cit260.spacefreighter.model.CrewSkillPoints;
 import byui.cit260.spacefreighter.model.Inventory;
 import byui.cit260.spacefreighter.model.Player;
@@ -35,6 +36,7 @@ public class SpaceFreighter {
         
         coolingFan.setQuantity(1);
         coolingFan.setInventoryType("enginePart");
+        coolingFan.setItemName("Cooling Fan");
         
         String playerInv = coolingFan.toString();
         System.out.println(playerInv);
@@ -58,6 +60,16 @@ public class SpaceFreighter {
         String CrewSkillPoints = point.toString();
         System.out.println(CrewSkillPoints);
         
+        //Actor class test
+        Actor pilot = new Actor();
+        
+        pilot.setName("Bob");
+        pilot.setType("NonPlayerCharactor");
+        pilot.setLocation("Earth");
+        pilot.setDescription("A crew member for the ship.");
+        
+        String actorInfo = pilot.toString();
+        System.out.println(actorInfo);
     }
     
 }
