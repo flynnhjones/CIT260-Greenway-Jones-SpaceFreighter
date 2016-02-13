@@ -25,11 +25,25 @@ public class SpaceShipControl {
             return 0;
         }
         
-        int costToRepair = ((100 - durability)* 2) - (mechSkillPoint * 5);
+        int costToRepair = ((100 - durability)* 2) - (mechSkillPoint * 5);        
         
         if (costToRepair < 0) {
             costToRepair = 0;
         }
         return costToRepair;
+    }
+    public double calcCostToReFuel( double pilotSkillPoint, double currentFuelCapacity){
+        if (pilotSkillPoint > 10 || pilotSkillPoint < 0){
+            return 0;
+        }
+        if (currentFuelCapacity > 100 || currentFuelCapacity < 0){
+            return 0;
+        }
+        
+        double skillPointBonus = (pilotSkillPoint * 0.05);
+        
+        double costToReFuel = ((100 - currentFuelCapacity)*3)-((100 - currentFuelCapacity)*3)*skillPointBonus;
+        
+        return Math.round(costToReFuel);
     }
 }

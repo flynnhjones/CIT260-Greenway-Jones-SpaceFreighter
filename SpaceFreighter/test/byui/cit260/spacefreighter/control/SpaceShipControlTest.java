@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Daddy
+ * @author Flynn/Ben
  */
 public class SpaceShipControlTest {
     
@@ -74,4 +74,62 @@ public class SpaceShipControlTest {
         result = instance.calcCostToRepair(durability, mechSkillPoint);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of calcCostToReFuel method, of class SpaceShipControl.
+     * @author Flynn
+     */
+    @Test
+    public void testCalcCostToReFuel() {
+        System.out.println("calcCostToReFuel");
+        System.out.println("\tTest case #1");
+        double pilotSkillPoint = 7;
+        double currentFuelCapacity = 75;
+        SpaceShipControl instance = new SpaceShipControl();
+        double expResult = 49;
+        double result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+         System.out.println("\tTest case #2");
+        pilotSkillPoint = 6;
+        currentFuelCapacity = -57;
+        expResult = 0;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("\tTest case #3");
+        pilotSkillPoint = 3;
+        currentFuelCapacity = 110;
+        expResult = 0;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("\tTest case #4");
+        pilotSkillPoint = 867;
+        currentFuelCapacity = 75;
+        expResult = 0;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("\tTest case #5");
+        pilotSkillPoint = 10;
+        currentFuelCapacity = 0;
+        expResult = 150;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("\tTest case #6");
+        pilotSkillPoint = 0;
+        currentFuelCapacity = 100;
+        expResult = 0;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("\tTest case #7");
+        pilotSkillPoint = 10;
+        currentFuelCapacity = 100;
+        expResult = 0;
+        result = instance.calcCostToReFuel(pilotSkillPoint, currentFuelCapacity);
+        assertEquals(expResult, result, 0.0);
+    }   
 }
