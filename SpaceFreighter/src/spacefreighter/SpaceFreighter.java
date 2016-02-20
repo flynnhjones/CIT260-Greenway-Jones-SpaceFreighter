@@ -17,6 +17,7 @@ import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.RegularScene;
 import byui.cit260.spacefreighter.model.ShopScene;
 import byui.cit260.spacefreighter.model.SpaceShip;
+import byui.cit60.spacefreighter.view.StartProgramView;
 
 /**
  *
@@ -148,6 +149,10 @@ public class SpaceFreighter {
         
         String mapConsole = mapView.toString();
         System.out.println(mapConsole);
+        
+        // create StartProgramViewOrig and display the start program view
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
     }
     
 }
