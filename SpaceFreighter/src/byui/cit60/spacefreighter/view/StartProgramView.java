@@ -94,5 +94,21 @@ public class StartProgramView {
         if (player == null) {
             System.out.println("\nError creating the player.");
             return false;
-        }
+        }  
+            
+        this.displayNextView(player);
+        return true;
+    }
+
+    private void displayNextView(Player player) {
+        System.out.println("\n================================================="
+                           + "\n Welcome to the game " + player.getPlayerName()
+                           + "\n We hope you have a lot of fun!!"
+                           + "\n==============================================="
+                            );
+        
+        MainMenuView mainMenuView = new MainMenuView();
+                
+        mainMenuView.displayMainMenuView();
+    }
 }
