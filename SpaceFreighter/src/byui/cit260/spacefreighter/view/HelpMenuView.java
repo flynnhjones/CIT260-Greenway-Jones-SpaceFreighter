@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit60.spacefreighter.view;
+package byui.cit260.spacefreighter.view;
 
 import java.util.Scanner;
 
@@ -11,23 +11,21 @@ import java.util.Scanner;
  *
  * @author jaxom
  */
-public class GameMenuView {
+public class HelpMenuView {
     
     private String menu;
-
-    public GameMenuView() {
+    
+    public HelpMenuView() {
         this.menu = "\n"
                 + "\n-----------------------------"
-                + "\n Game Menu                   |"
+                + "\n Help Menu                   |"
                 + "\n-----------------------------"
-                +"\nI – Inventory/Currency"
-                +"\nJ – Jobs board"
-                +"\nL – Map/Location chooser"
-                +"\nS – Ship menu"
-                +"\nC – Character customization menu"
-                +"\nX – Shop menu"
-                +"\nH – Help menu"
-                +"\nZ – Save game"
+                +"\nG - What is the goal of the game?"
+                +"\nM - How to move"
+                +"\nC – Captain and Crew character classes/roles"
+                +"\nI – How to make money/Jobs board"
+                +"\nD – Ship details/launch and travel"
+                +"\nR - Shops, Upgrades and Repairs"
                 +"\nQ – Quit to main menu"
                 +"\n------------------------------";
     }
@@ -37,70 +35,32 @@ public class GameMenuView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "I":
-                this.inventoryCurrency();
+            case "G":
+                this.goalOfGame();
                 break;
-            case "J":
-                this.jobBoard();
-                break;
-            case "L":
-                this.MapLocation();
-                break;
-            case "S":
-                this.shipMenu();
+            case "M":
+                this.howToMove();
                 break;
             case "C":
-                this.characterCustomMenu();
+                this.classesRoles();
                 break;
-            case "X":
-                this.shopMenu();
+            case "I":
+                this.howToMakeMoney();
                 break;
-            case "H":
-                this.helpMenu();
+            case "D":
+                this.shipLaunchTravel();
                 break;
-            case "Z":
-                this.saveGame();
+            case "R":
+                this.shopsUpgradesRepairs();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
-}
-
-    private void inventoryCurrency() {
-      System.out.println("We did it again");  
     }
-
-    private void jobBoard() {
-      System.out.println("We did it again");  
-    }
-
-    private void MapLocation() {
-      System.out.println("We did it again");
-    }
-
-    private void shipMenu() {
-        System.out.println("We did it again");
-    }
-
-    private void characterCustomMenu() {
-        System.out.println("We did it again");
-    }
-
-    private void shopMenu() {
-        System.out.println("We did it again");
-    }
-
-    private void helpMenu() {
-      System.out.println("We did it again");  
-    }
-
-    private void saveGame() {
-       System.out.println("We did it again"); 
-    }
-
-        public void displayMenu() {
+    
+    public void displayMenu() {
         
         boolean done = false;
         do {
@@ -135,4 +95,28 @@ public class GameMenuView {
     
         return value;
 }
+
+    private void goalOfGame() {
+        System.out.println("We did it again");
+    }
+
+    private void howToMove() {
+        System.out.println("We did it again");
+    }
+
+    private void classesRoles() {
+        System.out.println("We did it again");
+    }
+
+    private void howToMakeMoney() {
+        System.out.println("We did it again");
+    }
+
+    private void shipLaunchTravel() {
+        System.out.println("We did it again");
+    }
+
+    private void shopsUpgradesRepairs() {
+        System.out.println("We did it again");
+    }
 }

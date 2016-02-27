@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit60.spacefreighter.view;
+package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.model.Player;

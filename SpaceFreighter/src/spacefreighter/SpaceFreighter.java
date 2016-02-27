@@ -17,7 +17,7 @@ import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.RegularScene;
 import byui.cit260.spacefreighter.model.ShopScene;
 import byui.cit260.spacefreighter.model.SpaceShip;
-import byui.cit60.spacefreighter.view.StartProgramView;
+import byui.cit260.spacefreighter.view.StartProgramView;
 
 /**
  *
