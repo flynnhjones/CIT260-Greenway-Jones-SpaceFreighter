@@ -97,26 +97,31 @@ public class HelpMenuView {
 }
 
     private void goalOfGame() {
-        System.out.println("We did it again");
+        System.out.println("The Goal of the game is to earn enough currency to retire very rich!");
     }
 
     private void howToMove() {
-        System.out.println("We did it again");
+        System.out.println("Have not decided this yet!");
     }
 
     private void classesRoles() {
-        System.out.println("We did it again");
+        System.out.println("\nThere are four main class Roles that you can put skill points in."
+                            +"\nAdding points to the pilot skill decreases the amount you have to spend to refuel the ship."
+                            +"\nAdding points to the Mechanic skill decreases the amount you have to spend to repair the ship."
+                            +"\nAdding points to the Merchant skill decreases the cost of shop items and increases the sell price of items you have."
+                            +"\nAdding points to the Weapons Specialist Skill increases the amount of currency from jobs."
+                               );
     }
 
     private void howToMakeMoney() {
-        System.out.println("We did it again");
+        System.out.println("You make money by completeing jobs from the job board.");
     }
 
     private void shipLaunchTravel() {
-        System.out.println("We did it again");
+        System.out.println("You launch the ship to the destination of your choosing, dependant on amount of fuel you have.");
     }
 
     private void shopsUpgradesRepairs() {
-        System.out.println("We did it again");
+        System.out.println("You can buy and sell items you need or gain from jobs. You also will need to repair, maintain and refuel your ship as you travel from place to place");
     }
 }

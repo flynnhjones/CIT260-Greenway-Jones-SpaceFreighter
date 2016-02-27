@@ -105,11 +105,11 @@ public class MainMenuView {
     }
 
     private void saveGame() {
-        System.out.println("We did it again");
+        System.out.println("Save Game Menu call works - BUT NOT YET DESIGNED");
     }
 
     private void loadSavedGame() {
-        System.out.println("We did it again");
+        System.out.println("Load Game Menu call works - BUT NOT YET DESIGNED");
     }
 }
     

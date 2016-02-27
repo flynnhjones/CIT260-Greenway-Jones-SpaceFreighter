@@ -11,21 +11,21 @@ import java.util.Scanner;
  *
  * @author jaxom
  */
-public class GameMenuView {
+public class ShipMenuView {
     
     private String menu;
-
-    public GameMenuView() {
+    
+    public ShipMenuView() {
         this.menu = "\n"
                 + "\n-----------------------------"
-                + "\n Game Menu                   |"
+                + "\n Ship Menu                   |"
                 + "\n-----------------------------"
-                +"\nI – Inventory/Currency"
-                +"\nL – Map/Location chooser"
-                +"\nS – Ship menu"
-                +"\nX – Shop menu"
-                +"\nH – Help menu"
-                +"\nZ – Save game"
+                +"\nR - Repair damaged ship"
+                +"\nU – Upgrade the ships Components"
+                +"\nF – Refuel the ship"
+                +"\nJ – Check out the Job Board"
+                +"\nT – Training room"
+                +"\nB – Back to game menu"
                 +"\nQ – Quit to main menu"
                 +"\n------------------------------";
     }
@@ -35,58 +35,32 @@ public class GameMenuView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "I":
-                this.inventoryCurrency();
+            case "R":
+                this.repairTheShipMenu();
                 break;
-            case "L":
-                this.MapLocation();
+            case "U":
+                this.upgradeTheShipMenu();
                 break;
-            case "S":
-                this.shipMenu();
+            case "F":
+                this.refuelTheShipMenu();
                 break;
-            case "X":
-                this.shopMenu();
+            case "J":
+                this.jobBoardMenu();
                 break;
-            case "H":
-                this.helpMenu();
+            case "T":
+                this.trainingRoomMenu();
                 break;
-            case "Z":
-                this.saveGame();
+            case "B":
+                this.backToGameMenu();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
-}
-
-    private void inventoryCurrency() {
-      System.out.println("Inventory/Currency Menu call works - BUT NOT YET DESIGNED");  
     }
-
-    private void MapLocation() {
-      System.out.println("Map Location Menu call works - BUT NOT YET DESIGNED");
-    }
-
-    private void shipMenu() {
-       ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
-    }
-
-    private void shopMenu() {
-        System.out.println("Shop Menu call works - BUT NOT YET DESIGNED");
-    }
-
-    private void helpMenu() {
-      HelpMenuView helpMenu = new HelpMenuView();
-       helpMenu.displayMenu();  
-    }
-
-    private void saveGame() {
-       System.out.println("Save Game Menu call works - BUT NOT YET DESIGNED");
-    }
-
-        public void displayMenu() {
+    
+    public void displayMenu() {
         
         boolean done = false;
         do {
@@ -121,4 +95,29 @@ public class GameMenuView {
     
         return value;
 }
+
+    private void repairTheShipMenu() {
+        System.out.println(" Repair Menu call works - BUT NOT YET DESIGNED");
+    }
+
+    private void upgradeTheShipMenu() {
+        System.out.println("Upgrade Ship Menu call works - BUT NOT YET DESIGNED");
+    }
+
+    private void jobBoardMenu() {
+       System.out.println("Job Board Menu call works - BUT NOT YET DESIGNED"); 
+    }
+
+    private void trainingRoomMenu() {
+       System.out.println("Training Room Menu call works - BUT NOT YET DESIGNED");
+    }
+    
+    private void refuelTheShipMenu() {
+       System.out.println("Menu call works - BUT NOT YET DESIGNED"); 
+    }
+
+    private void backToGameMenu() {
+       GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
+    }  
 }
