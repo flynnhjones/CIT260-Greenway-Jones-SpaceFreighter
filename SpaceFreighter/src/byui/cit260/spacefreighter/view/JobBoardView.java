@@ -9,24 +9,20 @@ import java.util.Scanner;
 
 /**
  *
- * @author jaxom
+ * @author Daddy
  */
-public class ShipMenuView {
+public class JobBoardView {
     
     private String menu;
     
-    public ShipMenuView() {
+    public JobBoardView() {
         this.menu = "\n"
                 + "\n-----------------------------"
-                + "\n Ship Menu                   |"
+                + "\n Job Board                   |"
                 + "\n-----------------------------"
-                +"\nR - Repair damaged ship"
-                +"\nU – Upgrade the ships Components"
-                +"\nF – Refuel the ship"
-                +"\nJ – Check out the Job Board"
-                +"\nT – Training room"
-                +"\nB – Back to game menu"
-                +"\nQ – Quit to main menu"
+                +"\nB - Battle Job"
+                +"\nN – Non-Battle Job" 
+                +"\nQ - Go back"
                 +"\n------------------------------";
     }
     
@@ -35,24 +31,12 @@ public class ShipMenuView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "R":
-                this.repairTheShipMenu();
-                break;
-            case "U":
-                this.upgradeTheShipMenu();
-                break;
-            case "F":
-                this.refuelTheShipMenu();
-                break;
-            case "J":
-                this.jobBoardMenu();
-                break;
-            case "T":
-                this.trainingRoomMenu();
-                break;
             case "B":
-                this.backToGameMenu();
+                this.battleJob();
                 break;
+            case "N":
+                this.nonBattleJob();
+                break;            
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -96,29 +80,13 @@ public class ShipMenuView {
         return value;
 }
 
-    private void repairTheShipMenu() {
-        System.out.println(" Repair Menu call works - BUT NOT YET DESIGNED");
+    private void battleJob() {
+        BattleMenuView battleMenu = new BattleMenuView();
+        battleMenu.displayMenu();
     }
 
-    private void upgradeTheShipMenu() {
-        System.out.println("Upgrade Ship Menu call works - BUT NOT YET DESIGNED");
+    private void nonBattleJob() {
+        System.out.println("You are not battling!");
     }
-
-    private void jobBoardMenu() {
-       JobBoardView jobBoard = new JobBoardView(); 
-       jobBoard.displayMenu();
-    }
-
-    private void trainingRoomMenu() {
-       System.out.println("Training Room Menu call works - BUT NOT YET DESIGNED");
-    }
-    
-    private void refuelTheShipMenu() {
-       System.out.println("Menu call works - BUT NOT YET DESIGNED"); 
-    }
-
-    private void backToGameMenu() {
-       GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }  
+ 
 }

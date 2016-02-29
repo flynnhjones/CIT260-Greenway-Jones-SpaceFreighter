@@ -11,7 +11,7 @@ package byui.cit260.spacefreighter.control;
  */
 public class BattleSceneControl {
     
-    public int calcDamageDone(int characterAttack, int weaponSpecialistSkill, int enemyDefense) {
+    public static int calcDamageDone(int characterAttack, int weaponSpecialistSkill, int enemyDefense) {
         
         if (characterAttack < 0) {
             return 0;
