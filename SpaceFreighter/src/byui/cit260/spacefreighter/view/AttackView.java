@@ -16,6 +16,7 @@ class AttackView {
     private String promptMessageAttack;
     private String promptMessageSkill;
     private String promptMessageDefense;
+    private String damageLevel;
     private int characterAttack;
     private int weaponSpecialistSkill;
     private int enemyDefense;
@@ -79,7 +80,28 @@ class AttackView {
     void attack() {
         int damage;
         damage = this.getDamage();
-        System.out.println("\nYou did " + damage + " damage!");
+        this.damageLevel = this.getDamageLevel(damage);
+        System.out.println("\nYou did " + damage + " damage!" + damageLevel);
+    }
+
+    private String getDamageLevel(int damage) {
+        String damageLevelMessage;
+        if (damage < 50) {
+            damageLevelMessage = "\nA weak hit.";            
+        }
+        else if (damage < 200) {
+            damageLevelMessage = "\nA decent hit!";
+        }
+        else if (damage < 500) {
+            damageLevelMessage = "\nA good hit!";
+        }
+        else if (damage < 1000) {
+            damageLevelMessage = "\nA strong hit!";
+        }
+        else {
+            damageLevelMessage = "\nAn amazing hit!";
+        }
+        return damageLevelMessage;
     }
     
    
