@@ -55,6 +55,21 @@ class RepairTheShipView {
     void CostToRepair() {
         int theCostToRepair;
         theCostToRepair = this.getTheCostToRepair();
+        
+        if (currentDurability < 0){
+            System.out.println("\nError Durability too low");
+        }
+        else if (currentDurability > 100){
+            System.out.println("\nError Durability too high");
+        }
+        else if (mechSkillPoint > 10){
+            System.out.println("\nError mechanic skill point is too high");  
+        }
+        else if (mechSkillPoint < 0){
+            System.out.println("\nError mechanic skill point is too low");
+        }
+        else {
         System.out.println("\nThe cost to repair will be " + theCostToRepair + " Currency.");
-    }
+        }
+    }  
 }
