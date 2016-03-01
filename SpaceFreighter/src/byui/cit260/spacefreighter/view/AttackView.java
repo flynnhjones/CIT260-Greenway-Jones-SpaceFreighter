@@ -24,14 +24,9 @@ class AttackView {
     public AttackView() {
         this.promptMessageAttack = "\nWhat is your attack?";                
         this.promptMessageSkill = "\nWhat is your Weapon Specialist Skill Level?";                
-        this.promptMessageDefense = "\nWhat is the enemy defense?";
-        
-        
-                
+        this.promptMessageDefense = "\nWhat is the enemy defense?";         
     }
     
-    
-
     private int getDamage() {
         int attack = this.getAttack();
         int skill = this.getSkill();
@@ -50,10 +45,7 @@ class AttackView {
             attack = keyboard.nextInt();
                     
             return attack;
-        }
-    
-        
-    
+    }   
 
     private int getSkill() {
         Scanner keyboard = new Scanner(System.in);
@@ -102,7 +94,5 @@ class AttackView {
             damageLevelMessage = "\nAn amazing hit!";
         }
         return damageLevelMessage;
-    }
-    
-   
+    } 
 }
