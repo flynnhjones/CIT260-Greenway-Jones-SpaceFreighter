@@ -11,11 +11,11 @@ package byui.cit260.spacefreighter.control;
  */
 public class SpaceShipControl {
     
-    public int calcCostToRepair( int durability, int mechSkillPoint) {
-        if (durability > 100) {
+    public static int calcCostToRepair( int currentDurability, int mechSkillPoint) {
+        if (currentDurability > 100) {
             return 0;
         }
-        if (durability < 0) {
+        if (currentDurability < 0) {
             return 0;
         }
         if (mechSkillPoint > 10) {
@@ -25,13 +25,14 @@ public class SpaceShipControl {
             return 0;
         }
         
-        int costToRepair = ((100 - durability)* 2) - (mechSkillPoint * 5);        
+        int costToRepair = ((100 - currentDurability)* 2) - (mechSkillPoint * 5);        
         
         if (costToRepair < 0) {
             costToRepair = 0;
         }
         return costToRepair;
     }
+    
     public double calcCostToReFuel( double pilotSkillPoint, double currentFuelCapacity){
         if (pilotSkillPoint > 10 || pilotSkillPoint < 0){
             return 0;

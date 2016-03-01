@@ -97,7 +97,8 @@ public class ShipMenuView {
 }
 
     private void repairTheShipMenu() {
-        System.out.println(" Repair Menu call works - BUT NOT YET DESIGNED");
+        RepairTheShipView repairTheShip = new RepairTheShipView();
+        repairTheShip.CostToRepair();
     }
 
     private void upgradeTheShipMenu() {
