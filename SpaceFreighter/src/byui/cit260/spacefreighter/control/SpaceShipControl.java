@@ -7,7 +7,7 @@ package byui.cit260.spacefreighter.control;
 
 /**
  *
- * @author Daddy
+ * @author Ben/Flynn
  */
 public class SpaceShipControl {
     
@@ -27,7 +27,7 @@ public class SpaceShipControl {
         
         int costToRepair = ((100 - currentDurability)* 2) - (mechSkillPoint * 5);        
         
-        if (costToRepair < 0) {
+        if (costToRepair < 0) {         
             costToRepair = 0;
         }
         return costToRepair;
