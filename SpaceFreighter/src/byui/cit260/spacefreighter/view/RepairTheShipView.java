@@ -15,8 +15,8 @@ import java.util.Scanner;
 class RepairTheShipView {
     private String promptMessageCurrentDurability;
     private String promptMessageMechSkillPoint;
-    private int currentDurability;
-    private int mechSkillPoint;
+    private String repairMessage;
+    
 
     public RepairTheShipView() {
         this.promptMessageCurrentDurability = "\nWhat is the ships current durability (1-100)?";                
@@ -26,7 +26,7 @@ class RepairTheShipView {
     private int getTheCostToRepair() {
         int currentDurability = this.getCurrentDurability();
         int mechSkillPoint = this.getMechSkillPoint();
-        int theCostToRepair = SpaceShipControl.calcCostToRepair(currentDurability,mechSkillPoint);
+         int theCostToRepair = SpaceShipControl.calcCostToRepair(currentDurability,mechSkillPoint);
         
         return theCostToRepair;
     }
@@ -54,22 +54,26 @@ class RepairTheShipView {
     }
     void CostToRepair() {
         int theCostToRepair;
-        theCostToRepair = this.getTheCostToRepair();
+        int currentDurability = this.getCurrentDurability();
+        int mechSkillPoint = this.getMechSkillPoint();
+        theCostToRepair = SpaceShipControl.calcCostToRepair(currentDurability,mechSkillPoint);
         
         if (currentDurability < 0){
-            System.out.println("\nError Durability too low");
+            this.repairMessage = "\nDurability Too Low";
         }
         else if (currentDurability > 100){
-            System.out.println("\nError Durability too high");
+            this.repairMessage = "\nError Durability too high";
         }
         else if (mechSkillPoint > 10){
-            System.out.println("\nError mechanic skill point is too high");  
+            this.repairMessage = "\nError mechanic skill point is too high";  
         }
         else if (mechSkillPoint < 0){
-            System.out.println("\nError mechanic skill point is too low");
+            this.repairMessage = "\nError mechanic skill point is too low";
         }
         else {
-        System.out.println("\nThe cost to repair will be " + theCostToRepair + " Currency.");
+            this.repairMessage = "\nThe cost to repair will be " + theCostToRepair + " Currency.";
         }
+        
+        System.out.println(repairMessage);
     }  
 }
