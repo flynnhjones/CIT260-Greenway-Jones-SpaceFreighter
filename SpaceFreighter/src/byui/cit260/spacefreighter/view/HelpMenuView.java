@@ -11,12 +11,11 @@ import java.util.Scanner;
  *
  * @author jaxom
  */
-public class HelpMenuView {
+public class HelpMenuView extends SuperView {
     
-    private String menu;
-    
+        
     public HelpMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Help Menu                   |"
                 + "\n-----------------------------"
@@ -27,9 +26,10 @@ public class HelpMenuView {
                 +"\nD – Ship details/launch and travel"
                 +"\nR - Shops, Upgrades and Repairs"
                 +"\nQ – Quit to main menu"
-                +"\n------------------------------";
+                +"\n------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -60,42 +60,6 @@ public class HelpMenuView {
         return false;
     }
     
-    public void displayMenu() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
-
     private void goalOfGame() {
         System.out.println("The Goal of the game is to earn enough currency to retire very rich!");
     }

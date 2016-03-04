@@ -11,12 +11,11 @@ import java.util.Scanner;
  *
  * @author jaxom
  */
-public class GameMenuView {
+public class GameMenuView extends SuperView {
     
-    private String menu;
-
+    
     public GameMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Game Menu                   |"
                 + "\n-----------------------------"
@@ -27,9 +26,10 @@ public class GameMenuView {
                 +"\nH – Help menu"
                 +"\nZ – Save game"
                 +"\nQ – Quit to main menu"
-                +"\n------------------------------";
+                +"\n------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -70,7 +70,7 @@ public class GameMenuView {
 
     private void shipMenu() {
        ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+        shipMenu.display();
     }
 
     private void shopMenu() {
@@ -79,46 +79,10 @@ public class GameMenuView {
 
     private void helpMenu() {
       HelpMenuView helpMenu = new HelpMenuView();
-       helpMenu.displayMenu();  
+       helpMenu.display();  
     }
 
     private void saveGame() {
        System.out.println("Save Game Menu call works - BUT NOT YET DESIGNED");
     }
-
-        public void displayMenu() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
 }

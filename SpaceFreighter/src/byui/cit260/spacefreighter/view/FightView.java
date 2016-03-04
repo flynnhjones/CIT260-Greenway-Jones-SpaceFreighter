@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author Daddy
  */
-class FightView {
+class FightView extends SuperView {
     
-    private String menu;
-    
-    public FightView() {
-        this.menu = "\n"
+  public FightView() {
+        super("\n"
                 + "\n-----------------------------"
                 + "\n What will you do?           |"
                 + "\n-----------------------------"
@@ -24,9 +22,10 @@ class FightView {
                 +"\nI – Item" 
                 +"\nS - Use Skill"
                 +"\nQ - Go back"
-                +"\n------------------------------";
+                +"\n------------------------------");
     }
     
+  @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -35,7 +34,7 @@ class FightView {
             case "F":
                 this.attack();
                 break;
-            case "N":
+            case "I":
                 this.item();
                 break;         
             case "S":
@@ -48,41 +47,7 @@ class FightView {
         return false;
     }
     
-    public void displayFightView() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
     
-        return value;
-}
 
     private void attack() {
         AttackView dodamage = new AttackView();

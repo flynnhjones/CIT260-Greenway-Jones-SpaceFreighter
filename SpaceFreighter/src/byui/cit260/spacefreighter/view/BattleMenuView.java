@@ -11,19 +11,20 @@ import java.util.Scanner;
  *
  * @author Daddy
  */
-public class BattleMenuView {
-    private String menu;
+public class BattleMenuView extends SuperView {
+    
     
     public BattleMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Enemy Appeared!             |"
                 + "\n-----------------------------"
                 +"\nF - Fight"
-                +"\nR – Flee"              
-                +"\n------------------------------";
+                +"\nQ – Flee"              
+                +"\n------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -31,10 +32,7 @@ public class BattleMenuView {
         switch (choice) {
             case "F":
                 this.fightMenu();
-                break;
-            case "R":
-                this.goBackToShip();
-                break;            
+                break;                 
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -42,49 +40,13 @@ public class BattleMenuView {
         return false;
     }
     
-    public void displayMenu() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
-
-    private void fightMenu() {
+        private void fightMenu() {
         FightView fight = new FightView();
-        fight.displayFightView();
+        fight.display();
     }
 
     private void goBackToShip() {
         ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+        shipMenu.display();
     }
 }

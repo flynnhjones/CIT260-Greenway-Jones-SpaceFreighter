@@ -13,12 +13,11 @@ import spacefreighter.SpaceFreighter;
  *
  * @author jaxom
  */
-public class MainMenuView {
+public class MainMenuView extends SuperView {
     
-    private String menu;
-    
+        
     public MainMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Main Menu                   |"
                 + "\n-----------------------------"
@@ -27,50 +26,15 @@ public class MainMenuView {
                 +"\nS - Save game"
                 +"\nL - load saved game"
                 +"\nQ - Exit game"
-                +"\n------------------------------";
+                +"\n------------------------------");
     }
     
-    public void displayMainMenuView() {
+    @Override
+    public boolean doAction(String value) {
         
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
+        value = value.toUpperCase();
         
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
-    
-    public boolean doAction(String choice) {
-        
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
+        switch (value) {
             case "G":
                 this.startNewGame();
                 break;
@@ -94,13 +58,13 @@ public class MainMenuView {
         GameControl.creatNewGame(SpaceFreighter.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void helpMenu() {
                 
        HelpMenuView helpMenu = new HelpMenuView();
-       helpMenu.displayMenu();
+       helpMenu.display();
        
     }
 

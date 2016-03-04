@@ -11,21 +11,21 @@ import java.util.Scanner;
  *
  * @author Daddy
  */
-public class JobBoardView {
+public class JobBoardView extends SuperView {
     
-    private String menu;
-    
+        
     public JobBoardView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Job Board                   |"
                 + "\n-----------------------------"
                 +"\nB - Battle Job"
                 +"\nN – Non-Battle Job" 
                 +"\nQ - Go back"
-                +"\n------------------------------";
+                +"\n------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -44,45 +44,9 @@ public class JobBoardView {
         return false;
     }
     
-    public void displayMenu() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
-
     private void battleJob() {
         BattleMenuView battleMenu = new BattleMenuView();
-        battleMenu.displayMenu();
+        battleMenu.display();
     }
 
     private void nonBattleJob() {

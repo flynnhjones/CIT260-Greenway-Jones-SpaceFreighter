@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author jaxom
  */
-public class ShipMenuView {
-    
-    private String menu;
+public class ShipMenuView extends SuperView {
     
     public ShipMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n-----------------------------"
                 + "\n Ship Menu                   |"
                 + "\n-----------------------------"
@@ -24,12 +22,12 @@ public class ShipMenuView {
                 +"\nU – Upgrade the ships Components"
                 +"\nF – Refuel the ship"
                 +"\nJ – Check out the Job Board"
-                +"\nT – Training room"
-                +"\nB – Back to game menu"
-                +"\nQ – Quit to main menu"
-                +"\n------------------------------";
+                +"\nT – Training room"                
+                +"\nQ – Quit to game menu"
+                +"\n------------------------------");
     }
     
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -49,10 +47,7 @@ public class ShipMenuView {
                 break;
             case "T":
                 this.trainingRoomMenu();
-                break;
-            case "B":
-                this.backToGameMenu();
-                break;
+                break;            
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -60,42 +55,6 @@ public class ShipMenuView {
         return false;
     }
     
-    public void displayMenu() {
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-            
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid) {
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break;
-        }
-    
-        return value;
-}
-
     private void repairTheShipMenu() {
         RepairTheShipView repairTheShip = new RepairTheShipView();
         repairTheShip.CostToRepair();
@@ -107,7 +66,7 @@ public class ShipMenuView {
 
     private void jobBoardMenu() {
        JobBoardView jobBoard = new JobBoardView(); 
-       jobBoard.displayMenu();
+       jobBoard.display();
     }
 
     private void trainingRoomMenu() {
@@ -120,6 +79,6 @@ public class ShipMenuView {
 
     private void backToGameMenu() {
        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }  
 }
