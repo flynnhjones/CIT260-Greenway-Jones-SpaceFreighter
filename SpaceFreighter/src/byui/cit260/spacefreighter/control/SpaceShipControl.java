@@ -33,17 +33,17 @@ public class SpaceShipControl {
         return costToRepair;
     }
     
-    public double calcCostToReFuel( double pilotSkillPoint, double currentFuelCapacity){
+    public static double calcCostToRefuel( double pilotSkillPoint, double currentFuelGauge){
         if (pilotSkillPoint > 10 || pilotSkillPoint < 0){
             return 0;
         }
-        if (currentFuelCapacity > 100 || currentFuelCapacity < 0){
+        if (currentFuelGauge > 100 || currentFuelGauge < 0){
             return 0;
         }
         
         double skillPointBonus = (pilotSkillPoint * 0.05);
         
-        double costToReFuel = ((100 - currentFuelCapacity)*3)-((100 - currentFuelCapacity)*3)*skillPointBonus;
+        double costToReFuel = ((100 - currentFuelGauge)*3)-((100 - currentFuelGauge)*3)*skillPointBonus;
         
         return Math.round(costToReFuel);
     }

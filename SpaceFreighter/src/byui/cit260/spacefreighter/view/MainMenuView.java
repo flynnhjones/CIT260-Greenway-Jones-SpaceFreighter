@@ -26,7 +26,7 @@ public class MainMenuView extends SuperView {
                 +"\nS - Save game"
                 +"\nL - load saved game"
                 +"\nQ - Exit game"
-                +"\n------------------------------");
+                +"\n-----------------------------");
     }
     
     @Override

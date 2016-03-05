@@ -35,7 +35,7 @@ public abstract class SuperView implements ViewInterface {
         
             done = this.doAction(value);
         
-        } while (!done);
+        } while (!done); 
         
     }
     

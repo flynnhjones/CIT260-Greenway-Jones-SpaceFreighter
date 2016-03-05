@@ -15,16 +15,17 @@ public class ShipMenuView extends SuperView {
     
     public ShipMenuView() {
         super("\n"
-                + "\n-----------------------------"
-                + "\n Ship Menu                   |"
-                + "\n-----------------------------"
-                +"\nR - Repair damaged ship"
-                +"\nU – Upgrade the ships Components"
-                +"\nF – Refuel the ship"
-                +"\nJ – Check out the Job Board"
-                +"\nT – Training room"                
-                +"\nQ – Quit to game menu"
-                +"\n------------------------------");
+                + "\n"
+                + "*----------------------------------*"
+                + "\n|            Ship Menu             |"
+                + "\n|----------------------------------|"
+                +"\n| R - Repair damaged ship          |"
+                +"\n| U – Upgrade the ships Components |"
+                +"\n| F – Refuel the ship              |"
+                +"\n| J – Check out the Job Board      |"
+                +"\n| T – Training room                |"
+                +"\n| Q – Quit to game menu            |"
+                +"\n*----------------------------------*");
     }
     
     @Override
@@ -74,7 +75,8 @@ public class ShipMenuView extends SuperView {
     }
     
     private void refuelTheShipMenu() {
-       System.out.println("Menu call works - BUT NOT YET DESIGNED"); 
+       RefuelTheShipView refuelTheShip = new RefuelTheShipView();
+        refuelTheShip.CostToRefuel(); 
     }
 
     private void backToGameMenu() {

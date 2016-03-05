@@ -16,14 +16,12 @@ import java.util.Scanner;
 public class StartProgramView {
     
     private String promptMessage;
-    
+
     public StartProgramView() {
         
-        this.promptMessage = "\nPlease enter your name: ";
-        // display the banner when view is created
         this.displayBanner();
-    
-}
+        this.promptMessage = "\nPlease enter your name: ";
+    }
 
     private void displayBanner() {
         
@@ -101,7 +99,7 @@ public class StartProgramView {
     }
 
     private void displayNextView(Player player) {
-        System.out.println("\n================================================="
+        System.out.println("\n==============================================="
                            + "\n Welcome to the game " + player.getPlayerName()
                            + "\n We hope you have a lot of fun!!"
                            + "\n==============================================="
