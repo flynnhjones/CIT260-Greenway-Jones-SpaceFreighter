@@ -11,4 +11,5 @@ package byui.cit260.spacefreighter.control;
  */
 public class SkillPointCustomControl {
     
+    
 }

@@ -71,7 +71,8 @@ public class ShipMenuView extends SuperView {
     }
 
     private void trainingRoomMenu() {
-       System.out.println("Training Room Menu call works - BUT NOT YET DESIGNED");
+       TrainingRoomView trainingRoom = new TrainingRoomView();
+       trainingRoom.display();
     }
     
     private void refuelTheShipMenu() {

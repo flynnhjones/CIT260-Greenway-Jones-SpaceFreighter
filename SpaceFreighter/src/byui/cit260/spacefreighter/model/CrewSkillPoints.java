@@ -35,6 +35,15 @@ public class CrewSkillPoints implements Serializable {
         this.skillQuantity = skillQuantity;
     }
 
+    public void addToSkill(int skillQuantity, String skillType) {
+       this.skillQuantity = skillQuantity;
+       this.skillType = skillType;
+    }
+    public void removeFromSkill(int skillQuantity, String skillType) {
+        this.skillQuantity = skillQuantity;
+        this.skillType = skillType;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -79,13 +79,21 @@ public class SpaceFreighter {
         System.out.println(playerShipInfo);
         
         //Crew skill point test
-        CrewSkillPoints point = new CrewSkillPoints();
+        CrewSkillPoints pilotPoint = new CrewSkillPoints();
         
-        point.setSkillQuantity(5);
-        point.setSkillType("Pilot");
+        pilotPoint.setSkillQuantity(5);
+        pilotPoint.setSkillType("Pilot");
         
-        String CrewSkillPoints = point.toString();
-        System.out.println(CrewSkillPoints);
+        String pilotSkillPoints = pilotPoint.toString();
+        System.out.println(pilotSkillPoints);
+        
+        CrewSkillPoints mechPoint = new CrewSkillPoints();
+        
+        mechPoint.setSkillQuantity(2);
+        mechPoint.setSkillType("Mechanic");
+        
+        String mechSkillPoints = mechPoint.toString();
+        System.out.println(mechSkillPoints);
         
         //Actor class test
         Actor pilot = new Actor();
