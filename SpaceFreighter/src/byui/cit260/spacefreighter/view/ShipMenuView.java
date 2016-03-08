@@ -23,6 +23,7 @@ public class ShipMenuView extends SuperView {
                 +"\n| U – Upgrade the ships Components |"
                 +"\n| F – Refuel the ship              |"
                 +"\n| J – Check out the Job Board      |"
+                +"\n| S - Go to the onboard shop       |"
                 +"\n| T – Training room                |"
                 +"\n| Q – Quit to game menu            |"
                 +"\n*----------------------------------*");
@@ -45,6 +46,9 @@ public class ShipMenuView extends SuperView {
                 break;
             case "J":
                 this.jobBoardMenu();
+                break;
+            case "S":
+                this.shopMenu();
                 break;
             case "T":
                 this.trainingRoomMenu();
@@ -84,4 +88,9 @@ public class ShipMenuView extends SuperView {
        GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }  
+
+    private void shopMenu() {
+        ShopView shop = new ShopView();
+                shop.display();
+    }
 }
