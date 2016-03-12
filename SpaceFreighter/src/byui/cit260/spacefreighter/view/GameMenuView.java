@@ -5,6 +5,9 @@
  */
 package byui.cit260.spacefreighter.view;
 
+import byui.cit260.spacefreighter.control.GameControl;
+import byui.cit260.spacefreighter.model.InventoryItem;
+import byui.cit260.spacefreighter.model.Scene;
 import java.util.Scanner;
 
 /**
@@ -61,11 +64,26 @@ public class GameMenuView extends SuperView {
 }
 
     private void inventoryCurrency() {
-      System.out.println("Inventory/Currency Menu call works - BUT NOT YET DESIGNED");  
+      InventoryItem[] inventory = GameControl.getSortedInventoryList();
+      
+      System.out.println("\nList of Inventory Items");
+      System.out.println("Description" + "\t" + "required" + "\t" + "In Stock");
+      
+      for(InventoryItem inventoryItem : inventory) {
+          System.out.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
+      }
     }
 
     private void MapLocation() {
-      System.out.println("Map Location Menu call works - BUT NOT YET DESIGNED");
+      Scene[] scenes = GameControl.getMapLocation();
+      System.out.println("\nLocation on map.");
+      System.out.println("1" + "2");
+      
+      for(){
+          
+      }
+      
+      
     }
 
     private void shipMenu() {

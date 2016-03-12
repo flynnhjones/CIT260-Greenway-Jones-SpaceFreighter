@@ -18,6 +18,9 @@ public class SpaceShip implements Serializable{
     private int fuelCapacity;
 
     public SpaceShip() {
+        this.durability = 0;
+        this.fuelCapacity = 0;
+        this.shipName = "\nHalf a ship.";
     }
 
     public String getShipName() {

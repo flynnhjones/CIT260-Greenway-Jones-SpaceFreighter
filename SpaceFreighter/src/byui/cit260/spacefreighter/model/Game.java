@@ -17,12 +17,48 @@ public class Game implements Serializable{
     // class instance variables
     private String newGame;
     private String savedGame;
-    private String helpMenu;
+    private String helpMenu; 
+    private SpaceShip spaceShip;
+    private InventoryItem[] inventory;
+    private Actor actor;
+    private Map map;
 
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public SpaceShip getSpaceShip() {
+        return spaceShip;
+    }
+
+    public void setSpaceShip(SpaceShip spaceShip) {
+        this.spaceShip = spaceShip;
+    }
+    
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+      
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+    
     public String getNewGame() {
         return newGame;
     }
-
+       
     public void setNewGame(String newGame) {
         this.newGame = newGame;
     }
@@ -82,6 +118,10 @@ public class Game implements Serializable{
     @Override
     public String toString() {
         return "Game{" + "newGame=" + newGame + ", savedGame=" + savedGame + ", helpMenu=" + helpMenu + '}';
+    }
+
+    public void setPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

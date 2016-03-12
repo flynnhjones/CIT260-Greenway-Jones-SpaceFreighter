@@ -13,14 +13,13 @@ import java.util.Objects;
  *
  * @author Flynn
  */
-public class Inventory implements Serializable{
+public class InventoryItem implements Serializable{
    
     //class instance variables
     private int quantity;
-    private String inventoryType;
     private String itemName;
 
-    public Inventory() {
+    public InventoryItem() {
     }
 
     public int getQuantity() {
@@ -29,14 +28,6 @@ public class Inventory implements Serializable{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public String getInventoryType() {
-        return inventoryType;
-    }
-
-    public void setInventoryType(String inventoryType) {
-        this.inventoryType = inventoryType;
     }
 
     public String getItemName() {
@@ -51,14 +42,13 @@ public class Inventory implements Serializable{
     public int hashCode() {
         int hash = 7;
         hash = 41 * hash + this.quantity;
-        hash = 41 * hash + Objects.hashCode(this.inventoryType);
         hash = 41 * hash + Objects.hashCode(this.itemName);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Inventory{" + "quantity=" + quantity + ", inventoryType=" + inventoryType + ", itemName=" + itemName + '}';
+        return "Inventory{" + "quantity=" + quantity + ", itemName=" + itemName + '}';
     }
     
     @Override
@@ -72,13 +62,11 @@ public class Inventory implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Inventory other = (Inventory) obj;
+        final InventoryItem other = (InventoryItem) obj;
         if (this.quantity != other.quantity) {
             return false;
         }
-        if (!Objects.equals(this.inventoryType, other.inventoryType)) {
-            return false;
-        }
+       
         if (!Objects.equals(this.itemName, other.itemName)) {
             return false;
         }

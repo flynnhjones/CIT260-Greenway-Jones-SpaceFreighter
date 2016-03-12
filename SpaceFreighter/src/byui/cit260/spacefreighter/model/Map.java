@@ -5,50 +5,138 @@
  */
 package byui.cit260.spacefreighter.model;
 
+import byui.cit260.spacefreighter.control.GameControl;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
  * @author Flynn
  */
 public class Map implements Serializable{
+
+    private static Scene[] createScenes() {
+        Game game = SpaceFreighter.getCurrentGame();
+        
+        Scene[] scenes = new Scene[SceneType.values().length];
+        
+        Scene startingScene = new Scene();
+        startingScene.setDescription("\nYou have just came into stuff stuff stuff");
+        startingScene.setMapSymbol(" ST ");
+        startingScene.setBlocked(false);
+        scenes[SceneType.start.ordinal()] = startingScene;
+        
+        Scene coolingFanScene = new Scene();
+        coolingFanScene.setDescription("\nYou need a cooling fan");
+        coolingFanScene.setMapSymbol(" CF ");
+        coolingFanScene.setBlocked(false);
+        scenes[SceneType.coolingFan.ordinal()] = coolingFanScene;
+        
+        Scene hualPieceScene = new Scene();
+        hualPieceScene.setDescription("\nYou need a piece of metal to repair your damaged hual.");
+        hualPieceScene.setMapSymbol(" HP ");
+        hualPieceScene.setBlocked(false);
+        scenes[SceneType.finish.ordinal()] = hualPieceScene;
+        
+        Scene bigGunScene = new Scene();
+        bigGunScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
+        bigGunScene.setMapSymbol(" BG ");
+        bigGunScene.setBlocked(false);
+        scenes[SceneType.bigGun.ordinal()] = bigGunScene;
+        
+        Scene finishScene = new Scene();
+        finishScene.setDescription("\nYou can retire!");
+        finishScene.setMapSymbol(" FN ");
+        finishScene.setBlocked(false);
+        scenes[SceneType.finish.ordinal()] = finishScene;
+        
+        return scenes;
+    }
     
-    private String currentLocation;
-    private String locations;
-
-    public Map() {
+    public enum SceneType {
+        start,
+        coolingFan,
+        hualPiece,
+        bigGun,
+        finish;
+        
+    }
+    
+    private int noOfRows;
+    private int noOfColumns;
+    private Locations[][] locations;
+    
+    public Map(int noOfRows, int noOfColumns){
+    
+        if (noOfRows < 1 || noOfColumns < 1){
+            System.out.println("The number of rows and columns must be greater than zero");
+            return;
+        }
+        
+        this.noOfRows = noOfRows;
+        this.noOfColumns = noOfColumns;
+        
+        this.locations = new Locations[noOfRows][noOfColumns];
+        
+        for (int row = 0; row < noOfRows; row++) {
+            for(int column = 0; column < noOfColumns; column++) {
+                
+                Locations location = new Locations();
+                location.setColumn(column);
+                location.setRow(row);
+                location.setVisited(false);
+                
+                locations[row][column] = location;
+            }
+        }
+    }
+    
+    private static Map createMap(){
+        
+        Map map = new Map(20, 20);
+        
+        Scene[] scenes = createScenes();
+        
+        GameControl.assignScenesToLocations(map, scenes);
+        
+        return map;
     }
 
-    public String getCurrentLocation() {
-        return currentLocation;
+    public int getNoOfRows() {
+        return noOfRows;
     }
 
-    public void setCurrentLocation(String currentLocation) {
-        this.currentLocation = currentLocation;
+    public void setNoOfRows(int noOfRows) {
+        this.noOfRows = noOfRows;
     }
 
-    public String getLocations() {
+    public int getNoOfColumns() {
+        return noOfColumns;
+    }
+
+    public void setNoOfColumns(int noOfColumns) {
+        this.noOfColumns = noOfColumns;
+    }
+
+    public Locations[][] getLocations() {
         return locations;
     }
 
-    public void setLocations(String locations) {
+    public void setLocations(Locations[][] locations) {
         this.locations = locations;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.currentLocation);
-        hash = 17 * hash + Objects.hashCode(this.locations);
+        int hash = 3;
+        hash = 83 * hash + this.noOfRows;
+        hash = 83 * hash + this.noOfColumns;
+        hash = 83 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
 
-    @Override
-    public String toString() {
-        return "Map{" + "currentLocation=" + currentLocation + ", locations=" + locations + '}';
-    }
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,14 +149,20 @@ public class Map implements Serializable{
             return false;
         }
         final Map other = (Map) obj;
-        if (!Objects.equals(this.currentLocation, other.currentLocation)) {
+        if (this.noOfRows != other.noOfRows) {
             return false;
         }
-        if (!Objects.equals(this.locations, other.locations)) {
+        if (this.noOfColumns != other.noOfColumns) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
             return false;
         }
         return true;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Map{" + "noOfRows=" + noOfRows + ", noOfColumns=" + noOfColumns + ", locations=" + locations + '}';
+    }
 }

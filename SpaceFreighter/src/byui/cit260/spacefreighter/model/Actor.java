@@ -12,89 +12,32 @@ import java.util.Objects;
  *
  * @author Flynn
  */
-public class Actor implements Serializable  {
+public enum Actor implements Serializable  {
     
-    private String name;
-    private String type;
-    private String location;
-    private String description;
+    //Add each actor later.
+    Bob("Is the pilot."),
+    Sue("Is the mechanic"),
+    Charlie("Is the WS");
+    
+    private final Locations coordinates;
+    private final String description;
 
-    public Actor() {
+    Actor(String description) {
+        this.description = description;
+        coordinates = new Locations();
     }
 
-    public String getName() {
-        return name;
+    public Locations getcoordinates() {
+        return coordinates;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + Objects.hashCode(this.type);
-        hash = 17 * hash + Objects.hashCode(this.location);
-        hash = 17 * hash + Objects.hashCode(this.description);
-        return hash;
-    }
-
     @Override
     public String toString() {
-        return "Actor{" + "name=" + name + ", type=" + type + ", location=" + location + ", description=" + description + '}';
+        return "Actor{" + ", coordinates=" + coordinates + ", description=" + description + '}';
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Actor other = (Actor) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
-    }
-
-  
 }

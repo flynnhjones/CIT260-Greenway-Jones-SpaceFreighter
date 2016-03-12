@@ -5,10 +5,20 @@
  */
 package byui.cit260.spacefreighter.control;
 
+import byui.cit260.spacefreighter.model.Map;
+
 /**
  *
  * @author Daddy
  */
 public class MapControl {
+
+    static Map createMap() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static void moveActorsToStartLocation(Map map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
