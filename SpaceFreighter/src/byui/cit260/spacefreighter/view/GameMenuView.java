@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
+import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Locations;
 import byui.cit260.spacefreighter.model.Scene;
@@ -23,7 +24,7 @@ public class GameMenuView extends SuperView {
                 + "\n-----------------------------"
                 + "\n Game Menu                   |"
                 + "\n-----------------------------"
-                +"\nI – Inventory/Currency"
+                +"\nI – Inventory"
                 +"\nL – Map/Location chooser"
                 +"\nS – Ship menu"
                 +"\nX – Shop menu"
@@ -40,7 +41,7 @@ public class GameMenuView extends SuperView {
         
         switch (choice) {
             case "I":
-                this.displayInventoryCurrency();
+                this.displayInventory();
                 break;
             case "L":
                 this.displayMap();
@@ -64,8 +65,8 @@ public class GameMenuView extends SuperView {
         return false;
 }
 
-    private void displayInventoryCurrency() {
-      InventoryItem[] inventory = GameControl.getSortedInventoryList();
+    private void displayInventory() {
+      InventoryItem[] inventory = ItemControl.getSortedInventoryList();
       
       System.out.println("\nList of Inventory Items");
       System.out.println("Description" + "\t" + "In Stock");
