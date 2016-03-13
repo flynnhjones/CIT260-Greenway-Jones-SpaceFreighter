@@ -17,7 +17,7 @@ import spacefreighter.SpaceFreighter;
  */
 public class Map implements Serializable{
 
-    private static Scene[] createScenes() {
+    public static Scene[] createScenes() {
         Game game = SpaceFreighter.getCurrentGame();
         
         Scene[] scenes = new Scene[SceneType.values().length];
@@ -46,6 +46,12 @@ public class Map implements Serializable{
         bigGunScene.setBlocked(false);
         scenes[SceneType.bigGun.ordinal()] = bigGunScene;
         
+        Scene blankScene = new Scene();
+        blankScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
+        blankScene.setMapSymbol(" // ");
+        blankScene.setBlocked(false);
+        scenes[SceneType.blank.ordinal()] = blankScene;
+        
         Scene finishScene = new Scene();
         finishScene.setDescription("\nYou can retire!");
         finishScene.setMapSymbol(" FN ");
@@ -60,6 +66,7 @@ public class Map implements Serializable{
         coolingFan,
         hualPiece,
         bigGun,
+        blank,
         finish;
         
     }
@@ -93,18 +100,7 @@ public class Map implements Serializable{
         }
     }
     
-    private static Map createMap(){
-        
-        Map map = new Map(20, 20);
-        
-        Scene[] scenes = createScenes();
-        
-        GameControl.assignScenesToLocations(map, scenes);
-        
-        return map;
-    }
-
-    public int getNoOfRows() {
+     public int getNoOfRows() {
         return noOfRows;
     }
 

@@ -40,9 +40,9 @@ public class GameControl {
     public static void creatNewGame(Player player) {
         
         Game game = new Game();
-        GameControl.creatNewGame(SpaceFreighter.getPlayer());
+        SpaceFreighter.setCurrentGame(game);
         
-        game.setPlayer(player);
+        SpaceFreighter.setPlayer(player);
         
         InventoryItem[] inventoryList = GameControl.createIventoryList();
         game.setInventory(inventoryList);
@@ -98,16 +98,59 @@ public class GameControl {
         locations[0][2].setScene(scenes[SceneType.hualPiece.ordinal()]);
         locations[0][3].setScene(scenes[SceneType.bigGun.ordinal()]);
         locations[0][4].setScene(scenes[SceneType.finish.ordinal()]);
+        locations[0][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[0][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[1][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[2][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[3][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[4][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[5][6].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][0].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][1].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][2].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][3].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][4].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][5].setScene(scenes[SceneType.blank.ordinal()]);
+        locations[6][6].setScene(scenes[SceneType.blank.ordinal()]);
         
     }
 
     public static InventoryItem[] getSortedInventoryList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("\n*** getSortedInventoryList stub function called ***");
+        return null;
     }
 
-    public static Scene[] getMapLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
         
         public enum Item {
             currency,

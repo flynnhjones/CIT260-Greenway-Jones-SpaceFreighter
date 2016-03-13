@@ -66,10 +66,10 @@ public class Scene {
     }
 
     void setMapSymbol(String _st_) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String mapSymbol = _st_;
     }
 
     void setBlocked(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean blocked = b;
     }
 }

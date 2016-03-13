@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Map;
+import byui.cit260.spacefreighter.model.Scene;
 
 /**
  *
@@ -13,12 +14,19 @@ import byui.cit260.spacefreighter.model.Map;
  */
 public class MapControl {
 
-    static Map createMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       public static Map createMap(){
+        
+        Map map = new Map(7, 7);
+        
+        Scene[] scenes = Map.createScenes();
+        
+        GameControl.assignScenesToLocations(map, scenes);
+        
+        return map;
     }
 
     static void moveActorsToStartLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("This is move actors");
     }
     
 }

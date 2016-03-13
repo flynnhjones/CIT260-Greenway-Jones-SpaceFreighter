@@ -7,6 +7,7 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import byui.cit260.spacefreighter.model.Locations;
 import byui.cit260.spacefreighter.model.Scene;
 import java.util.Scanner;
 
@@ -39,10 +40,10 @@ public class GameMenuView extends SuperView {
         
         switch (choice) {
             case "I":
-                this.inventoryCurrency();
+                this.displayInventoryCurrency();
                 break;
             case "L":
-                this.MapLocation();
+                this.displayMap();
                 break;
             case "S":
                 this.shipMenu();
@@ -63,26 +64,43 @@ public class GameMenuView extends SuperView {
         return false;
 }
 
-    private void inventoryCurrency() {
+    private void displayInventoryCurrency() {
       InventoryItem[] inventory = GameControl.getSortedInventoryList();
       
       System.out.println("\nList of Inventory Items");
-      System.out.println("Description" + "\t" + "required" + "\t" + "In Stock");
+      System.out.println("Description" + "\t" + "In Stock");
       
       for(InventoryItem inventoryItem : inventory) {
           System.out.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
       }
     }
 
-    private void MapLocation() {
-      Scene[] scenes = GameControl.getMapLocation();
+    public void displayMap() {
+      
       System.out.println("\nLocation on map.");
-      System.out.println("1" + "2");
+      System.out.println("   1" + "  |" + " 2" + " |" +" 3" + " |" +" 4" + " |" +" 5" + " |" +" 6" + " |" +" 7");
       
-      for(){
-          
+      int noOfRows = 7;
+      int noOfColumns = 7;
+      Locations location;
+      String map = "";
+      
+      
+      for (int row = 0; row < noOfRows; row++) {
+          map = map + "\n" + (row + 1);
+            for(int column = 0; column < noOfColumns; column++) {
+                map = map + " |";
+                        
+                        boolean visited = false;
+                        if(visited == true) {
+                            map = map + "MM";
+                        }
+                        else {
+                            map = map + "??";                           
+                        }                        
+            }
       }
-      
+      System.out.println(map);
       
     }
 
