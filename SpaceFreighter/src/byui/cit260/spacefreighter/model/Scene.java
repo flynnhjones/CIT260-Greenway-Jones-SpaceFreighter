@@ -35,9 +35,11 @@ public class Scene {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.sceneType);
-        hash = 23 * hash + Objects.hashCode(this.description);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.sceneType);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.mapSymbol);
+        hash = 37 * hash + (this.blocked ? 1 : 0);
         return hash;
     }
 
@@ -53,10 +55,16 @@ public class Scene {
             return false;
         }
         final Scene other = (Scene) obj;
+        if (this.blocked != other.blocked) {
+            return false;
+        }
         if (!Objects.equals(this.sceneType, other.sceneType)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
             return false;
         }
         return true;
@@ -69,11 +77,11 @@ public class Scene {
 
    
 
-    void setMapSymbol(String mapSymbol) {
+    public void setMapSymbol(String mapSymbol) {
         this.mapSymbol = mapSymbol;
     }
 
-    void setBlocked(boolean blocked) {
+    public void setBlocked(boolean blocked) {
         this.blocked = blocked;
     }
 }

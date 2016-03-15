@@ -14,16 +14,24 @@ import java.util.Objects;
  */
 public class JobBoardScene implements Serializable{
     
-    private int numberOfJobs;
+    private String jobDescription;
     private String jobType;
-    private String jobLocation;
+    private int jobDifficulty;
 
-    public int getNumberOfJobs() {
-        return numberOfJobs;
+    public int getJobDifficulty() {
+        return jobDifficulty;
     }
 
-    public void setNumberOfJobs(int numberOfJobs) {
-        this.numberOfJobs = numberOfJobs;
+    public void setJobDifficulty(int jobDifficulty) {
+        this.jobDifficulty = jobDifficulty;
+    }
+
+    public String getJobDescription() {
+        return jobDescription;
+    }
+
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
     }
 
     public String getJobType() {
@@ -34,23 +42,12 @@ public class JobBoardScene implements Serializable{
         this.jobType = jobType;
     }
 
-    public String getJobLocation() {
-        return jobLocation;
-    }
-
-    public void setJobLocation(String jobLocation) {
-        this.jobLocation = jobLocation;
-    }
-
-    public JobBoardScene() {
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + this.numberOfJobs;
-        hash = 17 * hash + Objects.hashCode(this.jobType);
-        hash = 17 * hash + Objects.hashCode(this.jobLocation);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.jobDescription);
+        hash = 59 * hash + Objects.hashCode(this.jobType);
+        hash = 59 * hash + this.jobDifficulty;
         return hash;
     }
 
@@ -66,13 +63,13 @@ public class JobBoardScene implements Serializable{
             return false;
         }
         final JobBoardScene other = (JobBoardScene) obj;
-        if (this.numberOfJobs != other.numberOfJobs) {
+        if (this.jobDifficulty != other.jobDifficulty) {
+            return false;
+        }
+        if (!Objects.equals(this.jobDescription, other.jobDescription)) {
             return false;
         }
         if (!Objects.equals(this.jobType, other.jobType)) {
-            return false;
-        }
-        if (!Objects.equals(this.jobLocation, other.jobLocation)) {
             return false;
         }
         return true;
@@ -80,8 +77,7 @@ public class JobBoardScene implements Serializable{
 
     @Override
     public String toString() {
-        return "JobBoardScene{" + "numberOfJobs=" + numberOfJobs + ", jobType=" + jobType + ", jobLocation=" + jobLocation + '}';
+        return "JobBoardScene{" + "jobDescription=" + jobDescription + ", jobType=" + jobType + ", jobDifficulty=" + jobDifficulty + '}';
     }
-    
-    
 }
+

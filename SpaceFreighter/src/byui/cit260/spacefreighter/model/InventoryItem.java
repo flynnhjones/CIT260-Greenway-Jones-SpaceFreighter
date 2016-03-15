@@ -16,8 +16,8 @@ import java.util.Objects;
 public class InventoryItem implements Serializable{
    
     //class instance variables
-    private int quantity;
-    private String itemName;
+    public int quantity;
+    public String itemName;
 
     public InventoryItem() {
     }

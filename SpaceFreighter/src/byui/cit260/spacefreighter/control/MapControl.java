@@ -18,9 +18,9 @@ public class MapControl {
         
         Map map = new Map(7, 7);
         
-        Scene[] scenes = Map.createScenes();
+        Scene[] scenes = SceneControl.createScenes();
         
-        GameControl.assignScenesToLocations(map, scenes);
+        LocationControl.assignScenesToLocations(map, scenes);
         
         return map;
     }

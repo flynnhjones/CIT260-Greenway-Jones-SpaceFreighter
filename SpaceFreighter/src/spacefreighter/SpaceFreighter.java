@@ -11,7 +11,7 @@ import byui.cit260.spacefreighter.model.CrewSkillPoints;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.JobBoardScene;
-import byui.cit260.spacefreighter.model.Locations;
+import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.RegularScene;
@@ -25,8 +25,8 @@ import byui.cit260.spacefreighter.view.StartProgramView;
  */
 public class SpaceFreighter {
     
-    private static Game currentGame = null;
-    private static Player player = null;
+    public static Game currentGame = null;
+    public static Player player = null;
 
     public static Game getCurrentGame() {
         return currentGame;

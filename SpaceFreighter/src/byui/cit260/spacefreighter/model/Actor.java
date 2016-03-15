@@ -19,15 +19,15 @@ public enum Actor implements Serializable  {
     Sue("Is the mechanic"),
     Charlie("Is the WS");
     
-    private final Locations coordinates;
+    private final Location coordinates;
     private final String description;
 
     Actor(String description) {
         this.description = description;
-        coordinates = new Locations();
+        coordinates = new Location();
     }
 
-    public Locations getcoordinates() {
+    public Location getcoordinates() {
         return coordinates;
     }
 
