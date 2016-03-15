@@ -12,8 +12,26 @@ import java.util.Objects;
  * @author jaxom
  */
 public class Scene {
-    private String sceneType;
-    private String description;
+    public String sceneType;
+    public String description;
+    private String mapSymbol;
+    private boolean blocked;
+
+    public String getMapSymbol() {
+        return mapSymbol;
+    }
+
+    public void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 
     public String getSceneType() {
         return sceneType;
@@ -33,9 +51,11 @@ public class Scene {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.sceneType);
-        hash = 23 * hash + Objects.hashCode(this.description);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.sceneType);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.mapSymbol);
+        hash = 37 * hash + (this.blocked ? 1 : 0);
         return hash;
     }
 
@@ -51,10 +71,16 @@ public class Scene {
             return false;
         }
         final Scene other = (Scene) obj;
+        if (this.blocked != other.blocked) {
+            return false;
+        }
         if (!Objects.equals(this.sceneType, other.sceneType)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
             return false;
         }
         return true;
@@ -62,14 +88,7 @@ public class Scene {
 
     @Override
     public String toString() {
-        return "Scene{" + "sceneType=" + sceneType + ", description=" + description + '}';
+        return "Scene{" + "sceneType=" + sceneType + ", description=" + description + ", mapSymbol=" + mapSymbol + ", blocked=" + blocked + '}';
     }
 
-    void setMapSymbol(String _st_) {
-        String mapSymbol = _st_;
-    }
-
-    void setBlocked(boolean b) {
-        boolean blocked = b;
-    }
 }

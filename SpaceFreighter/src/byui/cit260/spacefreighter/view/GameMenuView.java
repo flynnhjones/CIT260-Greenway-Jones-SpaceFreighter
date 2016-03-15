@@ -8,7 +8,7 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.InventoryItem;
-import byui.cit260.spacefreighter.model.Locations;
+import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Scene;
 import java.util.Scanner;
 
@@ -83,7 +83,7 @@ public class GameMenuView extends SuperView {
       
       int noOfRows = 7;
       int noOfColumns = 7;
-      Locations location;
+      Location location;
       String map = "";
       
       

@@ -16,64 +16,10 @@ import spacefreighter.SpaceFreighter;
  * @author Flynn
  */
 public class Map implements Serializable{
-
-    public static Scene[] createScenes() {
-        Game game = SpaceFreighter.getCurrentGame();
-        
-        Scene[] scenes = new Scene[SceneType.values().length];
-        
-        Scene startingScene = new Scene();
-        startingScene.setDescription("\nYou have just came into stuff stuff stuff");
-        startingScene.setMapSymbol(" ST ");
-        startingScene.setBlocked(false);
-        scenes[SceneType.start.ordinal()] = startingScene;
-        
-        Scene coolingFanScene = new Scene();
-        coolingFanScene.setDescription("\nYou need a cooling fan");
-        coolingFanScene.setMapSymbol(" CF ");
-        coolingFanScene.setBlocked(false);
-        scenes[SceneType.coolingFan.ordinal()] = coolingFanScene;
-        
-        Scene hualPieceScene = new Scene();
-        hualPieceScene.setDescription("\nYou need a piece of metal to repair your damaged hual.");
-        hualPieceScene.setMapSymbol(" HP ");
-        hualPieceScene.setBlocked(false);
-        scenes[SceneType.finish.ordinal()] = hualPieceScene;
-        
-        Scene bigGunScene = new Scene();
-        bigGunScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
-        bigGunScene.setMapSymbol(" BG ");
-        bigGunScene.setBlocked(false);
-        scenes[SceneType.bigGun.ordinal()] = bigGunScene;
-        
-        Scene blankScene = new Scene();
-        blankScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
-        blankScene.setMapSymbol(" // ");
-        blankScene.setBlocked(false);
-        scenes[SceneType.blank.ordinal()] = blankScene;
-        
-        Scene finishScene = new Scene();
-        finishScene.setDescription("\nYou can retire!");
-        finishScene.setMapSymbol(" FN ");
-        finishScene.setBlocked(false);
-        scenes[SceneType.finish.ordinal()] = finishScene;
-        
-        return scenes;
-    }
-    
-    public enum SceneType {
-        start,
-        coolingFan,
-        hualPiece,
-        bigGun,
-        blank,
-        finish;
-        
-    }
-    
-    private int noOfRows;
-    private int noOfColumns;
-    private Locations[][] locations;
+  
+    public int noOfRows;
+    public int noOfColumns;
+    public Location[][] locations;
     
     public Map(int noOfRows, int noOfColumns){
     
@@ -85,12 +31,12 @@ public class Map implements Serializable{
         this.noOfRows = noOfRows;
         this.noOfColumns = noOfColumns;
         
-        this.locations = new Locations[noOfRows][noOfColumns];
+        this.locations = new Location[noOfRows][noOfColumns];
         
         for (int row = 0; row < noOfRows; row++) {
             for(int column = 0; column < noOfColumns; column++) {
                 
-                Locations location = new Locations();
+                Location location = new Location();
                 location.setColumn(column);
                 location.setRow(row);
                 location.setVisited(false);
@@ -116,11 +62,11 @@ public class Map implements Serializable{
         this.noOfColumns = noOfColumns;
     }
 
-    public Locations[][] getLocations() {
+    public Location[][] getLocations() {
         return locations;
     }
 
-    public void setLocations(Locations[][] locations) {
+    public void setLocations(Location[][] locations) {
         this.locations = locations;
     }
 

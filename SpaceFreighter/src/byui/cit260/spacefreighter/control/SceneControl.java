@@ -5,9 +5,11 @@
  */
 package byui.cit260.spacefreighter.control;
 
-import byui.cit260.spacefreighter.model.Locations;
+import byui.cit260.spacefreighter.model.Game;
+import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Scene;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -15,58 +17,57 @@ import byui.cit260.spacefreighter.model.Scene;
  */
 public class SceneControl {
     
-    public static void assignScenesToLocations(Map map, Scene[] scenes) {
-        Locations[][] locations = map.getLocations();
+    public static Scene[] createScenes() {
+        Game game = SpaceFreighter.getCurrentGame();
         
-        locations[0][0].setScene(scenes[Map.SceneType.start.ordinal()]);
-        locations[0][1].setScene(scenes[Map.SceneType.coolingFan.ordinal()]);
-        locations[0][2].setScene(scenes[Map.SceneType.hualPiece.ordinal()]);
-        locations[0][3].setScene(scenes[Map.SceneType.bigGun.ordinal()]);
-        locations[0][4].setScene(scenes[Map.SceneType.finish.ordinal()]);
-        locations[0][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[0][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[1][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[2][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[3][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[4][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[5][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][0].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][1].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][2].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][3].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][4].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][5].setScene(scenes[Map.SceneType.blank.ordinal()]);
-        locations[6][6].setScene(scenes[Map.SceneType.blank.ordinal()]);
+        Scene[] scenes = new Scene[SceneType.values().length];
+        
+        Scene startingScene = new Scene();
+        startingScene.setDescription("\nYou have just came into stuff stuff stuff");
+        startingScene.setMapSymbol(" ST ");
+        startingScene.setBlocked(false);
+        scenes[SceneType.start.ordinal()] = startingScene;
+        
+        Scene coolingFanScene = new Scene();
+        coolingFanScene.setDescription("\nYou need a cooling fan");
+        coolingFanScene.setMapSymbol(" CF ");
+        coolingFanScene.setBlocked(false);
+        scenes[SceneType.coolingFan.ordinal()] = coolingFanScene;
+        
+        Scene hualPieceScene = new Scene();
+        hualPieceScene.setDescription("\nYou need a piece of metal to repair your damaged hual.");
+        hualPieceScene.setMapSymbol(" HP ");
+        hualPieceScene.setBlocked(false);
+        scenes[SceneType.finish.ordinal()] = hualPieceScene;
+        
+        Scene bigGunScene = new Scene();
+        bigGunScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
+        bigGunScene.setMapSymbol(" BG ");
+        bigGunScene.setBlocked(false);
+        scenes[SceneType.bigGun.ordinal()] = bigGunScene;
+        
+        Scene blankScene = new Scene();
+        blankScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
+        blankScene.setMapSymbol(" // ");
+        blankScene.setBlocked(false);
+        scenes[SceneType.blank.ordinal()] = blankScene;
+        
+        Scene finishScene = new Scene();
+        finishScene.setDescription("\nYou can retire!");
+        finishScene.setMapSymbol(" FN ");
+        finishScene.setBlocked(false);
+        scenes[SceneType.finish.ordinal()] = finishScene;
+        
+        return scenes;
+    }
+    
+    public enum SceneType {
+        start,
+        coolingFan,
+        hualPiece,
+        bigGun,
+        blank,
+        finish;
         
     }
 }
