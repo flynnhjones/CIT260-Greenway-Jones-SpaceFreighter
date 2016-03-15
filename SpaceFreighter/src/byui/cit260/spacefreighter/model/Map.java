@@ -5,10 +5,8 @@
  */
 package byui.cit260.spacefreighter.model;
 
-import byui.cit260.spacefreighter.control.GameControl;
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Objects;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -24,37 +22,37 @@ public class Map implements Serializable{
         
         Scene startingScene = new Scene();
         startingScene.setDescription("\nYou have just came into stuff stuff stuff");
-        startingScene.setMapSymbol(" ST ");
+        startingScene.setMapSymbol("ST");
         startingScene.setBlocked(false);
         scenes[SceneType.start.ordinal()] = startingScene;
         
         Scene coolingFanScene = new Scene();
         coolingFanScene.setDescription("\nYou need a cooling fan");
-        coolingFanScene.setMapSymbol(" CF ");
+        coolingFanScene.setMapSymbol("CF");
         coolingFanScene.setBlocked(false);
         scenes[SceneType.coolingFan.ordinal()] = coolingFanScene;
         
         Scene hualPieceScene = new Scene();
         hualPieceScene.setDescription("\nYou need a piece of metal to repair your damaged hual.");
-        hualPieceScene.setMapSymbol(" HP ");
+        hualPieceScene.setMapSymbol("HP");
         hualPieceScene.setBlocked(false);
-        scenes[SceneType.finish.ordinal()] = hualPieceScene;
+        scenes[SceneType.hualPiece.ordinal()] = hualPieceScene;
         
         Scene bigGunScene = new Scene();
-        bigGunScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
-        bigGunScene.setMapSymbol(" BG ");
+        bigGunScene.setDescription("\nSpace is not good, you need a space ship laser gun!");
+        bigGunScene.setMapSymbol("BG");
         bigGunScene.setBlocked(false);
         scenes[SceneType.bigGun.ordinal()] = bigGunScene;
         
         Scene blankScene = new Scene();
-        blankScene.setDescription("\nSpace is not good, you need a space ship laser gun.!");
-        blankScene.setMapSymbol(" // ");
+        blankScene.setDescription("\nEMPTY SPACE!");
+        blankScene.setMapSymbol("--");
         blankScene.setBlocked(false);
         scenes[SceneType.blank.ordinal()] = blankScene;
         
         Scene finishScene = new Scene();
         finishScene.setDescription("\nYou can retire!");
-        finishScene.setMapSymbol(" FN ");
+        finishScene.setMapSymbol("FN");
         finishScene.setBlocked(false);
         scenes[SceneType.finish.ordinal()] = finishScene;
         
@@ -93,7 +91,7 @@ public class Map implements Serializable{
                 Locations location = new Locations();
                 location.setColumn(column);
                 location.setRow(row);
-                location.setVisited(false);
+                location.setVisited(true);
                 
                 locations[row][column] = location;
             }
@@ -117,7 +115,7 @@ public class Map implements Serializable{
     }
 
     public Locations[][] getLocations() {
-        return locations;
+        return locations; 
     }
 
     public void setLocations(Locations[][] locations) {

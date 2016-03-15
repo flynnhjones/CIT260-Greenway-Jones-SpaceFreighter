@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Scene {
     private String sceneType;
     private String description;
+    public String mapSymbol;
+    private boolean blocked;
 
     public String getSceneType() {
         return sceneType;
@@ -62,14 +64,16 @@ public class Scene {
 
     @Override
     public String toString() {
-        return "Scene{" + "sceneType=" + sceneType + ", description=" + description + '}';
+        return "Scene{" + "sceneType=" + sceneType + ", description=" + description + ", mapSymbol=" + mapSymbol + ", blocked=" + blocked + '}';
     }
 
-    void setMapSymbol(String _st_) {
-        String mapSymbol = _st_;
+   
+
+    void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
     }
 
-    void setBlocked(boolean b) {
-        boolean blocked = b;
+    void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 }

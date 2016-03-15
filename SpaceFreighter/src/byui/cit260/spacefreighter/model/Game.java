@@ -21,7 +21,7 @@ public class Game implements Serializable{
     private SpaceShip spaceShip;
     private InventoryItem[] inventory;
     private Actor actor;
-    private Map map;
+    public static Map map;
 
     public Map getMap() {
         return map;

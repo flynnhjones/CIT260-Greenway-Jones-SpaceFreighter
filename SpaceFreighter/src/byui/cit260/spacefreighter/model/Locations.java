@@ -16,6 +16,9 @@ public class Locations implements Serializable{
     
     private String jobs;
     private String locationName;
+    private int row;
+    public boolean visited;
+    public Scene scene;
 
     public String getJobs() {
         return jobs;
@@ -70,23 +73,23 @@ public class Locations implements Serializable{
         return "Locations{" + "jobs=" + jobs + ", locationName=" + locationName + '}';
     }
 
-    void setColumn(int column) {
-        int columnNumber = column;
+    int setColumn(int column) {
+        return column;
                 
     }
 
     void setRow(int row) {
-        int rowNumber = row;
+        this.row = row;
     }
 
-    void setVisited(boolean b) {
-        boolean visited = b;
+    void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     public void setScene(Scene scene) {
-        Scene scenes = scene;
+        this.scene = scene;
     }
-    
-    
+
+   
     
 }

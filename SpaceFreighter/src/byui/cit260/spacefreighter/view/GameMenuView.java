@@ -6,16 +6,17 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
+import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Locations;
-import byui.cit260.spacefreighter.model.Scene;
-import java.util.Scanner;
+import byui.cit260.spacefreighter.model.Map;
 
 /**
  *
  * @author jaxom
  */
 public class GameMenuView extends SuperView {
+    
     
     
     public GameMenuView() {
@@ -30,7 +31,7 @@ public class GameMenuView extends SuperView {
                 +"\nH – Help menu"
                 +"\nZ – Save game"
                 +"\nQ – Quit to main menu"
-                +"\n------------------------------");
+                +"\n------------------------------");        
     }
     
     @Override
@@ -43,7 +44,7 @@ public class GameMenuView extends SuperView {
                 this.displayInventoryCurrency();
                 break;
             case "L":
-                this.displayMap();
+                this.displayMap(Game.map);
                 break;
             case "S":
                 this.shipMenu();
@@ -75,25 +76,26 @@ public class GameMenuView extends SuperView {
       }
     }
 
-    public void displayMap() {
+    public void displayMap(Map maps) {
+      
+      Locations[][] locations = maps.getLocations();
+      int noOfRows = locations.length;
+      int noOfColumns = locations[0].length;
+      String map = " ";
       
       System.out.println("\nLocation on map.");
-      System.out.println("   1" + "  |" + " 2" + " |" +" 3" + " |" +" 4" + " |" +" 5" + " |" +" 6" + " |" +" 7");
-      
-      int noOfRows = 7;
-      int noOfColumns = 7;
-      Locations location;
-      String map = "";
-      
+      for (int row = 0; row < noOfRows; row++) {
+      map = map + (" | " + (row + 1));
+      }
       
       for (int row = 0; row < noOfRows; row++) {
           map = map + "\n" + (row + 1);
             for(int column = 0; column < noOfColumns; column++) {
                 map = map + " |";
                         
-                        boolean visited = false;
+                        boolean visited = locations[row][column].visited;
                         if(visited == true) {
-                            map = map + "MM";
+                            map = map + locations[row][column].scene.mapSymbol;
                         }
                         else {
                             map = map + "??";                           
