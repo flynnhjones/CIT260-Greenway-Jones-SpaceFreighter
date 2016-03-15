@@ -12,10 +12,26 @@ import java.util.Objects;
  * @author jaxom
  */
 public class Scene {
-    private String sceneType;
-    private String description;
+    public String sceneType;
+    public String description;
     public String mapSymbol;
     private boolean blocked;
+
+    public String getMapSymbol() {
+        return mapSymbol;
+    }
+
+    public void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 
     public String getSceneType() {
         return sceneType;
@@ -75,13 +91,4 @@ public class Scene {
         return "Scene{" + "sceneType=" + sceneType + ", description=" + description + ", mapSymbol=" + mapSymbol + ", blocked=" + blocked + '}';
     }
 
-   
-
-    public void setMapSymbol(String mapSymbol) {
-        this.mapSymbol = mapSymbol;
-    }
-
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
 }

@@ -10,7 +10,6 @@ import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Location;
-import byui.cit260.spacefreighter.model.Locations;
 import byui.cit260.spacefreighter.model.Map;
 
 /**
