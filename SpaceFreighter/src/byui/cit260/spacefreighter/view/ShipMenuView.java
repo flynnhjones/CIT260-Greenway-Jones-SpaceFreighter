@@ -5,6 +5,9 @@
  */
 package byui.cit260.spacefreighter.view;
 
+import byui.cit260.spacefreighter.control.ItemControl;
+import byui.cit260.spacefreighter.model.Game;
+import byui.cit260.spacefreighter.model.InventoryItem;
 import java.util.Scanner;
 
 /**
@@ -25,6 +28,7 @@ public class ShipMenuView extends SuperView {
                 +"\n| J – Check out the Job Board      |"
                 +"\n| S - Go to the onboard shop       |"
                 +"\n| T – Training room                |"
+                +"\n| C - Check Current Value          |"
                 +"\n| Q – Quit to game menu            |"
                 +"\n*----------------------------------*");
     }
@@ -52,7 +56,10 @@ public class ShipMenuView extends SuperView {
                 break;
             case "T":
                 this.trainingRoomMenu();
-                break;            
+                break;  
+            case "C":
+                this.checkValue();
+                break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -84,13 +91,15 @@ public class ShipMenuView extends SuperView {
         refuelTheShip.CostToRefuel(); 
     }
 
-    private void backToGameMenu() {
-       GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
-    }  
-
     private void shopMenu() {
         ShopView shop = new ShopView();
                 shop.display();
+    }
+
+    private void checkValue() {
+        int value;
+        
+        value = ItemControl.findValue(Game.inventory);
+        System.out.println("Your current net worth is " + value + " currency.");
     }
 }

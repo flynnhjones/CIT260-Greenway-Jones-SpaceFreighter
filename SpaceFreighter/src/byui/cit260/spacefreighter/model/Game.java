@@ -19,7 +19,7 @@ public class Game implements Serializable{
     private String savedGame;
     private String helpMenu; 
     private SpaceShip spaceShip;
-    private InventoryItem[] inventory;
+    public static InventoryItem[] inventory;
     private Actor actor;
     public static Map map;
 
