@@ -14,10 +14,10 @@ import java.util.Objects;
  */
 public class JobBoardScene implements Serializable{
     
-    private String jobDescription;
-    private String jobType;
-    private int jobDifficulty;
-
+    public String jobDescription;
+    public String jobType;
+    public int jobDifficulty;
+    
     public int getJobDifficulty() {
         return jobDifficulty;
     }

@@ -5,6 +5,8 @@
  */
 package byui.cit260.spacefreighter.view;
 
+import byui.cit260.spacefreighter.model.JobBoardScene;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -50,7 +52,8 @@ public class JobBoardView extends SuperView {
     }
 
     private void nonBattleJob() {
-        System.out.println("You are not battling!");
+        NonBattleView nonBattleMenu = new NonBattleView();
+        nonBattleMenu.display();
     }
  
 }
