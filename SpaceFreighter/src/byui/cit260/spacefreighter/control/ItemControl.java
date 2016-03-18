@@ -13,33 +13,65 @@ import byui.cit260.spacefreighter.model.InventoryItem;
  */
 public class ItemControl {
     
-    public static InventoryItem[] createIventoryList() {
+    public static InventoryItem[] createInventoryList() {
         
-        InventoryItem[] inventory = new InventoryItem[4];
+        InventoryItem[] inventory = new InventoryItem[Item.values().length];
                 
         InventoryItem currency = new InventoryItem();
         currency.setItemName("Currency");
-        currency.setQuantity(0);
+        currency.setQuantity(1482);
+        currency.setValue(1);
+        currency.setType("Money");
         inventory[0] = currency;
         inventory[ItemControl.Item.currency.ordinal()] = currency;
         
         InventoryItem coolingFan = new InventoryItem();
         coolingFan.setItemName("Cooling Fan");
         coolingFan.setQuantity(0);
+        coolingFan.setValue(100);
+        coolingFan.setType("Ship Part");
         inventory[1] = coolingFan;
         inventory[ItemControl.Item.coolingFan.ordinal()] = coolingFan;
         
         InventoryItem hualPiece = new InventoryItem();
         hualPiece.setItemName("A Piece Hual");
         hualPiece.setQuantity(0);
+        hualPiece.setValue(100);
+        hualPiece.setType("Ship Part");
         inventory[2] = hualPiece;
         inventory[ItemControl.Item.hualPiece.ordinal()] = hualPiece;
         
         InventoryItem bigGun = new InventoryItem();
         bigGun.setItemName("A very large laser gun.");
         bigGun.setQuantity(0);
+        bigGun.setValue(100);
+        bigGun.setType("Ship Part");
         inventory[3] = bigGun;
         inventory[ItemControl.Item.bigGun.ordinal()] = bigGun;
+        
+        InventoryItem knife = new InventoryItem();
+        knife.setItemName("Nice little knife.");
+        knife.setQuantity(1);
+        knife.setValue(100);
+        knife.setType("weapon");
+        inventory[4] = knife;
+        inventory[ItemControl.Item.knife.ordinal()] = knife;
+        
+        InventoryItem sword = new InventoryItem();
+        sword.setItemName("Good for slashing monsters.");
+        sword.setQuantity(0);
+        sword.setValue(500);
+        sword.setType("weapon");
+        inventory[5] = sword;
+        inventory[ItemControl.Item.sword.ordinal()] = sword;
+        
+        InventoryItem laserPistol = new InventoryItem();
+        laserPistol.setItemName("Pistol. Shoots lasers.");
+        laserPistol.setQuantity(0);
+        laserPistol.setValue(1000);
+        laserPistol.setType("weapon");
+        inventory[6] = laserPistol;
+        inventory[ItemControl.Item.laserPistol.ordinal()] = laserPistol;
         
         return inventory;
         }
@@ -48,11 +80,31 @@ public class ItemControl {
         System.out.println("\n*** getSortedInventoryList stub function called ***");
         return null;
     }
+
+    public static int findValue(InventoryItem[] inventory) {
+        int value = 0;
+        for (InventoryItem item : inventory) {
+            if(item.getQuantity() < 0) {
+                System.out.println("Did you cheat? How'd you get a negative item?");
+                return 0;
+            }
+            else if(item.value < 0) {
+                System.out.println("Did you cheat? How'd you get your items to equal a negative amount?");
+                return 0;
+            } else {
+            value = value + (item.getQuantity() * item.value);
+            }
+        }
+        return value;
+    }
         
         public enum Item {
             currency,
             coolingFan,
             hualPiece,
-            bigGun; 
+            bigGun, 
+            knife, 
+            sword, 
+            laserPistol; 
         }
     }

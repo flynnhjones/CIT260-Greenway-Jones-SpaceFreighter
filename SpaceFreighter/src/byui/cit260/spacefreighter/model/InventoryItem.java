@@ -18,6 +18,8 @@ public class InventoryItem implements Serializable{
     //class instance variables
     public int quantity;
     public String itemName;
+    public int value;
+    private String type;
 
     public InventoryItem() {
     }
@@ -72,5 +74,13 @@ public class InventoryItem implements Serializable{
         }
         return true;
     }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     
+}
 }

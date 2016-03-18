@@ -7,7 +7,6 @@ package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
-import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
@@ -41,7 +40,7 @@ public class GameControl {
         
         SpaceFreighter.setPlayer(player);
         
-        InventoryItem[] inventoryList = ItemControl.createIventoryList();
+        InventoryItem[] inventoryList = ItemControl.createInventoryList();
         game.setInventory(inventoryList);
         
         SpaceShip spaceShip = new SpaceShip();

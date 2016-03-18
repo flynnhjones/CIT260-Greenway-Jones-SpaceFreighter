@@ -5,7 +5,6 @@
  */
 package byui.cit260.spacefreighter.view;
 
-import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
