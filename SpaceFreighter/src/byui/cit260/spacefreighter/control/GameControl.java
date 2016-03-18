@@ -7,10 +7,13 @@ package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import byui.cit260.spacefreighter.model.JobBoardScene;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
 import byui.cit260.spacefreighter.view.GameMenuView;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -48,6 +51,9 @@ public class GameControl {
         
         Map map = MapControl.createMap();
         game.setMap(map);
+        
+        JobBoardScene[] jobBoard = JobBoardSceneControl.createJobBoard();
+        game.setJobBoard(jobBoard);
         
         MapControl.moveActorsToStartLocation(map);
         

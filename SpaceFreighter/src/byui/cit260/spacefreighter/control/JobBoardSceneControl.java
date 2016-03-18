@@ -6,7 +6,7 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.JobBoardScene;
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 
 
 
@@ -20,9 +20,9 @@ public class JobBoardSceneControl {
     
     
     
-    public static ArrayList<JobBoardScene> jobBoardScenes(){
-    
-        ArrayList<JobBoardScene> jobBoardScenes = new ArrayList<>();
+    static JobBoardScene[] createJobBoard() {
+            
+        JobBoardScene[] jobBoardScenes = new JobBoardScene[10];
         
             JobBoardScene gatherSpaceChickens = new JobBoardScene();
             gatherSpaceChickens.setJobDescription("\nAn old lady has asked you to gather her missing space chickens.");
@@ -85,6 +85,8 @@ public class JobBoardSceneControl {
         
      return jobBoardScenes;   
     }
+
+  
 
 
 

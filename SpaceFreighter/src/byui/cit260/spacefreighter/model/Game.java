@@ -18,17 +18,32 @@ public class Game implements Serializable{
     private String newGame;
     private String savedGame;
     private String helpMenu; 
+
+    
     private SpaceShip spaceShip;
     public static InventoryItem[] inventory;
     private Actor actor;
     public static Map map;
+    public static JobBoardScene[] jobBoard;
+
+    public static JobBoardScene[] getJobBoard() {
+        return jobBoard;
+    }
+
+    public void setJobBoard(JobBoardScene[] jobBoard) {
+        Game.jobBoard = jobBoard;
+    }
+
+    public Game(JobBoardScene[] jobBoard) {
+        Game.jobBoard = jobBoard;
+    }
 
     public Map getMap() {
         return map;
     }
 
     public void setMap(Map map) {
-        this.map = map;
+        Game.map = map;
     }
 
     public SpaceShip getSpaceShip() {
@@ -85,9 +100,11 @@ public class Game implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.newGame);
-        hash = 67 * hash + Objects.hashCode(this.savedGame);
-        hash = 67 * hash + Objects.hashCode(this.helpMenu);
+        hash = 97 * hash + Objects.hashCode(this.newGame);
+        hash = 97 * hash + Objects.hashCode(this.savedGame);
+        hash = 97 * hash + Objects.hashCode(this.helpMenu);
+        hash = 97 * hash + Objects.hashCode(this.spaceShip);
+        hash = 97 * hash + Objects.hashCode(this.actor);
         return hash;
     }
 
@@ -112,17 +129,23 @@ public class Game implements Serializable{
         if (!Objects.equals(this.helpMenu, other.helpMenu)) {
             return false;
         }
+        if (!Objects.equals(this.spaceShip, other.spaceShip)) {
+            return false;
+        }
+        if (this.actor != other.actor) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "newGame=" + newGame + ", savedGame=" + savedGame + ", helpMenu=" + helpMenu + '}';
+        return "Game{" + "newGame=" + newGame + ", savedGame=" + savedGame + ", helpMenu=" + helpMenu + ", spaceShip=" + spaceShip + ", actor=" + actor + '}';
     }
 
-    public void setPlayer(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
+
+    
     
     
     

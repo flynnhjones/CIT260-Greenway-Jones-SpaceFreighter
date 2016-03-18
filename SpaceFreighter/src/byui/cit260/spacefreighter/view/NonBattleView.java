@@ -6,10 +6,6 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.JobBoardSceneControl;
-import static byui.cit260.spacefreighter.control.JobBoardSceneControl.jobBoardScenes;
-import byui.cit260.spacefreighter.model.JobBoardScene;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
-import java.util.ArrayList;
 
 
 /**
@@ -39,18 +35,7 @@ class NonBattleView extends SuperView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "E":
-                this.getEasyJobList();
-                break;
-            case "M":
-                this.getMediumJobList();
-                break;
-            case "H":
-                this.getHardJobList();
-                break;
-            case "S":
-                this.getSuperHardJobList();
-                break;            
+            
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -60,25 +45,5 @@ class NonBattleView extends SuperView {
     
     
 
-void getEasyJobList(){
-     for (int i = 0; i < JobBoardSceneControl.jobBoardScenes().size(); i++) {
-            System.out.println(JobBoardSceneControl.jobBoardScenes().get(i));
-        }}
 
-void getMediumJobList(){
- for (int i = 0; i < JobBoardSceneControl.jobBoardScenes().size(); i++) {
-            System.out.println(JobBoardSceneControl.jobBoardScenes().get(i));
-        }}
-
-void getHardJobList(){
-    for (int i = 0; i < JobBoardSceneControl.jobBoardScenes().size(); i++) {
-            System.out.println(JobBoardSceneControl.jobBoardScenes().get(i));
-        }  
-}
-
-void getSuperHardJobList(){
-       for (int i = 0; i < JobBoardSceneControl.jobBoardScenes().size(); i++) {
-            System.out.println(JobBoardSceneControl.jobBoardScenes().get(i));
-        }
-}
 }
