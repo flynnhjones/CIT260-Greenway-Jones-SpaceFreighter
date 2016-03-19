@@ -39,8 +39,15 @@ class RepairTheShipView {
          System.out.println("\n" + this.promptMessageCurrentDurability);
             
             currentDurability = keyboard.nextLine();
+            int durability = 0;
             
-            int durability = parseInt(currentDurability);
+            try{
+            durability = parseInt(currentDurability);
+            } catch (NumberFormatException nf) {
+                System.out.println("\nYou must enter a valid number."
+                        + " Try again or enter Q to quit.");
+                this.getCurrentDurability();
+            }
                     
             return durability; 
     }
@@ -52,8 +59,14 @@ class RepairTheShipView {
          System.out.println("\n" + this.promptMessageMechSkillPoint);
             
             mechSkillPoint = keyboard.nextLine();
-            
-            int mechPoint = parseInt(mechSkillPoint);
+            int mechPoint = 0;
+            try {
+            mechPoint = parseInt(mechSkillPoint);
+            } catch(NumberFormatException nf) {
+                System.out.println("\nYou must enter a valid number."
+                        + " Try again or enter Q to quit.");
+                this.getMechSkillPoint();
+            }
                     
             return mechPoint;
     }
