@@ -8,7 +8,10 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,7 +49,13 @@ public class ShipMenuView extends SuperView {
                 this.upgradeTheShipMenu();
                 break;
             case "F":
+        {
+            try {
                 this.refuelTheShipMenu();
+            } catch (SpaceShipControlException ex) {
+                Logger.getLogger(ShipMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "J":
                 this.jobBoardMenu();
@@ -86,7 +95,7 @@ public class ShipMenuView extends SuperView {
        trainingRoom.display();
     }
     
-    private void refuelTheShipMenu() {
+    private void refuelTheShipMenu() throws SpaceShipControlException {
        RefuelTheShipView refuelTheShip = new RefuelTheShipView();
         refuelTheShip.CostToRefuel(); 
     }

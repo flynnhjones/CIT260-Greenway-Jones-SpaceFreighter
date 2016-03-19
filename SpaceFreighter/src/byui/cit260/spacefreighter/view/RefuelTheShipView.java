@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.SpaceShipControl;
+import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,7 @@ import java.util.Scanner;
             this.promptMessagePilotSkillPoint = "\nWhat is your pilot skill point amount (1-10)?";
         }
     
-        private double getTheCostToRepair() {
+        private double getTheCostToRepair() throws SpaceShipControlException {
             double currentFuelGauge = this.getCurrentFuelGauge();
             double pilotSkillPoint = this.getPilotSkillPoint();
             double theCostToRefuel = SpaceShipControl.calcCostToRefuel(pilotSkillPoint,currentFuelGauge);
@@ -52,7 +53,7 @@ import java.util.Scanner;
             return pilotSkillPoint;
         }
         
-        void CostToRefuel() {
+        void CostToRefuel() throws SpaceShipControlException {
             double theCostToRefuel;
             double currentFuelGauge = this.getCurrentFuelGauge();
             double pilotSkillPoint = this.getPilotSkillPoint();

@@ -5,6 +5,8 @@
  */
 package byui.cit260.spacefreighter.control;
 
+import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
+
 /**
  *
  * @author Ben/Flynn
@@ -33,18 +35,25 @@ public class SpaceShipControl {
         return costToRepair;
     }
     
-    public static double calcCostToRefuel( double pilotSkillPoint, double currentFuelGauge){
+    public static double calcCostToRefuel( double pilotSkillPoint, double currentFuelGauge) throws SpaceShipControlException{
         if (pilotSkillPoint > 10 || pilotSkillPoint < 0){
-            return 0;
+            throw new SpaceShipControlException("Can not repair ship because"
+                + " you're too good or too bad!"
+                    + "mechanic skill point exceeds parameters.");
         }
         if (currentFuelGauge > 100 || currentFuelGauge < 0){
-            return 0;
+            throw new SpaceShipControlException("Can not repair ship because"
+                + "your ship is too broken or too full! Ship fuel exceeds the parameters.");
         }
         
         double skillPointBonus = (pilotSkillPoint * 0.05);
         
         double costToReFuel = ((100 - currentFuelGauge)*3)-((100 - currentFuelGauge)*3)*skillPointBonus;
         
+        
+        
         return Math.round(costToReFuel);
+        
+        
     }
 }

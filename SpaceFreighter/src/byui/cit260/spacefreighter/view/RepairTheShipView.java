@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.SpaceShipControl;
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 
 /**
@@ -33,24 +34,28 @@ class RepairTheShipView {
 
     private int getCurrentDurability() {
        Scanner keyboard = new Scanner(System.in);
-        int currentDurability;
+        String currentDurability;
                 
          System.out.println("\n" + this.promptMessageCurrentDurability);
             
-            currentDurability = keyboard.nextInt();
+            currentDurability = keyboard.nextLine();
+            
+            int durability = parseInt(currentDurability);
                     
-            return currentDurability; 
+            return durability; 
     }
 
     private int getMechSkillPoint() {
         Scanner keyboard = new Scanner(System.in);
-        int mechSkillPoint;
+        String mechSkillPoint;
                 
          System.out.println("\n" + this.promptMessageMechSkillPoint);
             
-            mechSkillPoint = keyboard.nextInt();
+            mechSkillPoint = keyboard.nextLine();
+            
+            int mechPoint = parseInt(mechSkillPoint);
                     
-            return mechSkillPoint;
+            return mechPoint;
     }
     void CostToRepair() {
         int theCostToRepair;
