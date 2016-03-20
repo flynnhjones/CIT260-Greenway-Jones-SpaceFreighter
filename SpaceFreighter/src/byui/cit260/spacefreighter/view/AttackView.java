@@ -6,6 +6,8 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.BattleSceneControl;
+import cit.byui.cit260.spacefreighter.exceptions.BattleSceneControlException;
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 
 /**
@@ -27,7 +29,7 @@ class AttackView {
         this.promptMessageDefense = "\nWhat is the enemy defense?";         
     }
     
-    private int getDamage() {
+    private int getDamage() throws BattleSceneControlException {
         int attack = this.getAttack();
         int skill = this.getSkill();
         int defense = this.getDefense();
@@ -38,38 +40,60 @@ class AttackView {
 
     private int getAttack() {
         Scanner keyboard = new Scanner(System.in);
-        int attack;
-                
+        String attack;        
+        int attackValue = 0;        
          System.out.println("\n" + this.promptMessageAttack);
             
-            attack = keyboard.nextInt();
+            attack = keyboard.nextLine();
+            try{
+            attackValue = parseInt(attack);
+            } catch(NumberFormatException nf) {
+                System.out.println("\nYou must enter a number.");
+                        this.getAttack();
+            }
                     
-            return attack;
+            return attackValue;
     }   
 
     private int getSkill() {
         Scanner keyboard = new Scanner(System.in);
-        int skill;
-                
+        String skill;
+        int skillValue = 0;                
          System.out.println("\n" + this.promptMessageSkill);
+         
+         
             
-            skill = keyboard.nextInt();
+            skill = keyboard.nextLine();
+            
+            try{
+             skillValue = parseInt(skill);
+         } catch(NumberFormatException nf) {
+             System.out.println("You must enter a number");
+             this.getSkill();
+         }
                     
-            return skill;
+            return skillValue;
     }
 
     private int getDefense() {
         Scanner keyboard = new Scanner(System.in);
-        int defense;
+        String defense;
+        int defenseValue = 0;
                 
          System.out.println("\n" + this.promptMessageDefense);
             
-            defense = keyboard.nextInt();
+            defense = keyboard.nextLine();
+            try {
+                defenseValue = parseInt(defense);
+            } catch (NumberFormatException nf) {
+                System.out.println("You must enter a number.");
+                this.getDefense();
+            }
                     
-            return defense;
+            return defenseValue;
     }
 
-    void attack() {
+    void attack() throws BattleSceneControlException {
         int damage;
         damage = this.getDamage();
         this.damageLevel = this.getDamageLevel(damage);

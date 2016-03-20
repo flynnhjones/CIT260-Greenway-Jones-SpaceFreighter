@@ -25,7 +25,7 @@ public class GameMenuView extends SuperView {
                 + "\n Game Menu                   |"
                 + "\n-----------------------------"
                 +"\nI – Inventory"
-                +"\nL – Map/Location chooser"
+                +"\nL – Display Map Locations"
                 +"\nS – Ship menu"
                 +"\nX – Shop menu"
                 +"\nH – Help menu"

@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.InventoryItem;
+import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 
 /**
  *
@@ -81,16 +82,14 @@ public class ItemControl {
         return null;
     }
 
-    public static int findValue(InventoryItem[] inventory) {
+    public static int findValue(InventoryItem[] inventory) throws ItemControlException {
         int value = 0;
         for (InventoryItem item : inventory) {
             if(item.getQuantity() < 0) {
-                System.out.println("Did you cheat? How'd you get a negative item?");
-                return 0;
+                throw new ItemControlException("Did you cheat? You can't have negative items!");
             }
             else if(item.value < 0) {
-                System.out.println("Did you cheat? How'd you get your items to equal a negative amount?");
-                return 0;
+                throw new ItemControlException("Did you cheat? You can't have negative value!");
             } else {
             value = value + (item.getQuantity() * item.value);
             }

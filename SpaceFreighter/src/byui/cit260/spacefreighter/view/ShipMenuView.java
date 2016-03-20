@@ -8,6 +8,7 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -53,7 +54,7 @@ public class ShipMenuView extends SuperView {
             try {
                 this.refuelTheShipMenu();
             } catch (SpaceShipControlException ex) {
-                Logger.getLogger(ShipMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
             }
         }
                 break;
@@ -67,7 +68,13 @@ public class ShipMenuView extends SuperView {
                 this.trainingRoomMenu();
                 break;  
             case "C":
+        {
+            try {
                 this.checkValue();
+            } catch (ItemControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
@@ -105,7 +112,7 @@ public class ShipMenuView extends SuperView {
                 shop.display();
     }
 
-    private void checkValue() {
+    private void checkValue() throws ItemControlException {
         int value;
         
         value = ItemControl.findValue(Game.inventory);

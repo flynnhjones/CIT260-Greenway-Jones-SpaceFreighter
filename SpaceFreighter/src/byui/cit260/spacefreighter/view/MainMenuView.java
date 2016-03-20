@@ -6,7 +6,6 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
-import java.util.Scanner;
 import spacefreighter.SpaceFreighter;
 
 /**

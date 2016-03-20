@@ -5,8 +5,6 @@
  */
 package byui.cit260.spacefreighter.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Daddy

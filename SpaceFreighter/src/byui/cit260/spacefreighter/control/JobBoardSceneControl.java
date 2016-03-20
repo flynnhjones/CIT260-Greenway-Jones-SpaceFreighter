@@ -6,7 +6,6 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.JobBoardScene;
-import java.lang.reflect.Array;
 
 
 

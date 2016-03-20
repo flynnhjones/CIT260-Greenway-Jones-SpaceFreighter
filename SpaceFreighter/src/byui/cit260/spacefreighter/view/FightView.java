@@ -5,7 +5,7 @@
  */
 package byui.cit260.spacefreighter.view;
 
-import java.util.Scanner;
+import cit.byui.cit260.spacefreighter.exceptions.BattleSceneControlException;
 
 /**
  *
@@ -32,7 +32,13 @@ class FightView extends SuperView {
         
         switch (choice) {
             case "F":
+        {
+            try {
                 this.attack();
+            } catch (BattleSceneControlException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
                 break;
             case "I":
                 this.item();
@@ -49,7 +55,7 @@ class FightView extends SuperView {
     
     
 
-    private void attack() {
+    private void attack() throws BattleSceneControlException {
         AttackView dodamage = new AttackView();
         dodamage.attack();
     }

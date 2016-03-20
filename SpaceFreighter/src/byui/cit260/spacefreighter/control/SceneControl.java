@@ -6,8 +6,6 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
-import byui.cit260.spacefreighter.model.Location;
-import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Scene;
 import spacefreighter.SpaceFreighter;
 

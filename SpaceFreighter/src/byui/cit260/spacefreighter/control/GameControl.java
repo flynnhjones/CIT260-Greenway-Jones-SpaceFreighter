@@ -55,9 +55,6 @@ public class GameControl {
         JobBoardScene[] jobBoard = JobBoardSceneControl.createJobBoard();
         game.setJobBoard(jobBoard);
         
-        MapControl.moveActorsToStartLocation(map);
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        MapControl.moveActorsToStartLocation(map);                
     }
 }

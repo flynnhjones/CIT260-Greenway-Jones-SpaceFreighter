@@ -7,9 +7,6 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  *
@@ -23,7 +20,8 @@ public class JobBoardView extends SuperView {
                 + "\n-----------------------------"
                 + "\n Job Board                   |"
                 + "\n-----------------------------"
-                +"\nJ - Show Job List"                 
+                +"\nB - Battle Jobs               |"
+                + "\nN - Non Battle Jobs          |"                 
                 +"\nQ - Go back"
                 +"\n------------------------------");
     }
@@ -34,9 +32,11 @@ public class JobBoardView extends SuperView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "J":
-                this.displayJobList();
+            case "B":
+                this.doBattle();
                 break;
+            case "N":
+                this.displayJobList();
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -52,6 +52,11 @@ public class JobBoardView extends SuperView {
             out = out + jobBoard[i].getJobDescription();
         }
         System.out.println(out);
+    }
+
+    private void doBattle() {
+        BattleMenuView battleMenu = new BattleMenuView();
+        battleMenu.display();
     }
     
    
