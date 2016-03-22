@@ -7,7 +7,10 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.model.Player;
+import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,7 +46,7 @@ public class StartProgramView {
     /**
      * display the start program view
      */
-    public void displayStartProgramView() {
+    public void displayStartProgramView() throws GameControlException {
     
         boolean done = false; 
         do{
@@ -52,13 +55,17 @@ public class StartProgramView {
             if (playersName.toUpperCase().equals("Q"))
             return;
         
-            done = this.doAction(playersName);
+        try {
+                done = this.doAction(playersName);
+            } catch (GameControlException ex) {
+                System.out.println(ex.getMessage());
+            }
         
         } while (!done);
         
     }
 
-    private String getPlayersName() {
+    private String getPlayersName() throws GameControlException {
         Scanner keyboard = new Scanner(System.in);
         String value = "";
         boolean valid = false;
@@ -70,8 +77,7 @@ public class StartProgramView {
             value = value.trim();
             
             if (value.length() < 1){
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
+               throw new GameControlException("\nYour name connot be blank!");
             }
             
             break;
@@ -79,19 +85,16 @@ public class StartProgramView {
     
         return value;
     }
-    private boolean doAction(String playersName) {
+    private boolean doAction(String playersName) throws GameControlException {
         
         if (playersName.length() < 2) {
-            System.out.println("\nInvalid player name: "
-                    + "The name must be greater than one character in lenght");
-            return false;
+            throw new GameControlException("\nYour name connot less then two characters!");
         }
     
         Player player = GameControl.createPlayer(playersName);
         
         if (player == null) {
-            System.out.println("\nError creating the player.");
-            return false;
+            throw new GameControlException("\nYour name connot be blank!");
         }  
             
         this.displayNextView(player);

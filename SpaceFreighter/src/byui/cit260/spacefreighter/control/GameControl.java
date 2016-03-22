@@ -12,6 +12,7 @@ import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
 import byui.cit260.spacefreighter.view.GameMenuView;
+import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import spacefreighter.SpaceFreighter;
@@ -22,11 +23,7 @@ import spacefreighter.SpaceFreighter;
  */
 public class GameControl {
 
-    public static Player createPlayer(String playersName) {
-        
-        if (playersName == null) {
-            return null;
-        }
+    public static Player createPlayer(String playersName) throws GameControlException {
         
         Player player = new Player();
         player.setPlayerName(playersName);
