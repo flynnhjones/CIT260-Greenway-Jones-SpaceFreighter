@@ -5,6 +5,7 @@
  */
 package byui.cit260.spacefreighter.model;
 
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Arrays;
 import spacefreighter.SpaceFreighter;
@@ -18,11 +19,12 @@ public class Map implements Serializable{
     public int noOfRows;
     public int noOfColumns;
     public Location[][] locations;
+    PrintWriter console = SpaceFreighter.getOutFile();
     
     public Map(int noOfRows, int noOfColumns){
     
         if (noOfRows < 1 || noOfColumns < 1){
-            System.out.println("The number of rows and columns must be greater than zero");
+            this.console.println("The number of rows and columns must be greater than zero");
             return;
         }
         

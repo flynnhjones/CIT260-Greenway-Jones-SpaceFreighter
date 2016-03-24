@@ -38,20 +38,20 @@ public class JobBoardView extends SuperView {
             case "N":
                 this.displayJobList();
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
     private void displayJobList() {
-        System.out.println("\nMake Your Selection");
+        this.console.println("\nMake Your Selection");
         String out = "";
         JobBoardScene[] jobBoard = Game.getJobBoard();
         for (int i = 0; i < jobBoard.length; i++) {
             out = out + jobBoard[i].getJobDescription();
         }
-        System.out.println(out);
+        this.console.println(out);
     }
 
     private void doBattle() {

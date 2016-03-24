@@ -10,6 +10,7 @@ import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,13 @@ public class ShipMenuView extends SuperView {
         
         switch (choice) {
             case "R":
+        {
+            try {
                 this.repairTheShipMenu();
+            } catch (IOException ex) {
+                this.console.println(ex.getMessage());
+            }
+        }
                 break;
             case "U":
                 this.upgradeTheShipMenu();
@@ -54,7 +61,9 @@ public class ShipMenuView extends SuperView {
             try {
                 this.refuelTheShipMenu();
             } catch (SpaceShipControlException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println(ex.getMessage());
+            } catch (IOException ex) {
+                this.console.println(ex.getMessage());
             }
         }
                 break;
@@ -72,24 +81,24 @@ public class ShipMenuView extends SuperView {
             try {
                 this.checkValue();
             } catch (ItemControlException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println(ex.getMessage());
             }
         }
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
     
-    private void repairTheShipMenu() {
+    private void repairTheShipMenu() throws IOException {
         RepairTheShipView repairTheShip = new RepairTheShipView();
         repairTheShip.CostToRepair();
     }
 
     private void upgradeTheShipMenu() {
-        System.out.println("Upgrade Ship Menu call works - BUT NOT YET DESIGNED");
+        this.console.println("Upgrade Ship Menu call works - BUT NOT YET DESIGNED");
     }
 
     private void jobBoardMenu() {
@@ -102,7 +111,7 @@ public class ShipMenuView extends SuperView {
        trainingRoom.display();
     }
     
-    private void refuelTheShipMenu() throws SpaceShipControlException {
+    private void refuelTheShipMenu() throws SpaceShipControlException, IOException {
        RefuelTheShipView refuelTheShip = new RefuelTheShipView();
         refuelTheShip.CostToRefuel(); 
     }
@@ -116,6 +125,6 @@ public class ShipMenuView extends SuperView {
         int value;
         
         value = ItemControl.findValue(Game.inventory);
-        System.out.println("Your current net worth is " + value + " currency.");
+        this.console.println("Your current net worth is " + value + " currency.");
     }
 }

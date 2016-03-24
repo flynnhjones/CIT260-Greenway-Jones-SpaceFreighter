@@ -6,8 +6,12 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.SpaceShipControl;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -17,6 +21,7 @@ class RepairTheShipView {
     private String promptMessageCurrentDurability;
     private String promptMessageMechSkillPoint;
     private String repairMessage;
+    PrintWriter console = SpaceFreighter.getOutFile();
     
 
     public RepairTheShipView() {
@@ -24,7 +29,7 @@ class RepairTheShipView {
         this.promptMessageMechSkillPoint = "\nWhat is your mechanic skill point amount (1-10)?";                       
     }
     
-    private int getTheCostToRepair() {
+    private int getTheCostToRepair() throws IOException {
         int currentDurability = this.getCurrentDurability();
         int mechSkillPoint = this.getMechSkillPoint();
          int theCostToRepair = SpaceShipControl.calcCostToRepair(currentDurability,mechSkillPoint);
@@ -32,19 +37,19 @@ class RepairTheShipView {
         return theCostToRepair;
     }
 
-    private int getCurrentDurability() {
-       Scanner keyboard = new Scanner(System.in);
+    private int getCurrentDurability() throws IOException {
+       BufferedReader keyboard = SpaceFreighter.getInFile();
         String currentDurability;
                 
-         System.out.println("\n" + this.promptMessageCurrentDurability);
+         this.console.println("\n" + this.promptMessageCurrentDurability);
             
-            currentDurability = keyboard.nextLine();
+            currentDurability = keyboard.readLine();
             int durability = 0;
             
             try{
             durability = parseInt(currentDurability);
             } catch (NumberFormatException nf) {
-                System.out.println("\nYou must enter a valid number."
+                this.console.println("\nYou must enter a valid number."
                         + " Try again or enter Q to quit.");
                 this.getCurrentDurability();
             }
@@ -52,25 +57,27 @@ class RepairTheShipView {
             return durability; 
     }
 
-    private int getMechSkillPoint() {
-        Scanner keyboard = new Scanner(System.in);
+    private int getMechSkillPoint() throws IOException {
+        
+        BufferedReader keyboard = SpaceFreighter.getInFile();
+        
         String mechSkillPoint;
                 
-         System.out.println("\n" + this.promptMessageMechSkillPoint);
+         this.console.println("\n" + this.promptMessageMechSkillPoint);
             
-            mechSkillPoint = keyboard.nextLine();
+            mechSkillPoint = keyboard.readLine();
             int mechPoint = 0;
             try {
             mechPoint = parseInt(mechSkillPoint);
             } catch(NumberFormatException nf) {
-                System.out.println("\nYou must enter a valid number."
+                this.console.println("\nYou must enter a valid number."
                         + " Try again or enter Q to quit.");
                 this.getMechSkillPoint();
             }
                     
             return mechPoint;
     }
-    void CostToRepair() {
+    void CostToRepair() throws IOException {
         int theCostToRepair;
         int currentDurability = this.getCurrentDurability();
         int mechSkillPoint = this.getMechSkillPoint();
@@ -92,6 +99,6 @@ class RepairTheShipView {
             this.repairMessage = "\nThe cost to repair will be " + theCostToRepair + " Currency.";
         }
         
-        System.out.println(repairMessage);
+        this.console.println(repairMessage);
     }  
 }

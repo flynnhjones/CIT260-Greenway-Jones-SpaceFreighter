@@ -54,22 +54,22 @@ public class HelpMenuView extends SuperView {
                 this.shopsUpgradesRepairs();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
     
     private void goalOfGame() {
-        System.out.println("The Goal of the game is to earn enough currency to retire very rich!");
+        this.console.println("The Goal of the game is to earn enough currency to retire very rich!");
     }
 
     private void howToMove() {
-        System.out.println("Have not decided this yet!");
+        this.console.println("Have not decided this yet!");
     }
 
     private void classesRoles() {
-        System.out.println("\nThere are four main class Roles that you can put skill points in."
+        this.console.println("\nThere are four main class Roles that you can put skill points in."
                             +"\nAdding points to the pilot skill decreases the amount you have to spend to refuel the ship."
                             +"\nAdding points to the Mechanic skill decreases the amount you have to spend to repair the ship."
                             +"\nAdding points to the Merchant skill decreases the cost of shop items and increases the sell price of items you have."
@@ -78,14 +78,14 @@ public class HelpMenuView extends SuperView {
     }
 
     private void howToMakeMoney() {
-        System.out.println("You make money by completeing jobs from the job board.");
+        this.console.println("You make money by completeing jobs from the job board.");
     }
 
     private void shipLaunchTravel() {
-        System.out.println("You launch the ship to the destination of your choosing, dependant on amount of fuel you have.");
+        this.console.println("You launch the ship to the destination of your choosing, dependant on amount of fuel you have.");
     }
 
     private void shopsUpgradesRepairs() {
-        System.out.println("You can buy and sell items you need or gain from jobs. You also will need to repair, maintain and refuel your ship as you travel from place to place");
+        this.console.println("You can buy and sell items you need or gain from jobs. You also will need to repair, maintain and refuel your ship as you travel from place to place");
     }
 }

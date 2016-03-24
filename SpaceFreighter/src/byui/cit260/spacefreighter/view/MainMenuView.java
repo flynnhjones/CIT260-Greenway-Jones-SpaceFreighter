@@ -23,7 +23,7 @@ public class MainMenuView extends SuperView {
                 +"\nG – Start new game"
                 +"\nH - Help menu"
                 +"\nS - Save game"
-                +"\nL - load saved game"
+                +"\nL - Load saved game"
                 +"\nQ - Exit game"
                 +"\n-----------------------------");
     }
@@ -47,7 +47,7 @@ public class MainMenuView extends SuperView {
                 this.loadSavedGame();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -68,11 +68,32 @@ public class MainMenuView extends SuperView {
     }
 
     private void saveGame() {
-        System.out.println("Save Game Menu call works - BUT NOT YET DESIGNED");
+        this.console.println("Enter name of save file.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(SpaceFreighter.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        this.console.println("You saved! Good job!");
     }
 
     private void loadSavedGame() {
-        System.out.println("Load Game Menu call works - BUT NOT YET DESIGNED");
+        this.console.println("Enter name of saved file.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.getSavedGame(filePath);
+        }
+        catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        this.console.println("You're Loaded! Good job!");
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 }
     

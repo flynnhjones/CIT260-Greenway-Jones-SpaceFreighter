@@ -8,9 +8,10 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.model.Player;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 public class StartProgramView {
     
     private String promptMessage;
+    PrintWriter console = SpaceFreighter.getOutFile();
 
     public StartProgramView() {
         
@@ -28,7 +30,7 @@ public class StartProgramView {
 
     private void displayBanner() {
         
-        System.out.println(
+        this.console.println(
             "\n**********************************************************************************"
             +"\n*This game you will be playing a captain. You have come into possession          *"
             +"\n*of a spaceship, or most of a ship, and it will be! Once you                     *"
@@ -46,7 +48,7 @@ public class StartProgramView {
     /**
      * display the start program view
      */
-    public void displayStartProgramView() throws GameControlException {
+    public void displayStartProgramView() throws GameControlException, IOException {
     
         boolean done = false; 
         do{
@@ -58,22 +60,22 @@ public class StartProgramView {
         try {
                 done = this.doAction(playersName);
             } catch (GameControlException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println(ex.getMessage());
             }
         
         } while (!done);
         
     }
 
-    private String getPlayersName() throws GameControlException {
-        Scanner keyboard = new Scanner(System.in);
+    private String getPlayersName() throws GameControlException, IOException {
+        BufferedReader keyboard = SpaceFreighter.getInFile();
         String value = "";
         boolean valid = false;
         
         while (!valid) {
-            System.out.println("\n" + this.promptMessage);
+            this.console.println("\n" + this.promptMessage);
             
-            value = keyboard.nextLine();
+            value = keyboard.readLine();
             value = value.trim();
             
             if (value.length() < 1){
@@ -102,7 +104,7 @@ public class StartProgramView {
     }
 
     private void displayNextView(Player player) {
-        System.out.println("\n==============================================="
+        this.console.println("\n==============================================="
                            + "\n Welcome to the game " + player.getPlayerName()
                            + "\n We hope you have a lot of fun!!"
                            + "\n==============================================="

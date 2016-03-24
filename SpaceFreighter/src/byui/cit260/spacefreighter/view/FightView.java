@@ -6,6 +6,9 @@
 package byui.cit260.spacefreighter.view;
 
 import cit.byui.cit260.spacefreighter.exceptions.BattleSceneControlException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,8 +38,8 @@ class FightView extends SuperView {
         {
             try {
                 this.attack();
-            } catch (BattleSceneControlException ex) {
-                System.out.println(ex.getMessage());
+            } catch (BattleSceneControlException | IOException ex) {
+                ErrorView.display(this.getClass().getName(), "Error: " + ex.getMessage());
             }
         }
                 break;
@@ -47,7 +50,7 @@ class FightView extends SuperView {
                 this.skill();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -55,17 +58,17 @@ class FightView extends SuperView {
     
     
 
-    private void attack() throws BattleSceneControlException {
+    private void attack() throws BattleSceneControlException, IOException {
         AttackView dodamage = new AttackView();
         dodamage.attack();
     }
 
     private void item() {
-        System.out.println("You can use items!");
+        this.console.println("You can use items!");
     }
 
     private void skill() {
-        System.out.println("You can use skills!");
+        this.console.println("You can use skills!");
     }
     
 }

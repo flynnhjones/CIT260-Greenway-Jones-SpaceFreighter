@@ -7,8 +7,11 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.BattleSceneControl;
 import cit.byui.cit260.spacefreighter.exceptions.BattleSceneControlException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
-import java.util.Scanner;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -22,6 +25,7 @@ class AttackView {
     private int characterAttack;
     private int weaponSpecialistSkill;
     private int enemyDefense;
+    PrintWriter console = SpaceFreighter.getOutFile();
 
     public AttackView() {
         this.promptMessageAttack = "\nWhat is your attack?";                
@@ -29,7 +33,7 @@ class AttackView {
         this.promptMessageDefense = "\nWhat is the enemy defense?";         
     }
     
-    private int getDamage() throws BattleSceneControlException {
+    private int getDamage() throws BattleSceneControlException, IOException {
         int attack = this.getAttack();
         int skill = this.getSkill();
         int defense = this.getDefense();
@@ -38,66 +42,66 @@ class AttackView {
         return damage;
     }
 
-    private int getAttack() {
-        Scanner keyboard = new Scanner(System.in);
+    private int getAttack() throws IOException {
+        BufferedReader keyboard = SpaceFreighter.getInFile();
         String attack;        
         int attackValue = 0;        
-         System.out.println("\n" + this.promptMessageAttack);
+         this.console.println("\n" + this.promptMessageAttack);
             
-            attack = keyboard.nextLine();
+            attack = keyboard.readLine();
             try{
             attackValue = parseInt(attack);
             } catch(NumberFormatException nf) {
-                System.out.println("\nYou must enter a number.");
+                this.console.println("\nYou must enter a number.");
                         this.getAttack();
             }
                     
             return attackValue;
     }   
 
-    private int getSkill() {
-        Scanner keyboard = new Scanner(System.in);
+    private int getSkill() throws IOException {
+        BufferedReader keyboard = SpaceFreighter.getInFile();
         String skill;
         int skillValue = 0;                
-         System.out.println("\n" + this.promptMessageSkill);
+         this.console.println("\n" + this.promptMessageSkill);
          
          
             
-            skill = keyboard.nextLine();
+            skill = keyboard.readLine();
             
             try{
              skillValue = parseInt(skill);
          } catch(NumberFormatException nf) {
-             System.out.println("You must enter a number");
+             this.console.println("You must enter a number");
              this.getSkill();
          }
                     
             return skillValue;
     }
 
-    private int getDefense() {
-        Scanner keyboard = new Scanner(System.in);
+    private int getDefense() throws IOException {
+        BufferedReader keyboard = SpaceFreighter.getInFile();
         String defense;
         int defenseValue = 0;
                 
-         System.out.println("\n" + this.promptMessageDefense);
+         this.console.println("\n" + this.promptMessageDefense);
             
-            defense = keyboard.nextLine();
+            defense = keyboard.readLine();
             try {
                 defenseValue = parseInt(defense);
             } catch (NumberFormatException nf) {
-                System.out.println("You must enter a number.");
+                this.console.println("You must enter a number.");
                 this.getDefense();
             }
                     
             return defenseValue;
     }
 
-    void attack() throws BattleSceneControlException {
+    void attack() throws BattleSceneControlException, IOException {
         int damage;
         damage = this.getDamage();
         this.damageLevel = this.getDamageLevel(damage);
-        System.out.println("\nYou did " + damage + " damage!" + damageLevel);
+        this.console.println("\nYou did " + damage + " damage!" + damageLevel);
     }
 
     private String getDamageLevel(int damage) {

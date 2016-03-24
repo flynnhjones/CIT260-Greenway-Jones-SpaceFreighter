@@ -40,22 +40,22 @@ public class ShopView extends SuperView {
                 this.materialsListMenu();
                 break;                        
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
     private void weaponsListMenu() {
-        System.out.println("This is a weapon list for sale!");
+        this.console.println("This is a weapon list for sale!");
     }
 
     private void itemsListMenu() {
-        System.out.println("This is an item list for sale!");
+        this.console.println("This is an item list for sale!");
     }
 
     private void materialsListMenu() {
-        System.out.println("This is a materials list for sale!");
+        this.console.println("This is a materials list for sale!");
     }
     
     

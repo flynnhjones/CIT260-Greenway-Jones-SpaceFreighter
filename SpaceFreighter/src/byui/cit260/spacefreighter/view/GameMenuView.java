@@ -5,11 +5,13 @@
  */
 package byui.cit260.spacefreighter.view;
 
+import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -59,7 +61,7 @@ public class GameMenuView extends SuperView {
                 this.saveGame();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -68,11 +70,11 @@ public class GameMenuView extends SuperView {
     private void displayInventory() {
       InventoryItem[] inventory = ItemControl.getSortedInventoryList();
       
-      System.out.println("\nList of Inventory Items");
-      System.out.println("Description" + "\t" + "In Stock");
+      this.console.println("\nList of Inventory Items");
+      this.console.println("Description" + "\t" + "In Stock");
       
       for(InventoryItem inventoryItem : inventory) {
-          System.out.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
+          this.console.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
       }
     }
 
@@ -83,7 +85,7 @@ public class GameMenuView extends SuperView {
       int noOfColumns = locations[0].length;
       String map = " ";
       
-      System.out.println("\nLocation on map.");
+      this.console.println("\nLocation on map.");
       for (int row = 0; row < noOfRows; row++) {
       map = map + (" | " + (row + 1));
       }
@@ -102,7 +104,7 @@ public class GameMenuView extends SuperView {
                         }                        
             }
       }
-      System.out.println(map);
+      this.console.println(map);
       
     }
 
@@ -112,7 +114,7 @@ public class GameMenuView extends SuperView {
     }
 
     private void shopMenu() {
-        System.out.println("Shop Menu call works - BUT NOT YET DESIGNED");
+        this.console.println("Shop Menu call works - BUT NOT YET DESIGNED");
     }
 
     private void helpMenu() {
@@ -121,6 +123,14 @@ public class GameMenuView extends SuperView {
     }
 
     private void saveGame() {
-       System.out.println("Save Game Menu call works - BUT NOT YET DESIGNED");
+        this.console.println("Enter name of save file.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(SpaceFreighter.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        this.console.println("You saved! Good job!");
     }
 }

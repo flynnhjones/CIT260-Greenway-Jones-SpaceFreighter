@@ -20,7 +20,7 @@ public class ItemControl {
                 
         InventoryItem currency = new InventoryItem();
         currency.setItemName("Currency");
-        currency.setQuantity(1482);
+        currency.setQuantity(150);
         currency.setValue(1);
         currency.setType("Money");
         inventory[0] = currency;

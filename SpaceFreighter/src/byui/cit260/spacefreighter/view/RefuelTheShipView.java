@@ -7,7 +7,13 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.SpaceShipControl;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
@@ -18,6 +24,7 @@ import java.util.Scanner;
         private String promptMessageCurrentFuelGauge;
         private String promptMessagePilotSkillPoint;
         private String refuelMessage;
+        PrintWriter console = SpaceFreighter.getOutFile();
 
         public RefuelTheShipView() {
         
@@ -25,35 +32,50 @@ import java.util.Scanner;
             this.promptMessagePilotSkillPoint = "\nWhat is your pilot skill point amount (1-10)?";
         }
     
-        private double getTheCostToRepair() throws SpaceShipControlException {
+        private double getTheCostToRepair() throws SpaceShipControlException, IOException {
             double currentFuelGauge = this.getCurrentFuelGauge();
             double pilotSkillPoint = this.getPilotSkillPoint();
             double theCostToRefuel = SpaceShipControl.calcCostToRefuel(pilotSkillPoint,currentFuelGauge);
             return theCostToRefuel;
         }
         
-        private double getCurrentFuelGauge() {
-            Scanner keyboard = new Scanner(System.in);
-            double currentFuelGauge;
+        private double getCurrentFuelGauge() throws IOException {
+            BufferedReader keyboard = SpaceFreighter.getInFile();
+            String currentFuelGauge;
+            double currentFuelGaugeValue =0;
                 
-            System.out.println("\n" + this.promptMessageCurrentFuelGauge);
+            this.console.println("\n" + this.promptMessageCurrentFuelGauge);
             
-            currentFuelGauge = keyboard.nextInt();
-                    
-            return currentFuelGauge;
+            currentFuelGauge = keyboard.readLine();
+            try {
+            currentFuelGaugeValue = parseDouble(currentFuelGauge);
+            } catch(NumberFormatException nf) {
+                this.console.println("\nYou must enter a valid number."
+                        + " Try again or enter Q to quit.");
+                this.getCurrentFuelGauge();
+            }
+            return currentFuelGaugeValue;
         }
         
-        private double getPilotSkillPoint() {
-            Scanner keyboard = new Scanner(System.in);
-            double pilotSkillPoint;
+        private double getPilotSkillPoint() throws IOException {
+            BufferedReader keyboard = SpaceFreighter.getInFile();
+            String pilotSkillPoint;
+            int pilotSkillPointValue = 0;
             
-            System.out.println("\n" + this.promptMessagePilotSkillPoint);
-            pilotSkillPoint = keyboard.nextInt();
+            this.console.println("\n" + this.promptMessagePilotSkillPoint);
+            pilotSkillPoint = keyboard.readLine();
             
-            return pilotSkillPoint;
+            try{
+            pilotSkillPointValue = parseInt(pilotSkillPoint);
+            } catch (NumberFormatException nf) {
+                this.console.println("\nYou must enter a valid number."
+                        + " Try again or enter Q to quit.");
+                this.getPilotSkillPoint();
+            }
+            return pilotSkillPointValue;
         }
         
-        void CostToRefuel() throws SpaceShipControlException {
+        void CostToRefuel() throws SpaceShipControlException, IOException {
             double theCostToRefuel;
             double currentFuelGauge = this.getCurrentFuelGauge();
             double pilotSkillPoint = this.getPilotSkillPoint();
@@ -75,6 +97,6 @@ import java.util.Scanner;
             this.refuelMessage = "\nThe cost to refuel will be " + theCostToRefuel + " Currency.";
         }
         
-        System.out.println(refuelMessage);
+        this.console.println(refuelMessage);
         }
     }

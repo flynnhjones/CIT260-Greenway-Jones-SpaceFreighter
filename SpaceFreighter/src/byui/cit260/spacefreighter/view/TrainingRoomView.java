@@ -48,7 +48,7 @@ public class TrainingRoomView extends SuperView {
                 this.increaseWeaponSpecialistSkill();
                 break;            
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -57,15 +57,15 @@ public class TrainingRoomView extends SuperView {
 
     
     private void increasePilotSkill() {
-        System.out.println("The increasePilotSkill call works, but hasn't been designed yet.");
+        this.console.println("The increasePilotSkill call works, but hasn't been designed yet.");
     }
 
     private void increaseMechanicSkill() {
-        System.out.println("The increaseMechanicSkill call works, but hasn't been designed yet.");
+        this.console.println("The increaseMechanicSkill call works, but hasn't been designed yet.");
     }
 
     private void increaseWeaponSpecialistSkill() {
-        System.out.println("The increaseWeaponSpecialistSkill call works, but hasn't been designed yet.");
+        this.console.println("The increaseWeaponSpecialistSkill call works, but hasn't been designed yet.");
     }
     
 }

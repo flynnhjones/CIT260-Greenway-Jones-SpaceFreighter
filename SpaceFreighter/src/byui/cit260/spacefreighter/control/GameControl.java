@@ -11,10 +11,11 @@ import byui.cit260.spacefreighter.model.JobBoardScene;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
-import byui.cit260.spacefreighter.view.GameMenuView;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -53,5 +54,33 @@ public class GameControl {
         game.setJobBoard(jobBoard);
         
         MapControl.moveActorsToStartLocation(map);                
+    }
+
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+        
+        try(FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame);
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject();
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        SpaceFreighter.setCurrentGame(game);
     }
 }
