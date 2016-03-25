@@ -21,8 +21,7 @@ public class MainMenuView extends SuperView {
                 + "\n Main Menu                   |"
                 + "\n-----------------------------"
                 +"\nG – Start new game"
-                +"\nH - Help menu"
-                +"\nS - Save game"
+                +"\nH - Help menu"                
                 +"\nL - Load saved game"
                 +"\nQ - Exit game"
                 +"\n-----------------------------");
@@ -39,10 +38,7 @@ public class MainMenuView extends SuperView {
                 break;
             case "H":
                 this.helpMenu();
-                break;
-            case "S":
-                this.saveGame();
-                break;
+                break;            
             case "L":
                 this.loadSavedGame();
                 break;
@@ -65,19 +61,7 @@ public class MainMenuView extends SuperView {
        HelpMenuView helpMenu = new HelpMenuView();
        helpMenu.display();
        
-    }
-
-    private void saveGame() {
-        this.console.println("Enter name of save file.");
-        String filePath = this.getInput();
-        
-        try {
-            GameControl.saveGame(SpaceFreighter.getCurrentGame(), filePath);
-        } catch (Exception ex) {
-            ErrorView.display("MainMenuView", ex.getMessage());
-        }
-        this.console.println("You saved! Good job!");
-    }
+    }    
 
     private void loadSavedGame() {
         this.console.println("Enter name of saved file.");

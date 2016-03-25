@@ -72,7 +72,7 @@ public class GameControl {
     public static void getSavedGame(String filePath) throws GameControlException {
         Game game = null;
         
-        try(FileInputStream fips = new FileInputStream(filePath)) {
+        try(FileInputStream fips = new FileInputStream("C:/SpaceGame/" + filePath + ".txt")) {
             ObjectInputStream input = new ObjectInputStream(fips);
             
             game = (Game) input.readObject();
@@ -82,5 +82,7 @@ public class GameControl {
         }
         
         SpaceFreighter.setCurrentGame(game);
+        ItemControl.getSavedInventory(filePath);
+        MapControl.getSavedMap(filePath);
     }
 }

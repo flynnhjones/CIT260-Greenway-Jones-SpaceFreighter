@@ -5,8 +5,14 @@
  */
 package byui.cit260.spacefreighter.control;
 
+import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -20,7 +26,7 @@ public class ItemControl {
                 
         InventoryItem currency = new InventoryItem();
         currency.setItemName("Currency");
-        currency.setQuantity(-1);
+        currency.setQuantity(2000);
         currency.setValue(1);
         currency.setType("Money");
         inventory[0] = currency;
@@ -96,7 +102,29 @@ public class ItemControl {
         }
         return value;
     }
+
+    public static void saveInventory(InventoryItem[] inventory, String filePath) throws GameControlException {
         
+        try(FileOutputStream fops = new FileOutputStream("C:/SpaceGame/item." + filePath + ".txt")) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(inventory);
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+    }
+    }
+
+    static void getSavedInventory(String filePath) throws GameControlException {
+        try(FileInputStream fips = new FileInputStream("C:/SpaceGame/item." + filePath + ".txt")) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            Game.inventory = (InventoryItem[]) input.readObject();
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
         public enum Item {
             currency,
             coolingFan,

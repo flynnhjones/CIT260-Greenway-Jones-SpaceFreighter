@@ -15,11 +15,7 @@ import java.util.Objects;
 public class Game implements Serializable{
     
     // class instance variables
-    private String newGame;
-    private String savedGame;
-    private String helpMenu; 
-
-    
+       
     private SpaceShip spaceShip;
     public static InventoryItem[] inventory;
     private Actor actor;
@@ -70,29 +66,7 @@ public class Game implements Serializable{
         this.actor = actor;
     }
     
-    public String getNewGame() {
-        return newGame;
-    }
-       
-    public void setNewGame(String newGame) {
-        this.newGame = newGame;
-    }
-
-    public String getSavedGame() {
-        return savedGame;
-    }
-
-    public void setSavedGame(String savedGame) {
-        this.savedGame = savedGame;
-    }
-
-    public String getHelpMenu() {
-        return helpMenu;
-    }
-
-    public void setHelpMenu(String helpMenu) {
-        this.helpMenu = helpMenu;
-    }
+    
 
     public Game() {
     }
@@ -100,11 +74,8 @@ public class Game implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.newGame);
-        hash = 97 * hash + Objects.hashCode(this.savedGame);
-        hash = 97 * hash + Objects.hashCode(this.helpMenu);
-        hash = 97 * hash + Objects.hashCode(this.spaceShip);
-        hash = 97 * hash + Objects.hashCode(this.actor);
+        hash = 41 * hash + Objects.hashCode(this.spaceShip);
+        hash = 41 * hash + Objects.hashCode(this.actor);
         return hash;
     }
 
@@ -120,15 +91,6 @@ public class Game implements Serializable{
             return false;
         }
         final Game other = (Game) obj;
-        if (!Objects.equals(this.newGame, other.newGame)) {
-            return false;
-        }
-        if (!Objects.equals(this.savedGame, other.savedGame)) {
-            return false;
-        }
-        if (!Objects.equals(this.helpMenu, other.helpMenu)) {
-            return false;
-        }
         if (!Objects.equals(this.spaceShip, other.spaceShip)) {
             return false;
         }
@@ -140,14 +102,9 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "newGame=" + newGame + ", savedGame=" + savedGame + ", helpMenu=" + helpMenu + ", spaceShip=" + spaceShip + ", actor=" + actor + '}';
+        return "Game{" + "spaceShip=" + spaceShip + ", actor=" + actor + '}';
     }
 
-  
-
-    
-    
-    
     
     
 }

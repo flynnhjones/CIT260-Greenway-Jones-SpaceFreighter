@@ -45,8 +45,8 @@ public class Map implements Serializable{
             }
         }
     }
-    
-     public int getNoOfRows() {
+
+    public int getNoOfRows() {
         return noOfRows;
     }
 

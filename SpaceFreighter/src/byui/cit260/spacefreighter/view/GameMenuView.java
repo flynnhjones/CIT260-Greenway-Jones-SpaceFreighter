@@ -7,6 +7,7 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
+import byui.cit260.spacefreighter.control.MapControl;
 import byui.cit260.spacefreighter.model.Game;
 import static byui.cit260.spacefreighter.model.Game.inventory;
 import byui.cit260.spacefreighter.model.InventoryItem;
@@ -75,7 +76,7 @@ public class GameMenuView extends SuperView {
 
     private void displayInventory() throws GameControlException {
       
-        InventoryItem[] inventory = ItemControl.getSortedInventoryList();
+        InventoryItem[] inventory = Game.inventory;
         this.console.println("\nList of Inventory Items");
         this.console.println("Description" + "\t" + "In Stock");
         for(InventoryItem inventoryItem : inventory) {
@@ -132,7 +133,17 @@ public class GameMenuView extends SuperView {
         String filePath = this.getInput();
         
         try {
-            GameControl.saveGame(SpaceFreighter.getCurrentGame(), filePath);
+            GameControl.saveGame(SpaceFreighter.getCurrentGame(), ("C:/SpaceGame/" + filePath + ".txt"));
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        try {
+            ItemControl.saveInventory(Game.inventory, filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        try {
+            MapControl.saveMap(Game.map, filePath);
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
