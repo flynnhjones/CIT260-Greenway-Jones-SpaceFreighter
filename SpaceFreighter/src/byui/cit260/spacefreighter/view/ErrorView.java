@@ -14,16 +14,16 @@ import spacefreighter.SpaceFreighter;
  */
 public class ErrorView {
     
-    private static final PrintWriter errorFile = SpaceFreighter.getOutFile();
-    private static final PrintWriter logFile = SpaceFreighter.getLogFile();
+    private static final PrintWriter ERRORFILE = SpaceFreighter.getOutFile();
+    private static final PrintWriter LOGFILE = SpaceFreighter.getLogFile();
     
     public static void display(String className, String errorMessage) {
-        errorFile.println(
+        ERRORFILE.println(
                     "---------------------------------------------"
                     + "\n- ERROR - " + errorMessage +
                     "\n---------------------------------------------"
                     );
         
-        logFile.println(className + " - " + errorMessage);
+        LOGFILE.println(className + " - " + errorMessage);
     }
 }

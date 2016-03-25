@@ -47,20 +47,28 @@ public class StartProgramView {
     }
     /**
      * display the start program view
+     * @throws cit.byui.cit260.spacefreighter.exceptions.GameControlException
+     * @throws java.io.IOException
      */
     public void displayStartProgramView() throws GameControlException, IOException {
     
+        String playersName = null;
+        
         boolean done = false; 
         do{
             
-            String playersName = this.getPlayersName();
+          try{ playersName = this.getPlayersName();
             if (playersName.toUpperCase().equals("Q"))
             return;
+          } catch (GameControlException ex) {
+              ErrorView.display("displayStartProgramView, getPlayerName", ex.getMessage());
+                      this.getPlayersName();
+          }
         
         try {
                 done = this.doAction(playersName);
             } catch (GameControlException ex) {
-                this.console.println(ex.getMessage());
+                ErrorView.display("displayStartProgramView, doAction", ex.getMessage());
             }
         
         } while (!done);
@@ -69,20 +77,19 @@ public class StartProgramView {
 
     private String getPlayersName() throws GameControlException, IOException {
         BufferedReader keyboard = SpaceFreighter.getInFile();
-        String value = "";
-        boolean valid = false;
+        String value;
         
-        while (!valid) {
+        
+        
             this.console.println("\n" + this.promptMessage);
             
             value = keyboard.readLine();
             value = value.trim();
             
             if (value.length() < 1){
-               throw new GameControlException("\nYour name connot be blank!");
-            }
+               throw new GameControlException("\nYour name connot be blank!");                   
             
-            break;
+            
         }
     
         return value;

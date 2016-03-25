@@ -52,7 +52,7 @@ class AttackView {
             try{
             attackValue = parseInt(attack);
             } catch(NumberFormatException nf) {
-                this.console.println("\nYou must enter a number.");
+                ErrorView.display("AttackView in getAttack", nf.getMessage());
                         this.getAttack();
             }
                     
@@ -72,7 +72,7 @@ class AttackView {
             try{
              skillValue = parseInt(skill);
          } catch(NumberFormatException nf) {
-             this.console.println("You must enter a number");
+             ErrorView.display("AttackView in getSkill", nf.getMessage());
              this.getSkill();
          }
                     
@@ -90,7 +90,7 @@ class AttackView {
             try {
                 defenseValue = parseInt(defense);
             } catch (NumberFormatException nf) {
-                this.console.println("You must enter a number.");
+                ErrorView.display("AttackView in getEnemyDefense", nf.getMessage());
                 this.getDefense();
             }
                     

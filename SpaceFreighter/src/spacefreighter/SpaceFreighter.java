@@ -7,6 +7,7 @@ package spacefreighter;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.Player;
+import byui.cit260.spacefreighter.view.ErrorView;
 import byui.cit260.spacefreighter.view.StartProgramView;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.io.BufferedReader;
@@ -87,9 +88,13 @@ public class SpaceFreighter {
         StartProgramView startProgramView = new StartProgramView();    
         startProgramView.displayStartProgramView();
         startProgramView.displayStartProgramView();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
+        } catch (GameControlException | IOException e) {
+            ErrorView.display(("Exception: " + e.toString() +
+                                "\nCause: " + e.getCause() +
+                                "\nMessage: "), e.getMessage());         
+            
+            
+            e.printStackTrace();
             
         }
         finally {
@@ -104,7 +109,7 @@ public class SpaceFreighter {
                     SpaceFreighter.logFile.close();
                 
             } catch (IOException ex) {
-                System.out.println("Error closing files");
+                ErrorView.display("Main Class", ex.getMessage());
                 return;
             }
             

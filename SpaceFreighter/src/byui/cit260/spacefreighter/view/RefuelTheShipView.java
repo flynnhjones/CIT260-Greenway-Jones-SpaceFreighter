@@ -50,8 +50,9 @@ import spacefreighter.SpaceFreighter;
             try {
             currentFuelGaugeValue = parseDouble(currentFuelGauge);
             } catch(NumberFormatException nf) {
+                ErrorView.display("currentFuelGauge", nf.getMessage());
                 this.console.println("\nYou must enter a valid number."
-                        + " Try again or enter Q to quit.");
+                        + " Try again.");
                 this.getCurrentFuelGauge();
             }
             return currentFuelGaugeValue;
@@ -68,8 +69,9 @@ import spacefreighter.SpaceFreighter;
             try{
             pilotSkillPointValue = parseInt(pilotSkillPoint);
             } catch (NumberFormatException nf) {
+                ErrorView.display("pilotSkillValue", nf.getMessage());
                 this.console.println("\nYou must enter a valid number."
-                        + " Try again or enter Q to quit.");
+                        + " Try again.");
                 this.getPilotSkillPoint();
             }
             return pilotSkillPointValue;

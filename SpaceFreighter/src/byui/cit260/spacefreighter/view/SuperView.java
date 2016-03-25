@@ -42,7 +42,7 @@ public abstract class SuperView implements ViewInterface {
             if (value.toUpperCase().equals("Q"))
             return;
         
-            done = this.doAction(value);
+        done = this.doAction(value);
         
         } while (!done); 
         
@@ -68,7 +68,7 @@ public abstract class SuperView implements ViewInterface {
                 
                 break;
             } catch (IOException ex) {
-                Logger.getLogger(SuperView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display("SuperView", ex.getMessage());
             }
         }
     

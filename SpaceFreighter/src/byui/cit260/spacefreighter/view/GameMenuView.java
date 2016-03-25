@@ -8,9 +8,11 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
+import static byui.cit260.spacefreighter.model.Game.inventory;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
+import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -43,7 +45,11 @@ public class GameMenuView extends SuperView {
         
         switch (choice) {
             case "I":
+                try{
                 this.displayInventory();
+                } catch(GameControlException ex) {
+                    this.console.println("Error with Inventory");
+                }
                 break;
             case "L":
                 this.displayMap(Game.map);
@@ -67,13 +73,12 @@ public class GameMenuView extends SuperView {
         return false;
 }
 
-    private void displayInventory() {
-      InventoryItem[] inventory = ItemControl.getSortedInventoryList();
+    private void displayInventory() throws GameControlException {
       
-      this.console.println("\nList of Inventory Items");
-      this.console.println("Description" + "\t" + "In Stock");
-      
-      for(InventoryItem inventoryItem : inventory) {
+        InventoryItem[] inventory = ItemControl.getSortedInventoryList();
+        this.console.println("\nList of Inventory Items");
+        this.console.println("Description" + "\t" + "In Stock");
+        for(InventoryItem inventoryItem : inventory) {
           this.console.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
       }
     }

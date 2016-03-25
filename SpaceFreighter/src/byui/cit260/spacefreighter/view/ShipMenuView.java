@@ -7,13 +7,9 @@ package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.model.Game;
-import byui.cit260.spacefreighter.model.InventoryItem;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -49,7 +45,7 @@ public class ShipMenuView extends SuperView {
             try {
                 this.repairTheShipMenu();
             } catch (IOException ex) {
-                this.console.println(ex.getMessage());
+                ErrorView.display("repairTheShipMenu", ex.getMessage());
             }
         }
                 break;
@@ -60,10 +56,8 @@ public class ShipMenuView extends SuperView {
         {
             try {
                 this.refuelTheShipMenu();
-            } catch (SpaceShipControlException ex) {
-                this.console.println(ex.getMessage());
-            } catch (IOException ex) {
-                this.console.println(ex.getMessage());
+            } catch (SpaceShipControlException | IOException ex) {
+                ErrorView.display("refuelTheShipMenu", ex.getMessage());
             }
         }
                 break;
@@ -81,8 +75,8 @@ public class ShipMenuView extends SuperView {
             try {
                 this.checkValue();
             } catch (ItemControlException ex) {
-                this.console.println(ex.getMessage());
-            }
+                ErrorView.display("checkValue", ex.getMessage());
+                }
         }
                 break;
             default:

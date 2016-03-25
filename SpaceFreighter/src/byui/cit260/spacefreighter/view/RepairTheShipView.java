@@ -49,8 +49,9 @@ class RepairTheShipView {
             try{
             durability = parseInt(currentDurability);
             } catch (NumberFormatException nf) {
+                ErrorView.display("RepairTheShipView, durability", nf.getMessage());
                 this.console.println("\nYou must enter a valid number."
-                        + " Try again or enter Q to quit.");
+                        + " Try again.");
                 this.getCurrentDurability();
             }
                     
@@ -70,8 +71,9 @@ class RepairTheShipView {
             try {
             mechPoint = parseInt(mechSkillPoint);
             } catch(NumberFormatException nf) {
+                ErrorView.display("RepairTheShipView, mechSkillPoint", nf.getMessage());
                 this.console.println("\nYou must enter a valid number."
-                        + " Try again or enter Q to quit.");
+                        + " Try again.");
                 this.getMechSkillPoint();
             }
                     
