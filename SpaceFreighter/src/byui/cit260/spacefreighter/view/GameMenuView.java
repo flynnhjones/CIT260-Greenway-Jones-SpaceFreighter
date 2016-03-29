@@ -15,6 +15,8 @@ import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -68,7 +70,13 @@ public class GameMenuView extends SuperView {
                 this.helpMenu();
                 break;
             case "Z":
+        {
+            try {
                 this.saveGame();
+            } catch (IOException ex) {
+                ErrorView.display("Save Game Failed", ex.getMessage());
+            }
+        }
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -139,9 +147,9 @@ public class GameMenuView extends SuperView {
        helpMenu.display();  
     }
 
-    private void saveGame() {
+    private void saveGame() throws IOException {
         this.console.println("Enter name of save file.");
-        String filePath = this.getInput();
+        String filePath = this.keyboard.readLine();
         
         try {
             GameControl.saveGame(SpaceFreighter.getCurrentGame(), ("C:/SpaceGame/" + filePath + ".txt"));
