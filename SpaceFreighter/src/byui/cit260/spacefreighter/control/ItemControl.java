@@ -7,12 +7,16 @@ package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
+import byui.cit260.spacefreighter.view.ErrorView;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +29,7 @@ public class ItemControl {
         InventoryItem[] inventory = new InventoryItem[Item.values().length];
                 
         InventoryItem currency = new InventoryItem();
-        currency.setItemName("Currency");
+        currency.setItemName("Space Bucks");
         currency.setQuantity(2000);
         currency.setValue(1);
         currency.setType("Money");
@@ -34,30 +38,30 @@ public class ItemControl {
         
         InventoryItem coolingFan = new InventoryItem();
         coolingFan.setItemName("Cooling Fan");
-        coolingFan.setQuantity(0);
+        coolingFan.setQuantity(1);
         coolingFan.setValue(100);
         coolingFan.setType("Ship Part");
         inventory[1] = coolingFan;
         inventory[ItemControl.Item.coolingFan.ordinal()] = coolingFan;
         
         InventoryItem hualPiece = new InventoryItem();
-        hualPiece.setItemName("A Piece Hual");
-        hualPiece.setQuantity(0);
+        hualPiece.setItemName("A hual piece");
+        hualPiece.setQuantity(1);
         hualPiece.setValue(100);
         hualPiece.setType("Ship Part");
         inventory[2] = hualPiece;
         inventory[ItemControl.Item.hualPiece.ordinal()] = hualPiece;
         
         InventoryItem bigGun = new InventoryItem();
-        bigGun.setItemName("A very large laser gun.");
-        bigGun.setQuantity(0);
+        bigGun.setItemName("Ship Gun");
+        bigGun.setQuantity(1);
         bigGun.setValue(100);
         bigGun.setType("Ship Part");
         inventory[3] = bigGun;
         inventory[ItemControl.Item.bigGun.ordinal()] = bigGun;
         
         InventoryItem knife = new InventoryItem();
-        knife.setItemName("Nice little knife.");
+        knife.setItemName("Knife");
         knife.setQuantity(1);
         knife.setValue(100);
         knife.setType("weapon");
@@ -65,7 +69,7 @@ public class ItemControl {
         inventory[ItemControl.Item.knife.ordinal()] = knife;
         
         InventoryItem sword = new InventoryItem();
-        sword.setItemName("Good for slashing monsters.");
+        sword.setItemName("Sword");
         sword.setQuantity(0);
         sword.setValue(500);
         sword.setType("weapon");
@@ -73,7 +77,7 @@ public class ItemControl {
         inventory[ItemControl.Item.sword.ordinal()] = sword;
         
         InventoryItem laserPistol = new InventoryItem();
-        laserPistol.setItemName("Pistol. Shoots lasers.");
+        laserPistol.setItemName("Laser Pistol");
         laserPistol.setQuantity(0);
         laserPistol.setValue(1000);
         laserPistol.setType("weapon");
@@ -123,6 +127,36 @@ public class ItemControl {
         }
         catch(Exception e) {
             throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void printInventoryList(String filePath) {
+        InventoryItem[] items = Game.inventory;
+        int value = 0;
+        int itemValue = 0;
+        try {
+            value = ItemControl.findValue(items);            
+        } catch (ItemControlException ex) {
+            ErrorView.display("Print couldn't get value", ex.getMessage());
+        }
+        try(PrintWriter out = new PrintWriter("C:/SpaceGame/itemprintreport." + filePath + ".txt")) {
+            
+            out.println("\n         Inventory List      ");
+            out.printf("%n%-15s%-15s%15s%15s", "Item Name", "Quantity", "Value per item", "Value");
+            out.printf("%n%-15s%-15s%15s%15s", "---------", "--------", "--------------", "-----");
+            
+            for (InventoryItem item : items) {
+                if(item.quantity > 0) {
+                    itemValue = item.quantity * item.value;
+                out.printf("%n%-15s%-15s%15s%15s", item.getItemName(), item.quantity, item.value, itemValue);
+                }
+            }
+            out.printf("%n%60s", "------------------------------------------------------------");
+            out.printf("%n%-11s%49s", "Total Value", value + " Space Bucks");
+                
+        }
+        catch(Exception e) {
+            ErrorView.display("Inventory Didn't print", e.getMessage());
         }
     }
         public enum Item {

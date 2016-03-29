@@ -9,11 +9,11 @@ import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.control.MapControl;
 import byui.cit260.spacefreighter.model.Game;
-import static byui.cit260.spacefreighter.model.Game.inventory;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Location;
 import byui.cit260.spacefreighter.model.Map;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
+import java.io.IOException;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -49,8 +49,10 @@ public class GameMenuView extends SuperView {
                 try{
                 this.displayInventory();
                 } catch(GameControlException ex) {
-                    this.console.println("Error with Inventory");
-                }
+                    ErrorView.display("Error with Inventory", ex.getMessage());
+                } catch (IOException ex) {
+            ErrorView.display("Inventory Didn't print", ex.getMessage());
+        }
                 break;
             case "L":
                 this.displayMap(Game.map);
@@ -74,7 +76,7 @@ public class GameMenuView extends SuperView {
         return false;
 }
 
-    private void displayInventory() throws GameControlException {
+    private void displayInventory() throws GameControlException, IOException {
       
         InventoryItem[] inventory = Game.inventory;
         this.console.println("\nList of Inventory Items");
@@ -82,6 +84,14 @@ public class GameMenuView extends SuperView {
         for(InventoryItem inventoryItem : inventory) {
           this.console.println(inventoryItem.getItemName() + "\t   " + inventoryItem.getQuantity());
       }
+        String print;
+        this.console.println("Print Inventory to file? Y for yes or N for no.");
+        print = this.keyboard.readLine();
+        print = print.trim();
+        print = print.toUpperCase();
+        if ("Y".equals(print)) {
+            this.printInventory();
+        }        
     }
 
     public void displayMap(Map maps) {
@@ -148,5 +158,16 @@ public class GameMenuView extends SuperView {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         this.console.println("You saved! Good job!");
+    }
+
+    private void printInventory() throws IOException {
+        this.console.println("Name your filepath");
+        String filePath = this.keyboard.readLine();
+        try{
+        ItemControl.printInventoryList(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("PrintInventory did not print", ex.getMessage());
+        }
+        this.console.println("Inventory sent to C:/SpaceGame/itemprintreport." + filePath + ".txt. Unless you got an error of course!");
     }
 }
