@@ -25,7 +25,7 @@ public class BattleMenuView extends SuperView {
     @Override
     public boolean doAction(String choice) {
         
-        choice = choice.toUpperCase();
+        choice = choice.toUpperCase();        
         
         switch (choice) {
             case "F":
