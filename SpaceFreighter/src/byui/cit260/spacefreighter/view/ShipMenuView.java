@@ -6,7 +6,6 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.ItemControl;
-import byui.cit260.spacefreighter.control.SpaceShipControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
@@ -79,7 +78,9 @@ public class ShipMenuView extends SuperView {
                 this.checkValue();
             } catch (ItemControlException ex) {
                 ErrorView.display("checkValue", ex.getMessage());
-                }
+                } catch (IOException ex) {
+                ErrorView.display("checkValue", ex.getMessage());
+            }
         }
                 break;
             case "X":
@@ -121,11 +122,26 @@ public class ShipMenuView extends SuperView {
                 shop.display();
     }
 
-    private void checkValue() throws ItemControlException {
+    private void checkValue() throws ItemControlException, IOException {
         int value;
         
         value = ItemControl.findValue(Game.inventory);
+        int stillNeeded = 10000 - value;
         this.console.println("Your current net worth is " + value + " currency.");
+        if (stillNeeded < 1) {
+            this.console.println("You have enough to live rich the rest of your days!"
+                    + "\nWould you like to retire? Y for yes or N for no.");
+            String answer = this.keyboard.readLine();
+            answer = answer.toUpperCase();
+            if ("Y".equals(answer)) {                
+                VictoryView.youWin();
+            } else{
+                this.console.println("Ok, you don't have to if you don't want to. Keep playing!");
+            }
+        } else {
+                this.console.println("You still need " + stillNeeded + " Space Bucks to retire");
+        }        
+        
     }
 
     private void checkShipValue() {

@@ -10,6 +10,9 @@ import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,17 +20,21 @@ import java.io.IOException;
  */
 public class JobBoardView extends SuperView {
     
+    static int choice = 0;
+
+   
+    
         
     public JobBoardView() {
         super("\n"
                 + "\n--------------------------------"
                 + "\n Job Board                     |"
-                + "\n-------------------------------|"
-                +"\nB - Battle Jobs                 |"
-                + "\nN - Display Non Battle Jobs    |"
-                + "\nP - Print Non Battle Job list  |"
-                +"\nQ - Go back                     |"
-                +"\n---------------------------------");
+                + "\n-------------------------------|"                
+                + "\nJ - Display Job List           |"
+                + "\nC - Choose To Do a Job         |"
+                + "\nP - Print Job list             |"
+                + "\nQ - Go back                    |"
+                + "\n--------------------------------");
     }
     
     @Override
@@ -35,19 +42,23 @@ public class JobBoardView extends SuperView {
         
         choice = choice.toUpperCase();
         
-        switch (choice) {
-            case "B":
-                this.doBattle();
-                break;
-            case "N":
+        switch (choice) {            
+            case "J":
         { try {
                 this.displayJobBoardScenes();
             } catch (JobBoardSceneControlException ex) {
                ErrorView.display("JobBoardView", ex.getMessage());
             }
+        }               
+            case "C":
+        {
+            try {
+                this.chooseJob();
+            } catch (IOException ex) {
+                ErrorView.display("JobBoardView choosing jobs", ex.getMessage());
+            }
         }
-                
-        
+                break;
             case "P":
         { try {
                 this.printJobList();
@@ -69,9 +80,9 @@ public class JobBoardView extends SuperView {
       
         JobBoardScene[] jobBoard = Game.jobBoard;
         this.console.println("\nList of Jobs");
-        this.console.println("Description" + "\t" + "Job Type" + "\t" + "Job Difficulty level");
+        this.console.println("Description" + "\t" + "Job Difficulty level" + "\t Completed?");
         for(JobBoardScene jobBoardScene : jobBoard) {
-        this.console.println(jobBoardScene.getJobDescription() + "\t   " + jobBoardScene.getJobType()+ "\t     " + jobBoardScene.getJobDifficulty());
+        this.console.println(jobBoardScene.getJobDescription() + "\t     " + jobBoardScene.getJobDifficulty() + "\t   " + jobBoardScene.isCompleted());
       }
     }
     
@@ -92,4 +103,28 @@ public class JobBoardView extends SuperView {
         this.console.println( "Inventory sent to C:/SpaceGame/joblist." + filePath + ".txt.");
     }
 
+    private void chooseJob() throws IOException {
+        JobBoardScene[] jobBoard = Game.jobBoard;
+        this.console.println("\nList of Jobs");
+        this.console.println("Description" + "\t" + "Job Difficulty level" + "\t Reward");
+        int jobNumber = 1;
+        for(JobBoardScene jobBoardScene : jobBoard) {
+            if(jobBoardScene.isCompleted() == false){
+        this.console.println("\n" + jobNumber + ". " + jobBoardScene.getJobDescription() + "\t     " + jobBoardScene.getJobDifficulty() + "\t" + jobBoardScene.getReward());
+            }
+        jobNumber++;
+            
+      }
+        this.console.println("Choose a job. Press Q to quit.");
+        String response = this.keyboard.readLine();        
+        try {choice = parseInt(response);
+        } catch (NumberFormatException ex) {
+            ErrorView.display("JobBoardView", ex.getMessage());
+        }
+        if (choice > jobBoard.length || choice < 1) {
+            this.console.println("***Invalid Selection, Try Again***");
+            
     }
+        JobBoardSceneControl.startJob(choice);
+    }
+}

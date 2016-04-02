@@ -5,7 +5,6 @@
  */
 package byui.cit260.spacefreighter.model;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
 import java.io.Serializable;
 import java.util.Objects;
 

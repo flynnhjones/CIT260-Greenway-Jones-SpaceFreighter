@@ -28,7 +28,7 @@ public class ItemControl {
                 
         InventoryItem currency = new InventoryItem();
         currency.setItemName("Space Bucks");
-        currency.setQuantity(2000);
+        currency.setQuantity(9900);
         currency.setValue(1);
         currency.setType("Money");
         inventory[0] = currency;

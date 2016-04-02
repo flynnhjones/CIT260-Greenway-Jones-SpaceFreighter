@@ -5,10 +5,19 @@
  */
 package byui.cit260.spacefreighter.control;
 
+import byui.cit260.spacefreighter.model.Game;
+import byui.cit260.spacefreighter.model.InventoryItem;
+
 /**
  *
  * @author Daddy
  */
 public class CurrencyControl {
+
+    public static void addCurrency(int i) {
+        InventoryItem[] inventory = Game.inventory;
+        int currency = inventory[ItemControl.Item.currency.ordinal()].getQuantity() + i;
+        inventory[ItemControl.Item.currency.ordinal()].setQuantity(currency);
+    }
     
 }
