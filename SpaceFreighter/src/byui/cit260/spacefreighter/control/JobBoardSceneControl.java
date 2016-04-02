@@ -6,9 +6,12 @@
 package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
+import static byui.cit260.spacefreighter.model.Game.jobBoard;
 import byui.cit260.spacefreighter.model.JobBoardScene;
+import byui.cit260.spacefreighter.view.ErrorView;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -148,4 +151,25 @@ public class JobBoardSceneControl {
             insertJobSceneHere8,
             insertJobSceneHere9;   
         }
+    public static void printJobList(String filePath) throws FileNotFoundException {
+        JobBoardScene[] jobBoard = Game.jobBoard;
+       
+        try(PrintWriter out = new PrintWriter("C:/SpaceGame/joblist." + filePath + ".txt")) {
+            
+            out.println("\n                                                               Job Board List                       ");
+            out.printf("%n%-80s%-20s%15s", " Job Description", " Job Type", " Job Difficulty");
+            out.printf("%n%-80s%-20s%15s", "---------------------------------------------------------------", "--------------", "----------------");
+            
+            for (JobBoardScene jobBoardScene : jobBoard) {
+                
+                out.printf("%n%-80s%-10s%15s", jobBoardScene.getJobDescription(), jobBoardScene.getJobType(), jobBoardScene.getJobDifficulty());
+                out.printf("%n%-80s"," ");
+            }
+                
+        } catch(Exception e) {
+            ErrorView.display("Job List Didn't print", e.getMessage());
+        }
+      
+      }
 }
+

@@ -5,6 +5,7 @@
  */
 package byui.cit260.spacefreighter.model;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,7 +14,8 @@ import java.util.Objects;
  * @author Benjamin
  */
 public class JobBoardScene implements Serializable{
-    
+
+
     public String jobDescription;
     public String jobType;
     public int jobDifficulty;
