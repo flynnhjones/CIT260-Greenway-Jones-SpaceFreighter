@@ -50,13 +50,13 @@ public class JobBoardView extends SuperView {
                 this.doBattle();
                 break;
             case "N":
-        {
+        
             try {
                 this.displayJobBoardScenes();
             } catch (JobBoardSceneControlException ex) {
                ErrorView.display("JobBoardView", ex.getMessage());
             }
-        }
+        
             case "P":
                 this.savePrintJobList();
             default:

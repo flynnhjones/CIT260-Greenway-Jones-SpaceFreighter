@@ -16,7 +16,7 @@ public class Game implements Serializable{
     
     // class instance variables
        
-    private SpaceShip spaceShip;
+    public static SpaceShip spaceShip;
     public static InventoryItem[] inventory;
     private Actor actor;
     public static Map map;

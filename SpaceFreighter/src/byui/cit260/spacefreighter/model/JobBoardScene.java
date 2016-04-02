@@ -17,6 +17,8 @@ public class JobBoardScene implements Serializable{
     public String jobDescription;
     public String jobType;
     public int jobDifficulty;
+    public int reward;
+    public boolean completed;
     
     public int getJobDifficulty() {
         return jobDifficulty;
@@ -42,12 +44,30 @@ public class JobBoardScene implements Serializable{
         this.jobType = jobType;
     }
 
+    public int getReward() {
+        return reward;
+    }
+
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.jobDescription);
-        hash = 59 * hash + Objects.hashCode(this.jobType);
-        hash = 59 * hash + this.jobDifficulty;
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.jobDescription);
+        hash = 47 * hash + Objects.hashCode(this.jobType);
+        hash = 47 * hash + this.jobDifficulty;
+        hash = 47 * hash + this.reward;
+        hash = 47 * hash + (this.completed ? 1 : 0);
         return hash;
     }
 
@@ -66,6 +86,12 @@ public class JobBoardScene implements Serializable{
         if (this.jobDifficulty != other.jobDifficulty) {
             return false;
         }
+        if (this.reward != other.reward) {
+            return false;
+        }
+        if (this.completed != other.completed) {
+            return false;
+        }
         if (!Objects.equals(this.jobDescription, other.jobDescription)) {
             return false;
         }
@@ -77,7 +103,8 @@ public class JobBoardScene implements Serializable{
 
     @Override
     public String toString() {
-        return "JobBoardScene{" + "jobDescription=" + jobDescription + ", jobType=" + jobType + ", jobDifficulty=" + jobDifficulty + '}';
+        return "JobBoardScene{" + "jobDescription=" + jobDescription + ", jobType=" + jobType + ", jobDifficulty=" + jobDifficulty + ", reward=" + reward + ", completed=" + completed + '}';
     }
+
 }
 

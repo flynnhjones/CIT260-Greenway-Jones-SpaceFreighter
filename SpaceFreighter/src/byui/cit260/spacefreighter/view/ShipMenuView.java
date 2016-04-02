@@ -6,7 +6,9 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.ItemControl;
+import byui.cit260.spacefreighter.control.SpaceShipControl;
 import byui.cit260.spacefreighter.model.Game;
+import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class ShipMenuView extends SuperView {
                 +"\n| S - Go to the onboard shop       |"
                 +"\n| T – Training room                |"
                 +"\n| C - Check Current Value          |"
+                +"\n| X - Check ship fuel and armor    |"
                 +"\n| Q – Quit to game menu            |"
                 +"\n*----------------------------------*");
     }
@@ -79,6 +82,9 @@ public class ShipMenuView extends SuperView {
                 }
         }
                 break;
+            case "X":
+                this.checkShipValue();
+                break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -120,5 +126,10 @@ public class ShipMenuView extends SuperView {
         
         value = ItemControl.findValue(Game.inventory);
         this.console.println("Your current net worth is " + value + " currency.");
+    }
+
+    private void checkShipValue() {
+        SpaceShip ship = Game.spaceShip;
+        this.console.println("Your ship has " + ship.getDurability() + " durability and " + ship.getFuelCapacity() + " fuel remaining.");
     }
 }

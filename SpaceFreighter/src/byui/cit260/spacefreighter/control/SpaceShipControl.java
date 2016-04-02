@@ -5,13 +5,15 @@
  */
 package byui.cit260.spacefreighter.control;
 
+import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
+import static java.lang.System.console;
 
 /**
  *
  * @author Ben/Flynn
  */
-public class SpaceShipControl {
+public class SpaceShipControl{
     
     public static int calcCostToRepair( int currentDurability, int mechSkillPoint) {
         if (currentDurability > 100) {
@@ -55,5 +57,5 @@ public class SpaceShipControl {
         return Math.round(costToReFuel);
         
         
-    }
+    }    
 }
