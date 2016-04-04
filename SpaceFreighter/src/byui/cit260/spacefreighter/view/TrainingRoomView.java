@@ -5,9 +5,6 @@ package byui.cit260.spacefreighter.view;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
-import java.util.Scanner;
 /**
  *
  * @author jaxom
@@ -15,22 +12,19 @@ import java.util.Scanner;
 public class TrainingRoomView extends SuperView {
     
         public TrainingRoomView() {
+  
          
             super("\n"
                 + "*-------------------------------------------*"
-                + "\n|             |Training Room|                |"
+                + "\n|             |Training Room|               |"
                 + "\n|-------------------------------------------|"
-                +"\n| Current Pilot Skill Points: 3             |"
-                +"\n| Current Mechanic Skill Points: 2          |"
-                +"\n| Current Weapon Specialist Skill Points: 5 |"
-                +"\n| P - Increase the Pilot skill.             |"
-                +"\n| M – Increase the Mechanic skill.          |"
-                +"\n| F – Increase the Weapon Specialist skill. |"
+                +"\n| I - Increase skill Points.                |"
+                +"\n| U – Upgrade the Ship.                     |"
                 +"\n| Q – Quit to Ship Menu                     |"
                 +"\n*-------------------------------------------*");
          
          }
-   
+
  
     @Override
     public boolean doAction(String choice) {
@@ -38,15 +32,11 @@ public class TrainingRoomView extends SuperView {
         choice = choice.toUpperCase();
         
         switch (choice) {
-            case "P":
-                this.increasePilotSkill();
+            case "I":
+                this.increaseSkillPoints();
                 break;
-            case "M":
-                this.increaseMechanicSkill();
-                break;
-            case "W":
-                this.increaseWeaponSpecialistSkill();
-                break;            
+            case "U":
+                this.upgradeTheShip();
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -54,18 +44,17 @@ public class TrainingRoomView extends SuperView {
         return false;
     }
 
+    private void increaseSkillPoints() {
+        SkillPointView SkillPoint = new SkillPointView();
+         SkillPoint.display();
+    }
+
+    private void upgradeTheShip() {
+        UpgradeTheShipView upgrade = new UpgradeTheShipView();
+        upgrade.display();
+    }
 
     
-    private void increasePilotSkill() {
-        this.console.println("The increasePilotSkill call works, but hasn't been designed yet.");
-    }
 
-    private void increaseMechanicSkill() {
-        this.console.println("The increaseMechanicSkill call works, but hasn't been designed yet.");
-    }
-
-    private void increaseWeaponSpecialistSkill() {
-        this.console.println("The increaseWeaponSpecialistSkill call works, but hasn't been designed yet.");
-    }
     
 }

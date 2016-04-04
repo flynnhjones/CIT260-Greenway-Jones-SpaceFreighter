@@ -21,7 +21,16 @@ public class Game implements Serializable{
     private Actor actor;
     public static Map map;
     public static JobBoardScene[] jobBoard;
+    public static TrainingRoom[] skillPoints;
 
+    public static TrainingRoom[] getSkillPoints() {
+        return skillPoints;
+    }
+
+    public static void setSkillPoints(TrainingRoom[] skillPoints) {
+        Game.skillPoints = skillPoints;
+    }
+    
     public static JobBoardScene[] getJobBoard() {
         return jobBoard;
     }

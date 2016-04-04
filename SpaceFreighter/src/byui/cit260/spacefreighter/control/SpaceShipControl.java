@@ -5,9 +5,7 @@
  */
 package byui.cit260.spacefreighter.control;
 
-import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
-import static java.lang.System.console;
 
 /**
  *

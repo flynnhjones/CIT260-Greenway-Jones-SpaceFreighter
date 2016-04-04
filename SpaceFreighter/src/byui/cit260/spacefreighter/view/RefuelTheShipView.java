@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
-import java.util.Scanner;
 import spacefreighter.SpaceFreighter;
 
 /**

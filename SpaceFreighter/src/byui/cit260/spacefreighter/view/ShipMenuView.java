@@ -25,7 +25,6 @@ public class ShipMenuView extends SuperView {
                 + "\n|            Ship Menu             |"
                 + "\n|----------------------------------|"
                 +"\n| R - Repair damaged ship          |"
-                +"\n| U – Upgrade the ships Components |"
                 +"\n| F – Refuel the ship              |"
                 +"\n| J – Check out the Job Board      |"
                 +"\n| S - Go to the onboard shop       |"
@@ -51,9 +50,6 @@ public class ShipMenuView extends SuperView {
             }
         }
                 break;
-            case "U":
-                this.upgradeTheShipMenu();
-                break;
             case "F":
         {
             try {
@@ -76,11 +72,9 @@ public class ShipMenuView extends SuperView {
         {
             try {
                 this.checkValue();
-            } catch (ItemControlException ex) {
+            } catch (ItemControlException | IOException ex) {
                 ErrorView.display("checkValue", ex.getMessage());
-                } catch (IOException ex) {
-                ErrorView.display("checkValue", ex.getMessage());
-            }
+                }
         }
                 break;
             case "X":
@@ -96,10 +90,6 @@ public class ShipMenuView extends SuperView {
     private void repairTheShipMenu() throws IOException {
         RepairTheShipView repairTheShip = new RepairTheShipView();
         repairTheShip.CostToRepair();
-    }
-
-    private void upgradeTheShipMenu() {
-        this.console.println("Upgrade Ship Menu call works - BUT NOT YET DESIGNED");
     }
 
     private void jobBoardMenu() {

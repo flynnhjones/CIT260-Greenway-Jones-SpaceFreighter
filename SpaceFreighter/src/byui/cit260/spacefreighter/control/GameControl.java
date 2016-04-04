@@ -11,6 +11,7 @@ import byui.cit260.spacefreighter.model.JobBoardScene;
 import byui.cit260.spacefreighter.model.Map;
 import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
+import byui.cit260.spacefreighter.model.TrainingRoom;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,6 +53,9 @@ public class GameControl {
         
         JobBoardScene[] jobBoard = JobBoardSceneControl.createJobBoard();
         game.setJobBoard(jobBoard);
+        
+        TrainingRoom[] skillPoints = TrainingRoomControl.createSkillPoint();
+        Game.setSkillPoints(skillPoints);
         
         MapControl.moveActorsToStartLocation(map);                
     }
