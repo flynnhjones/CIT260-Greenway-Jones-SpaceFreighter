@@ -66,12 +66,7 @@ public class GatherSpaceChickens extends SuperView{
                 + "\nIt wasn't much trouble to put them in. Knock that one off the job list! Maybe she will need more later?");
         
         
-        JobBoardSceneControl.completeQuest(JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal(), 100);
-        
-        this.console.println("Job complete! You earned 100 Space Bucks");    
-        
-        
-        
+        JobBoardSceneControl.completeQuest(JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal());
     }
 
     private void dontGetChickens() {

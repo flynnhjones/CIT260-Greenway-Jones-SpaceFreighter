@@ -28,6 +28,8 @@ import spacefreighter.SpaceFreighter;
  * @author Daddy
  */
 public class JobBoardSceneControl {
+    
+    private static PrintWriter console = SpaceFreighter.getOutFile();
 
     public static boolean startJob(int choice) {
         
@@ -76,15 +78,14 @@ public class JobBoardSceneControl {
             return false;
     }
 
-    public static void completeQuest(int ordinal, int money) {
+    public static void completeQuest(int ordinal) {
         JobBoardScene[] jobBoard = Game.jobBoard;
         jobBoard[ordinal].setCompleted(true); 
-        CurrencyControl.addCurrency(money);
-        TrainingRoomControl.addUnusedSkillPoint(1);
+        CurrencyControl.addCurrency(jobBoard[ordinal].getReward());
+        TrainingRoomControl.addUnusedSkillPoint(jobBoard[ordinal].getJobDifficulty());
         SpaceShipControl.removeFuelAndDurability();
-    }
-    
-    PrintWriter console = SpaceFreighter.getOutFile();
+        JobBoardSceneControl.console.println("Job complete! You earned " + jobBoard[ordinal].getReward() + " Space Bucks and " + jobBoard[ordinal].getJobDifficulty() + " job point(s)!");
+    }   
     
      public static JobBoardScene[] createJobBoard() {
         

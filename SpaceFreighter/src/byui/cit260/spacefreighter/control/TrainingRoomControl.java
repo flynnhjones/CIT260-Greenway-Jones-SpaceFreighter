@@ -8,12 +8,18 @@ package byui.cit260.spacefreighter.control;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.TrainingRoom;
 import byui.cit260.spacefreighter.view.TrainingRoomView;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import spacefreighter.SpaceFreighter;
 
 /**
  *
  * @author jaxom
  */
 public class TrainingRoomControl {
+    
+    private static PrintWriter console = SpaceFreighter.getOutFile();
+    private static BufferedReader keyboard = SpaceFreighter.getInFile();
     
     
     public static TrainingRoom[] createSkillPoint(){
@@ -61,6 +67,9 @@ public class TrainingRoomControl {
         int pilotPoint = skillPoints[TrainingRoomControl.Skill.pilotPoint.ordinal()].getSkillAmount() + i;        
         skillPoints[TrainingRoomControl.Skill.pilotPoint.ordinal()].setSkillAmount(pilotPoint);
         TrainingRoomControl.removeUnusedSkillPoint();
+        
+        TrainingRoomControl.console.println("Your Pilot Skill points are now " + pilotPoint + " points!");
+        
     }
     
     public static void addMechanicSkillPoint(int i) {
@@ -72,6 +81,8 @@ public class TrainingRoomControl {
         int mechanicPoint = skillPoints[TrainingRoomControl.Skill.mechanicPoint.ordinal()].getSkillAmount() + i;
         skillPoints[TrainingRoomControl.Skill.mechanicPoint.ordinal()].setSkillAmount(mechanicPoint);
         TrainingRoomControl.removeUnusedSkillPoint();
+        
+        TrainingRoomControl.console.println("Your Mechanic Skill points are now " + mechanicPoint + " points!");
     }
     
     public static void addWeaponSpecialistSkillPoint(int i) {
@@ -83,6 +94,8 @@ public class TrainingRoomControl {
         int weaponSpecialistPoint = skillPoints[TrainingRoomControl.Skill.weaponSpecialistPoint.ordinal()].getSkillAmount() + i;
         skillPoints[TrainingRoomControl.Skill.weaponSpecialistPoint.ordinal()].setSkillAmount(weaponSpecialistPoint);
         TrainingRoomControl.removeUnusedSkillPoint();
+        
+        TrainingRoomControl.console.println("Your Weapon Specialist Skill points are now " + weaponSpecialistPoint + " points!");
     }
     
     public static void addUnusedSkillPoint(int i) {
