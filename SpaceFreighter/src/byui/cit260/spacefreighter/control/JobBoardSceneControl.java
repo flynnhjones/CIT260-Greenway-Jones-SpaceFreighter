@@ -76,9 +76,12 @@ public class JobBoardSceneControl {
             return false;
     }
 
-    public static void completeQuest(int ordinal) {
+    public static void completeQuest(int ordinal, int money) {
         JobBoardScene[] jobBoard = Game.jobBoard;
-        jobBoard[ordinal].setCompleted(true);        
+        jobBoard[ordinal].setCompleted(true); 
+        CurrencyControl.addCurrency(money);
+        TrainingRoomControl.addUnusedSkillPoint(1);
+        SpaceShipControl.removeFuelAndDurability();
     }
     
     PrintWriter console = SpaceFreighter.getOutFile();

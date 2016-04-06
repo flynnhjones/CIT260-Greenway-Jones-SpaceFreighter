@@ -9,7 +9,6 @@ import byui.cit260.spacefreighter.control.CurrencyControl;
 import byui.cit260.spacefreighter.control.JobBoardSceneControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
-import byui.cit260.spacefreighter.view.JobBoardView;
 import byui.cit260.spacefreighter.view.SuperView;
 
 /**
@@ -46,7 +45,7 @@ public class GatherSpaceChickens extends SuperView{
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
-        return false;
+        return true;
     }    
 
     private void getChickens() {
@@ -66,19 +65,17 @@ public class GatherSpaceChickens extends SuperView{
                 + "\nMadam Granger left a note with your payment enclosed on her porce saying you can just leave the chickens in her little barn."
                 + "\nIt wasn't much trouble to put them in. Knock that one off the job list! Maybe she will need more later?");
         
-        CurrencyControl.addCurrency(100);
-        JobBoardSceneControl.completeQuest(JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal());
+        
+        JobBoardSceneControl.completeQuest(JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal(), 100);
         
         this.console.println("Job complete! You earned 100 Space Bucks");    
-        JobBoardView jobView = new JobBoardView();
-        jobView.display();
+        
         
         
     }
 
     private void dontGetChickens() {
-        this.console.println("You decide getting chickens for some old coot totally isn't worth your time. Better go find a REAL job."
-                + "\nEnter 'Q' to give up on this job.");
+        this.console.println("You decide getting chickens for some old coot totally isn't worth your time. Better go find a REAL job.");
         
     }
 

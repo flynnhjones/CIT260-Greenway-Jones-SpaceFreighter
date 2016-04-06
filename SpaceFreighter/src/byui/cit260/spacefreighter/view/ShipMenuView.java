@@ -6,11 +6,14 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.ItemControl;
+import byui.cit260.spacefreighter.control.SpaceShipControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.ItemControlException;
 import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,6 +49,8 @@ public class ShipMenuView extends SuperView {
             try {
                 this.repairTheShipMenu();
             } catch (IOException ex) {
+                ErrorView.display("repairTheShipMenu", ex.getMessage());
+            } catch (SpaceShipControlException ex) {
                 ErrorView.display("repairTheShipMenu", ex.getMessage());
             }
         }
@@ -87,9 +92,8 @@ public class ShipMenuView extends SuperView {
         return false;
     }
     
-    private void repairTheShipMenu() throws IOException {
-        RepairTheShipView repairTheShip = new RepairTheShipView();
-        repairTheShip.CostToRepair();
+    private void repairTheShipMenu() throws IOException, SpaceShipControlException {
+        SpaceShipControl.costToRepair();
     }
 
     private void jobBoardMenu() {
@@ -103,8 +107,9 @@ public class ShipMenuView extends SuperView {
     }
     
     private void refuelTheShipMenu() throws SpaceShipControlException, IOException {
-       RefuelTheShipView refuelTheShip = new RefuelTheShipView();
-        refuelTheShip.CostToRefuel(); 
+       
+        SpaceShipControl.costToRefuel();
+        
     }
 
     private void shopMenu() {

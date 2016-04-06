@@ -6,6 +6,9 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import spacefreighter.SpaceFreighter;
 
 /**
@@ -40,7 +43,13 @@ public class MainMenuView extends SuperView {
                 this.helpMenu();
                 break;            
             case "L":
+        {
+            try {
                 this.loadSavedGame();
+            } catch (IOException ex) {
+                ErrorView.display("Main Menu load saved game", ex.getMessage());
+            }
+        }
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -63,10 +72,10 @@ public class MainMenuView extends SuperView {
        
     }    
 
-    private void loadSavedGame() {
+    private void loadSavedGame() throws IOException {
         this.console.println("Enter name of saved file.");
         
-        String filePath = this.getInput();
+        String filePath = this.keyboard.readLine();
         
         try {
             GameControl.getSavedGame(filePath);

@@ -10,6 +10,8 @@ package byui.cit260.spacefreighter.view;
  * @author jaxom
  */
 public class TrainingRoomView extends SuperView {
+
+
     
         public TrainingRoomView() {
   
@@ -54,7 +56,9 @@ public class TrainingRoomView extends SuperView {
         upgrade.display();
     }
 
-    
+        public static void noSkillPoints() {
+        TrainingRoomView.console.println("You don't have any unused skill points, sucka!");
+    }
 
     
 }

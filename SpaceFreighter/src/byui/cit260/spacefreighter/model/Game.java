@@ -51,12 +51,12 @@ public class Game implements Serializable{
         Game.map = map;
     }
 
-    public SpaceShip getSpaceShip() {
+    public static SpaceShip getSpaceShip() {
         return spaceShip;
     }
 
-    public void setSpaceShip(SpaceShip spaceShip) {
-        this.spaceShip = spaceShip;
+    public static void setSpaceShip(SpaceShip spaceShip) {
+        Game.spaceShip = spaceShip;
     }
     
     public InventoryItem[] getInventory() {

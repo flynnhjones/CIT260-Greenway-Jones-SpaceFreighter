@@ -14,12 +14,12 @@ public class SpaceShip implements Serializable{
     
     //class instance variables
     private String shipName;
-    private int durability;
-    private int fuelCapacity;
+    public int durability;
+    public int fuelGauge;
 
     public SpaceShip() {
-        this.durability = 0;
-        this.fuelCapacity = 0;
+        this.durability = 100;
+        this.fuelGauge = 100;
         this.shipName = "\nHalf a ship.";
     }
 
@@ -40,11 +40,11 @@ public class SpaceShip implements Serializable{
     }
 
     public int getFuelCapacity() {
-        return fuelCapacity;
+        return fuelGauge;
     }
 
     public void setFuelCapacity(int fuelCapacity) {
-        this.fuelCapacity = fuelCapacity;
+        this.fuelGauge = fuelCapacity;
     }
 
     @Override
@@ -52,13 +52,13 @@ public class SpaceShip implements Serializable{
         int hash = 5;
         hash = 53 * hash + Objects.hashCode(this.shipName);
         hash = 53 * hash + this.durability;
-        hash = 53 * hash + this.fuelCapacity;
+        hash = 53 * hash + this.fuelGauge;
         return hash;
     }
 
     @Override
     public String toString() {
-        return "SpaceShip{" + "shipName=" + shipName + ", durability=" + durability + ", fuelCapacity=" + fuelCapacity + '}';
+        return "SpaceShip{" + "shipName=" + shipName + ", durability=" + durability + ", fuelCapacity=" + fuelGauge + '}';
     }
     
     @Override
@@ -76,7 +76,7 @@ public class SpaceShip implements Serializable{
         if (this.durability != other.durability) {
             return false;
         }
-        if (this.fuelCapacity != other.fuelCapacity) {
+        if (this.fuelGauge != other.fuelGauge) {
             return false;
         }
         if (!Objects.equals(this.shipName, other.shipName)) {

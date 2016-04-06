@@ -6,7 +6,6 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.TrainingRoomControl;
-import static byui.cit260.spacefreighter.control.TrainingRoomControl.Skill.pilotPoint;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.TrainingRoom;
 

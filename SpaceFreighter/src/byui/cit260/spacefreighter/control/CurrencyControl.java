@@ -19,5 +19,11 @@ public class CurrencyControl {
         int currency = inventory[ItemControl.Item.currency.ordinal()].getQuantity() + i;
         inventory[ItemControl.Item.currency.ordinal()].setQuantity(currency);
     }
+
+    static void removeCurrency(int i) {
+        InventoryItem[] inventory = Game.inventory;
+        int currency = inventory[ItemControl.Item.currency.ordinal()].getQuantity() - i;
+        inventory[ItemControl.Item.currency.ordinal()].setQuantity(currency);
+    }
     
 }

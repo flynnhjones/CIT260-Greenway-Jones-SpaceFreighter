@@ -18,8 +18,8 @@ public abstract class SuperView implements ViewInterface {
     
     protected String displayMessage;
     
-    protected final BufferedReader keyboard = SpaceFreighter.getInFile();
-    protected final PrintWriter console = SpaceFreighter.getOutFile();
+    protected final static BufferedReader keyboard = SpaceFreighter.getInFile();
+    protected final static PrintWriter console = SpaceFreighter.getOutFile();
     
     public SuperView() {
         

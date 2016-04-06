@@ -85,8 +85,7 @@ public class SpaceFreighter {
             String filePath = "C:/SpaceGame/log.txt";
             SpaceFreighter.logFile = new PrintWriter(filePath);
             
-        StartProgramView startProgramView = new StartProgramView();    
-        startProgramView.displayStartProgramView();
+        StartProgramView startProgramView = new StartProgramView();
         startProgramView.displayStartProgramView();
         } catch (GameControlException | IOException e) {
             ErrorView.display(("Exception: " + e.toString() +

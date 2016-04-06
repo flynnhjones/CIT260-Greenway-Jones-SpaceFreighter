@@ -34,18 +34,7 @@ public class MapControl {
 
     static void moveActorsToStartLocation(Map map) {
         System.out.println("This is move actors");
-    }
-
-    public static void saveMap(Map map, String filePath) throws GameControlException {
-        try(FileOutputStream fops = new FileOutputStream("C:/SpaceGame/map." + filePath + ".txt")) {
-            ObjectOutputStream output = new ObjectOutputStream(fops);
-            
-            output.writeObject(map);
-        }
-        catch(Exception e) {
-            throw new GameControlException(e.getMessage());
-    }
-    }
+    }    
 
     static void getSavedMap(String filePath) throws GameControlException {
         try(FileInputStream fips = new FileInputStream("C:/SpaceGame/map." + filePath + ".txt")) {

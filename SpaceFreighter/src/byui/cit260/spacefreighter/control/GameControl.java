@@ -13,6 +13,8 @@ import byui.cit260.spacefreighter.model.Player;
 import byui.cit260.spacefreighter.model.SpaceShip;
 import byui.cit260.spacefreighter.model.TrainingRoom;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
+import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
+import cit.byui.cit260.spacefreighter.exceptions.SpaceShipControlException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -55,9 +57,8 @@ public class GameControl {
         game.setJobBoard(jobBoard);
         
         TrainingRoom[] skillPoints = TrainingRoomControl.createSkillPoint();
-        Game.setSkillPoints(skillPoints);
-        
-        MapControl.moveActorsToStartLocation(map);                
+        Game.setSkillPoints(skillPoints);        
+                        
     }
 
     public static void saveGame(Game currentGame, String filePath) throws GameControlException {
@@ -73,7 +74,7 @@ public class GameControl {
         
     }
 
-    public static void getSavedGame(String filePath) throws GameControlException {
+    public static void getSavedGame(String filePath) throws GameControlException, JobBoardSceneControlException, SpaceShipControlException {
         Game game = null;
         
         try(FileInputStream fips = new FileInputStream("C:/SpaceGame/" + filePath + ".txt")) {
@@ -87,7 +88,11 @@ public class GameControl {
         
         SpaceFreighter.setCurrentGame(game);
         ItemControl.getSavedInventory(filePath);
-        MapControl.getSavedMap(filePath);
+        Map map = MapControl.createMap();
+        game.setMap(map);
+        JobBoardSceneControl.getSavedJobBoard(filePath);
+        SpaceShipControl.getSavedSpaceShip(filePath);
+        
     }
 
 

@@ -9,6 +9,7 @@ import byui.cit260.spacefreighter.control.GameControl;
 import byui.cit260.spacefreighter.control.ItemControl;
 import byui.cit260.spacefreighter.control.JobBoardSceneControl;
 import byui.cit260.spacefreighter.control.MapControl;
+import byui.cit260.spacefreighter.control.SpaceShipControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.InventoryItem;
 import byui.cit260.spacefreighter.model.Location;
@@ -160,14 +161,14 @@ public class GameMenuView extends SuperView {
             ItemControl.saveInventory(Game.inventory, filePath);
         } catch (Exception ex) {
             ErrorView.display("GameMenuView", ex.getMessage());
-        }
+        } 
         try {
-            MapControl.saveMap(Game.map, filePath);
+            JobBoardSceneControl.saveJobBoardScenes(Game.jobBoard, filePath);
         } catch (Exception ex) {
             ErrorView.display("GameMenuView", ex.getMessage());
         }
-         try {
-            JobBoardSceneControl.saveJobBoardScenes(Game.jobBoard, filePath);
+        try {
+            SpaceShipControl.saveSpaceShip(Game.spaceShip, filePath);
         } catch (Exception ex) {
             ErrorView.display("GameMenuView", ex.getMessage());
         }
