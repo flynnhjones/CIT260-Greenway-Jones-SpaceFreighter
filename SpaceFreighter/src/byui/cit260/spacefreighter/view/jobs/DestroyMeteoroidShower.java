@@ -83,9 +83,4 @@ public class DestroyMeteoroidShower extends SuperView {
         this.console.println("You decide not to take the job.");
     }
     
-     public void broken() {
-        this.console.println("This is one broken quest!");
-    }
-    
-    
 }
