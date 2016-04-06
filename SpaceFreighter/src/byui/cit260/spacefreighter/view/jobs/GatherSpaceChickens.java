@@ -20,12 +20,18 @@ public class GatherSpaceChickens extends SuperView{
    public GatherSpaceChickens() {  
        
        super("\n Old Madam Granger:"
-            + "\nThank you so much for taking my job! I can't tell you how badly I've needed this to be done. I just need some dang chickens, but everybody says it's beneath them!"
-            + "\nI'm just an old woman who has a broken hip and I can't get around well. My husband would normally fetch me some but he died a while back."
-            + "\nPlease please head over to the farmland quadrant and bring me 10 chickens. Thank you so much!"
-            + "\n\n What will you do?"
-            + "\nG - Get her the stupid chickens (even though it's not worth your time)"
-            + "\nD - Don't bother. You've got waaaaay better things to do!"
+            + "\n   Thank you so much for taking my job! I can't tell you how badly "
+            + "\n I've needed this to be done. I just need some dang chickens, but everybody "
+            + "\n says it's beneath them!"
+            + "\n   I'm just an old woman who has a broken hip and I can't get around well. "
+            + "\n My husband would normally fetch me some but he died a while back."
+            + "\n   Can you Please head over to the farmland quadrant and bring me 10 chickens. "
+            + "\n Thank you so much!"
+            + "\n-------------------------------------------------------------------------"   
+            + "\n************************What will you do?********************************"
+            + "\n| G - Get her the stupid chickens (even though it's not worth your time) |"
+            + "\n| D - Don't bother. You've got waaaaay better things to do!              |"
+            + "\n**************************************************************************"
             + "\nMake your choice");    
 }
    

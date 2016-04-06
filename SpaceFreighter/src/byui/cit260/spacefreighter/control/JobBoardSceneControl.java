@@ -8,7 +8,7 @@ package byui.cit260.spacefreighter.control;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
 import byui.cit260.spacefreighter.view.ErrorView;
-import byui.cit260.spacefreighter.view.JobBoardView;
+import byui.cit260.spacefreighter.view.jobs.DestroyMeteoroidShower;
 import byui.cit260.spacefreighter.view.jobs.GatherSpaceChickens;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.FileInputStream;
@@ -44,7 +44,7 @@ public class JobBoardSceneControl {
                 JobBoardSceneControl.gatherSpaceChickens();
                 break;
             case 2:
-                JobBoardSceneControl.brokenquest();
+                JobBoardSceneControl.destroyMeteoroidShower();
                 break;
             case 3:
                 JobBoardSceneControl.brokenquest();
@@ -93,19 +93,17 @@ public class JobBoardSceneControl {
         
             JobBoardScene gatherSpaceChickens = new JobBoardScene();
             gatherSpaceChickens.setJobDescription("Gather Space Chickens.");
-            gatherSpaceChickens.setJobType("Non-battle job");
             gatherSpaceChickens.setJobDifficulty(1);
             gatherSpaceChickens.setReward(100);
             gatherSpaceChickens.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal()] = gatherSpaceChickens;
 
-            JobBoardScene insertJobSceneHere1 = new JobBoardScene();
-            insertJobSceneHere1.setJobDescription("Insert Job description here 1");
-            insertJobSceneHere1.setJobType("Non-battle job");
-            insertJobSceneHere1.setJobDifficulty(1);
-            insertJobSceneHere1.setReward(100);
-            insertJobSceneHere1.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere1.ordinal()] = insertJobSceneHere1;
+            JobBoardScene destroyMeteoroidShower = new JobBoardScene();
+            destroyMeteoroidShower.setJobDescription("Destroy a Meteoroid field.");
+            destroyMeteoroidShower.setJobDifficulty(1);
+            destroyMeteoroidShower.setReward(100);
+            destroyMeteoroidShower.setCompleted(false);
+            jobBoard[JobBoardSceneControl.Scene.destroyMeteoroidShower.ordinal()] = destroyMeteoroidShower;
             
             JobBoardScene insertJobSceneHere2 = new JobBoardScene();
             insertJobSceneHere2.setJobDescription("Insert Job description here 2");
@@ -200,6 +198,11 @@ public class JobBoardSceneControl {
         gatherchickens.broken();
     }
 
+    private static void destroyMeteoroidShower(){
+        DestroyMeteoroidShower destroyMeteoroidShower = new DestroyMeteoroidShower();
+        destroyMeteoroidShower.display();
+    }
+    
     private static void gatherSpaceChickens() {
         GatherSpaceChickens gatherchickens = new GatherSpaceChickens();
         gatherchickens.display();
@@ -208,7 +211,7 @@ public class JobBoardSceneControl {
     public enum Scene {
         
             gatherSpaceChickens,
-            insertJobSceneHere1,
+            destroyMeteoroidShower,
             insertJobSceneHere2,
             insertJobSceneHere3,
             insertJobSceneHere4,
