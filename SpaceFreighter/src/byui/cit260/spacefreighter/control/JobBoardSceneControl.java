@@ -11,6 +11,7 @@ import byui.cit260.spacefreighter.view.ErrorView;
 import byui.cit260.spacefreighter.view.jobs.CheckOutDistressBeacon;
 import byui.cit260.spacefreighter.view.jobs.DestroyMeteoroidShower;
 import byui.cit260.spacefreighter.view.jobs.GatherSpaceChickens;
+import byui.cit260.spacefreighter.view.jobs.RaidATown;
 import byui.cit260.spacefreighter.view.jobs.SmallSettlementInTrouble;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.FileInputStream;
@@ -55,7 +56,7 @@ public class JobBoardSceneControl {
                 JobBoardSceneControl.smallSettlementInTrouble();
                 break;
             case 5:
-                JobBoardSceneControl.brokenquest();
+                JobBoardSceneControl.raidATown();
                 break;
             case 6:
                 JobBoardSceneControl.brokenquest();
@@ -64,12 +65,6 @@ public class JobBoardSceneControl {
                 JobBoardSceneControl.brokenquest();
                 break;
             case 8:
-                JobBoardSceneControl.brokenquest();
-                break;
-            case 9:
-                JobBoardSceneControl.brokenquest();
-                break;
-            case 10:
                 JobBoardSceneControl.brokenquest();
                 break;
             default:
@@ -91,12 +86,13 @@ public class JobBoardSceneControl {
     
      public static JobBoardScene[] createJobBoard() {
         
-            JobBoardScene[] jobBoard = new JobBoardScene[10];
+            JobBoardScene[] jobBoard = new JobBoardScene[8];
         
             JobBoardScene gatherSpaceChickens = new JobBoardScene();
             gatherSpaceChickens.setJobDescription("Gather Space Chickens.");
             gatherSpaceChickens.setJobDifficulty(1);
             gatherSpaceChickens.setReward(100);
+            gatherSpaceChickens.setJobType("Awesome Job");
             gatherSpaceChickens.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.gatherSpaceChickens.ordinal()] = gatherSpaceChickens;
 
@@ -104,33 +100,38 @@ public class JobBoardSceneControl {
             destroyMeteoroidShower.setJobDescription("Destroy a Meteoroid field.");
             destroyMeteoroidShower.setJobDifficulty(1);
             destroyMeteoroidShower.setReward(100);
+            destroyMeteoroidShower.setJobType("Amazing Job");
             destroyMeteoroidShower.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.destroyMeteoroidShower.ordinal()] = destroyMeteoroidShower;
             
             JobBoardScene checkOutDistressBeacon = new JobBoardScene();
-            checkOutDistressBeacon.setJobDescription("Go Check Out a Distress Beacon");
+            checkOutDistressBeacon.setJobDescription("Go Check Out a Distress Beacon.");
             checkOutDistressBeacon.setJobDifficulty(2);
             checkOutDistressBeacon.setReward(200);
+            checkOutDistressBeacon.setJobType("Cool Job");
             checkOutDistressBeacon.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.checkOutDistressBeacon.ordinal()] = checkOutDistressBeacon;
             
             JobBoardScene smallSettlementInTrouble = new JobBoardScene();
-            smallSettlementInTrouble.setJobDescription("Assist a Small Settlement");
+            smallSettlementInTrouble.setJobDescription("Assist a Small Settlement.");
             smallSettlementInTrouble.setJobDifficulty(3);
+            smallSettlementInTrouble.setJobType("Fun Job");
             smallSettlementInTrouble.setReward(500);
             smallSettlementInTrouble.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.smallSettlementInTrouble.ordinal()] = smallSettlementInTrouble;
                       
-            JobBoardScene insertJobSceneHere4 = new JobBoardScene();
-            insertJobSceneHere4.setJobDescription("Insert Job description here 4");
-            insertJobSceneHere4.setJobDifficulty(2);
-            insertJobSceneHere4.setReward(100);
-            insertJobSceneHere4.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere4.ordinal()] = insertJobSceneHere4;
+            JobBoardScene raidATown = new JobBoardScene();
+            raidATown.setJobDescription("Raid a spacetown that is ran by the mob.");
+            raidATown.setJobDifficulty(30);
+            raidATown.setJobType("Hardest Job Ever");
+            raidATown.setReward(10000);
+            raidATown.setCompleted(false);
+            jobBoard[JobBoardSceneControl.Scene.raidATown.ordinal()] = raidATown;
             
             JobBoardScene insertJobSceneHere5 = new JobBoardScene();
             insertJobSceneHere5.setJobDescription("Insert Job description here 5");
             insertJobSceneHere5.setJobDifficulty(2);
+            insertJobSceneHere5.setJobType("Hopfully Awesome Job");
             insertJobSceneHere5.setReward(100);
             insertJobSceneHere5.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere5.ordinal()] = insertJobSceneHere5;
@@ -138,6 +139,7 @@ public class JobBoardSceneControl {
             JobBoardScene insertJobSceneHere6 = new JobBoardScene();
             insertJobSceneHere6.setJobDescription("Insert Job description here 6");
             insertJobSceneHere6.setJobDifficulty(3);
+            insertJobSceneHere6.setJobType("Hopfully Awesome Job");
             insertJobSceneHere6.setReward(100);
             insertJobSceneHere6.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere6.ordinal()] = insertJobSceneHere6;
@@ -145,22 +147,11 @@ public class JobBoardSceneControl {
             JobBoardScene insertJobSceneHere7 = new JobBoardScene();
             insertJobSceneHere7.setJobDescription("Insert Job description here 7");
             insertJobSceneHere7.setJobDifficulty(3);
+            insertJobSceneHere7.setJobType("Hopfully Awesome Job");
             insertJobSceneHere7.setReward(100);
             insertJobSceneHere7.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere7.ordinal()] = insertJobSceneHere7;
             
-            JobBoardScene insertJobSceneHere8 = new JobBoardScene();
-            insertJobSceneHere8.setJobDescription("Insert Job description here 8");
-            insertJobSceneHere8.setJobDifficulty(3);
-            insertJobSceneHere8.setReward(100);
-            insertJobSceneHere8.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere8.ordinal()] = insertJobSceneHere8;
-            
-            JobBoardScene insertJobSceneHere9 = new JobBoardScene();
-            insertJobSceneHere9.setJobDescription("Insert Job description here 9");
-            insertJobSceneHere9.setJobDifficulty(4);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere9.ordinal()] = insertJobSceneHere9;
-        
      return jobBoard;   
     }
     
@@ -211,6 +202,11 @@ public class JobBoardSceneControl {
         SmallSettlementInTrouble smallSettlementInTrouble = new SmallSettlementInTrouble();
         smallSettlementInTrouble.display();
     }
+
+    private static void raidATown() {
+      RaidATown raidATown = new RaidATown();
+      raidATown.display();
+    }
     
     public enum Scene {
         
@@ -218,7 +214,7 @@ public class JobBoardSceneControl {
             destroyMeteoroidShower,
             checkOutDistressBeacon,
             smallSettlementInTrouble,
-            insertJobSceneHere4,
+            raidATown,
             insertJobSceneHere5,
             insertJobSceneHere6,
             insertJobSceneHere7,
