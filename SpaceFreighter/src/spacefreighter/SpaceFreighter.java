@@ -7,8 +7,9 @@ package spacefreighter;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.Player;
+import byui.cit260.spacefreighter.view.DisplayBannerView;
 import byui.cit260.spacefreighter.view.ErrorView;
-import byui.cit260.spacefreighter.view.StartProgramView;
+import byui.cit260.spacefreighter.view.StartNewGameView;
 import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,9 +86,9 @@ public class SpaceFreighter {
             String filePath = "C:/SpaceGame/log.txt";
             SpaceFreighter.logFile = new PrintWriter(filePath);
             
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
-        } catch (GameControlException | IOException e) {
+        DisplayBannerView displayBannerView = new DisplayBannerView();
+        displayBannerView.display();
+        } catch (IOException e) {
             ErrorView.display(("Exception: " + e.toString() +
                                 "\nCause: " + e.getCause() +
                                 "\nMessage: "), e.getMessage());         

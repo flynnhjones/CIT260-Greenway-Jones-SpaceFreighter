@@ -6,6 +6,7 @@
 package byui.cit260.spacefreighter.view;
 
 import byui.cit260.spacefreighter.control.GameControl;
+import cit.byui.cit260.spacefreighter.exceptions.GameControlException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,14 +21,14 @@ public class MainMenuView extends SuperView {
         
     public MainMenuView() {
         super("\n"
-                + "\n-----------------------------"
-                + "\n Main Menu                   |"
-                + "\n-----------------------------"
-                +"\nG – Start new game"
-                +"\nH - Help menu"                
-                +"\nL - Load saved game"
-                +"\nQ - Exit game"
-                +"\n-----------------------------");
+                + "\n*----------------------*"
+                + "\n|       Main Menu      |"
+                + "\n|----------------------|"
+                +"\n| G – Start new game   |"
+                +"\n| H - Help menu        |"                
+                +"\n| L - Load saved game  |"
+                +"\n| Q - Exit game        |"
+                +"\n*----------------------*");
     }
     
     @Override
@@ -37,7 +38,13 @@ public class MainMenuView extends SuperView {
         
         switch (value) {
             case "G":
+        {
+            try {
                 this.startNewGame();
+            } catch (GameControlException | IOException ex) {
+                ErrorView.display("Main Menu", ex.getMessage());
+            }
+        }
                 break;
             case "H":
                 this.helpMenu();
@@ -52,17 +59,17 @@ public class MainMenuView extends SuperView {
         }
                 break;
             default:
-                this.console.println("\n*** Invalid selection *** Try again");
+                MainMenuView.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
-    private void startNewGame() {
+    public void startNewGame() throws GameControlException, IOException {
         GameControl.creatNewGame(SpaceFreighter.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        StartNewGameView startNewGameView = new StartNewGameView();
+        startNewGameView.displayStartNewGameView();
     }
 
     private void helpMenu() {

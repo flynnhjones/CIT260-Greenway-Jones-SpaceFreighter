@@ -42,7 +42,7 @@ public class TrainingRoomControl {
         skillPoints[TrainingRoomControl.Skill.weaponSpecialistPoint.ordinal()] = weaponSpecialistPoint;
         
         TrainingRoom unusedSkillPoint = new TrainingRoom();
-        unusedSkillPoint.setSkillType("Weapon Specialist");
+        unusedSkillPoint.setSkillType("Unused Skill Points");
         unusedSkillPoint.setSkillAmount(0);
         skillPoints[TrainingRoomControl.Skill.unusedSkillPoint.ordinal()] = unusedSkillPoint;
         
@@ -82,7 +82,7 @@ public class TrainingRoomControl {
         skillPoints[TrainingRoomControl.Skill.mechanicPoint.ordinal()].setSkillAmount(mechanicPoint);
         TrainingRoomControl.removeUnusedSkillPoint();
         
-        TrainingRoomControl.console.println("Your Mechanic Skill points are now " + mechanicPoint + " points!");
+        TrainingRoomControl.console.println("Your Mechanic Skill is now at " + mechanicPoint + " point(s)!");
     }
     
     public static void addWeaponSpecialistSkillPoint(int i) {
@@ -95,7 +95,7 @@ public class TrainingRoomControl {
         skillPoints[TrainingRoomControl.Skill.weaponSpecialistPoint.ordinal()].setSkillAmount(weaponSpecialistPoint);
         TrainingRoomControl.removeUnusedSkillPoint();
         
-        TrainingRoomControl.console.println("Your Weapon Specialist Skill points are now " + weaponSpecialistPoint + " points!");
+        TrainingRoomControl.console.println("Your Weapon Specialist Skill is now at " + weaponSpecialistPoint + " point(s)!");
     }
     
     public static void addUnusedSkillPoint(int i) {

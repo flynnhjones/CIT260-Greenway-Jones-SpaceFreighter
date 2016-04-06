@@ -17,40 +17,22 @@ import spacefreighter.SpaceFreighter;
  *
  * @author jaxom
  */
-public class StartProgramView {
+public class StartNewGameView {
     
-    private String promptMessage;
+    private final String promptMessage;
     PrintWriter console = SpaceFreighter.getOutFile();
 
-    public StartProgramView() {
+    public StartNewGameView() {
         
-        this.displayBanner();
         this.promptMessage = "\nPlease enter your name: ";
     }
 
-    private void displayBanner() {
-        
-        this.console.println(
-            "\n**********************************************************************************"
-            +"\n*This game you will be playing a captain. You have come into possession          *"
-            +"\n*of a spaceship, or most of a ship, and it will be! Once you                     *"
-            +"\n*have acquired the parts and pieces.                                             *"
-            +"\n*You will first be seeking jobs on the current planet to earn some parts or      *"
-            +"\n*currency, to pay for the necessary parts, to get your ship at least             *"
-            +"\n*flight worthy.                                                                  *"
-            +"\n*You will be able to hone your ship and crew skills in areas of your choosing.   *"
-            +"\n*Your first goal is to get your space ship flight worthy. The next, is to build  *"
-            +"\n*your currency to a set amount to be able to retire very wealthy.                *"
-            +"\n*                                                                                *"
-            +"\n**********************************************************************************"
-        );
-    }
     /**
      * display the start program view
      * @throws cit.byui.cit260.spacefreighter.exceptions.GameControlException
      * @throws java.io.IOException
      */
-    public void displayStartProgramView() throws GameControlException, IOException {
+    public void displayStartNewGameView() throws GameControlException, IOException {
     
         String playersName = null;
         
@@ -117,8 +99,8 @@ public class StartProgramView {
                            + "\n==============================================="
                             );
         
-        MainMenuView mainMenuView = new MainMenuView();
+        GameMenuView gameMenuView = new GameMenuView();
                 
-        mainMenuView.display();
+        gameMenuView.display();
     }
 }
