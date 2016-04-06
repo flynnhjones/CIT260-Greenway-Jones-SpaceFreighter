@@ -19,19 +19,19 @@ public class CheckOutDistressBeacon extends SuperView {
 
     public CheckOutDistressBeacon() {
         
-        super("     After arriving at the location of the distress beacon you find a small freighter ship"
-                + "\n drifting in space. After hailing the ship, you are meet with"
-                + "\n a very distressed captain, Jake, from Space Farm. He tells"
-                + "\n you his shipment of khaki pants is going to be very late unless"
-                + "\n he can get a new engine delivered and installed. He asks if"
-                + "\n you can go pick up the ship engine from the closest new engine"
-                + "\n shop, he will reward you famously."
-                + "\n-------------------------------------------------------------------------"   
-                + "\n*****What will you do?*****"
-                + "\n| T - Take the job        |"
-                + "\n| D - Don't take the job  |"
-                + "\n***************************"
-                + "\n  Make your choice");
+        super("     After arriving at the location of the distress beacon you find a "
+                + "\n small freighter ship drifting in space. After hailing the ship, "
+                + "\n you are meet with a very distressed captain, Jake, from Space "
+                + "\n Farm. He tells you his shipment of khaki pants is going to "
+                + "\n be very late unless he can get a new engine delivered and "
+                + "\n installed. He asks if you can go pick up the ship engine from "
+                + "\n the closest new engine shop, he will reward you famously."
+                + "\n-----------------------------------------------------------------"   
+                + "\n               *****What will you do?*****"
+                + "\n               | T - Take the job        |"
+                + "\n               | D - Don't take the job  |"
+                + "\n               ***************************"
+                + "\n                   Make your choice!");
         
     }
 

@@ -62,9 +62,9 @@ public class DestroyMeteoroidShower extends SuperView {
             return;
         }
         
-        this.console.println("  You take off towards your ship and Farmer Brown calls out, “Good luck"
-                + "\n " + player.getPlayerName() + ", the fate of my farm is in "
-                + "\n your hands!” "
+        this.console.println("  You take off towards your ship and Farmer Brown "
+                + "\n calls out, “Good luck" + player.getPlayerName() + ", the fate"
+                + "\n of my farm is in your hands!” "
                 + "\n   Entering the ship, you call out to your pilot to man the"
                 + "\n controls and take off towards the coordinates given to you"
                 + "\n by Farmer Brown. Your pilot calls out to hold on and takes"

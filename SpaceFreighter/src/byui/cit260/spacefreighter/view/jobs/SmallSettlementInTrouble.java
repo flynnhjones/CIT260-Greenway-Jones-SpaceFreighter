@@ -19,7 +19,20 @@ public class SmallSettlementInTrouble extends SuperView {
 
     public SmallSettlementInTrouble() {
         
-        super();
+        super("Arriving at the small settlement you are greeted by a small crowd"
+            + "\n with the Mayor of the small settlement waving his arm enthusiastically. "
+            + "\n Running up to meet you the Mayor tells you his name is Mayor Frank. "
+            + "\n After greeting are exchanged Mayor Frank explains that their settlement"
+            + "\n has been plagued a number of times by some space pirates. He asks "
+            + "\n if we would be willing to go round up the hooligans and transport"
+            + "\n them off world to a prison to await justice."
+                + "\n A bounty reward will be waiting upon delivery"
+            + "\n-------------------------------------------------------------------------"   
+            + "\n*****What will you do?*****"
+            + "\n| T - Take the job        |"
+            + "\n| D - Don't take the job  |"
+            + "\n***************************"
+            + "\n  Make your choice");
         
     }
 
@@ -48,7 +61,7 @@ public class SmallSettlementInTrouble extends SuperView {
             return;
         }
         
-        SmallSettlementInTrouble.console.println();
+        SmallSettlementInTrouble.console.println("You complete the task and get rewarded! Nice Job!");
         
         
         JobBoardSceneControl.completeQuest(JobBoardSceneControl.Scene.smallSettlementInTrouble.ordinal());

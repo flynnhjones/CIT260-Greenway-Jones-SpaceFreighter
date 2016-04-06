@@ -115,9 +115,9 @@ public class JobBoardSceneControl {
             jobBoard[JobBoardSceneControl.Scene.checkOutDistressBeacon.ordinal()] = checkOutDistressBeacon;
             
             JobBoardScene smallSettlementInTrouble = new JobBoardScene();
-            smallSettlementInTrouble.setJobDescription("Insert Job description here 3");
-            smallSettlementInTrouble.setJobDifficulty(2);
-            smallSettlementInTrouble.setReward(100);
+            smallSettlementInTrouble.setJobDescription("Assist a Small Settlement");
+            smallSettlementInTrouble.setJobDifficulty(3);
+            smallSettlementInTrouble.setReward(500);
             smallSettlementInTrouble.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.smallSettlementInTrouble.ordinal()] = smallSettlementInTrouble;
                       
