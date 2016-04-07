@@ -7,12 +7,16 @@ package byui.cit260.spacefreighter.control;
 
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
+import byui.cit260.spacefreighter.model.SpaceShip;
 import byui.cit260.spacefreighter.view.ErrorView;
 import byui.cit260.spacefreighter.view.jobs.CheckOutDistressBeacon;
 import byui.cit260.spacefreighter.view.jobs.DestroyMeteoroidShower;
+import byui.cit260.spacefreighter.view.jobs.DoCoolStunts;
 import byui.cit260.spacefreighter.view.jobs.GatherSpaceChickens;
+import byui.cit260.spacefreighter.view.jobs.ListenToAnOldMan;
 import byui.cit260.spacefreighter.view.jobs.RaidATown;
 import byui.cit260.spacefreighter.view.jobs.SmallSettlementInTrouble;
+import byui.cit260.spacefreighter.view.jobs.WhereAreMyGlasses;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,12 +36,12 @@ import spacefreighter.SpaceFreighter;
  */
 public class JobBoardSceneControl {
     
-    private static PrintWriter console = SpaceFreighter.getOutFile();
+    public static PrintWriter console = SpaceFreighter.getOutFile();
 
     public static boolean startJob(int choice) {
         
         JobBoardScene[] jobBoard = Game.jobBoard;
-        if (jobBoard[choice].isCompleted() == true) {
+        if (jobBoard[(choice-1)].isCompleted() == true) {
             System.out.println("You have already done this job! Try another one!");
             return false;
         }
@@ -59,13 +63,13 @@ public class JobBoardSceneControl {
                 JobBoardSceneControl.raidATown();
                 break;
             case 6:
-                JobBoardSceneControl.brokenquest();
+                JobBoardSceneControl.whereAreMyGlasses();
                 break;
             case 7:
-                JobBoardSceneControl.brokenquest();
+                JobBoardSceneControl.doCoolStunts();
                 break;
             case 8:
-                JobBoardSceneControl.brokenquest();
+                JobBoardSceneControl.listenToAnOldMan();
                 break;
             default:
                 
@@ -128,29 +132,29 @@ public class JobBoardSceneControl {
             raidATown.setCompleted(false);
             jobBoard[JobBoardSceneControl.Scene.raidATown.ordinal()] = raidATown;
             
-            JobBoardScene insertJobSceneHere5 = new JobBoardScene();
-            insertJobSceneHere5.setJobDescription("Insert Job description here 5");
-            insertJobSceneHere5.setJobDifficulty(2);
-            insertJobSceneHere5.setJobType("Hopfully Awesome Job");
-            insertJobSceneHere5.setReward(100);
-            insertJobSceneHere5.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere5.ordinal()] = insertJobSceneHere5;
+            JobBoardScene whereAreMyGlasses = new JobBoardScene();
+            whereAreMyGlasses.setJobDescription("Find glasses in a swamp");
+            whereAreMyGlasses.setJobDifficulty(2);
+            whereAreMyGlasses.setJobType("Stinky Job");
+            whereAreMyGlasses.setReward(700);
+            whereAreMyGlasses.setCompleted(false);
+            jobBoard[JobBoardSceneControl.Scene.whereAreMyGlasses.ordinal()] = whereAreMyGlasses;
             
-            JobBoardScene insertJobSceneHere6 = new JobBoardScene();
-            insertJobSceneHere6.setJobDescription("Insert Job description here 6");
-            insertJobSceneHere6.setJobDifficulty(3);
-            insertJobSceneHere6.setJobType("Hopfully Awesome Job");
-            insertJobSceneHere6.setReward(100);
-            insertJobSceneHere6.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere6.ordinal()] = insertJobSceneHere6;
+            JobBoardScene doCoolStunts = new JobBoardScene();
+            doCoolStunts.setJobDescription("Perform at a space-air show");
+            doCoolStunts.setJobDifficulty(3);
+            doCoolStunts.setJobType("Way fun");
+            doCoolStunts.setReward(1000);
+            doCoolStunts.setCompleted(false);
+            jobBoard[JobBoardSceneControl.Scene.doCoolStunts.ordinal()] = doCoolStunts;
             
-            JobBoardScene insertJobSceneHere7 = new JobBoardScene();
-            insertJobSceneHere7.setJobDescription("Insert Job description here 7");
-            insertJobSceneHere7.setJobDifficulty(3);
-            insertJobSceneHere7.setJobType("Hopfully Awesome Job");
-            insertJobSceneHere7.setReward(100);
-            insertJobSceneHere7.setCompleted(false);
-            jobBoard[JobBoardSceneControl.Scene.insertJobSceneHere7.ordinal()] = insertJobSceneHere7;
+            JobBoardScene ListenToAnOldMan = new JobBoardScene();
+            ListenToAnOldMan.setJobDescription("Listen to boring stories");
+            ListenToAnOldMan.setJobDifficulty(0);
+            ListenToAnOldMan.setJobType("Boring");
+            ListenToAnOldMan.setReward(100);
+            ListenToAnOldMan.setCompleted(false);
+            jobBoard[JobBoardSceneControl.Scene.listenToAnOldMan.ordinal()] = ListenToAnOldMan;
             
      return jobBoard;   
     }
@@ -207,6 +211,21 @@ public class JobBoardSceneControl {
       RaidATown raidATown = new RaidATown();
       raidATown.display();
     }
+
+    private static void whereAreMyGlasses() {
+        WhereAreMyGlasses findGlasses = new WhereAreMyGlasses();
+        findGlasses.display();
+    }
+
+    private static void listenToAnOldMan() {
+        ListenToAnOldMan listen = new ListenToAnOldMan();
+        listen.display();
+    }
+
+    private static void doCoolStunts() {
+        DoCoolStunts doStunts = new DoCoolStunts();
+        doStunts.display();
+    }
     
     public enum Scene {
         
@@ -215,11 +234,9 @@ public class JobBoardSceneControl {
             checkOutDistressBeacon,
             smallSettlementInTrouble,
             raidATown,
-            insertJobSceneHere5,
-            insertJobSceneHere6,
-            insertJobSceneHere7,
-            insertJobSceneHere8,
-            insertJobSceneHere9;   
+            whereAreMyGlasses,
+            doCoolStunts,            
+            listenToAnOldMan;   
         }
     public static void printJobList(String filePath) throws FileNotFoundException {
         JobBoardScene[] jobBoard = Game.jobBoard;

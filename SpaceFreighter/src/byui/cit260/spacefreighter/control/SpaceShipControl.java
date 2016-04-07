@@ -130,7 +130,7 @@ public class SpaceShipControl{
         }
     }
 
-    static void removeFuelAndDurability() {
+    public static void removeFuelAndDurability() {
         SpaceShip ship = Game.getSpaceShip();
         ship.fuelGauge = ship.fuelGauge - 20;
         ship.durability = ship.durability - 20;

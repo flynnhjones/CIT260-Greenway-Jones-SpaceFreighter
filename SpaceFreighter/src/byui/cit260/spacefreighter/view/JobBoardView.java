@@ -8,6 +8,7 @@ package byui.cit260.spacefreighter.view;
 import byui.cit260.spacefreighter.control.JobBoardSceneControl;
 import byui.cit260.spacefreighter.model.Game;
 import byui.cit260.spacefreighter.model.JobBoardScene;
+import byui.cit260.spacefreighter.model.SpaceShip;
 import cit.byui.cit260.spacefreighter.exceptions.JobBoardSceneControlException;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
@@ -30,8 +31,7 @@ public class JobBoardView extends SuperView {
                 + "\n--------------------------------"
                 + "\n Job Board                     |"
                 + "\n-------------------------------|"                
-                + "\nJ - Display Job List           |"
-                + "\nC - Choose To Do a Job         |"
+                + "\nJ - Choose a job to do         |"
                 + "\nP - Print Job list             |"
                 + "\nQ - Go back                    |"
                 + "\n--------------------------------");
@@ -43,14 +43,7 @@ public class JobBoardView extends SuperView {
         choice = choice.toUpperCase();
         
         switch (choice) {            
-            case "J":
-        { try {
-                this.displayJobBoardScenes();
-            } catch (JobBoardSceneControlException ex) {
-               ErrorView.display("JobBoardView", ex.getMessage());
-            }
-        }               
-            case "C":
+            case "J":        
         {
             try {
                 this.chooseJob();
@@ -125,6 +118,11 @@ public class JobBoardView extends SuperView {
             this.console.println("***Invalid Selection, Try Again***");
             
     }
+        SpaceShip ship = Game.getSpaceShip();
+        if (ship.durability < 1 || ship.fuelGauge < 1) {
+            JobBoardSceneControl.console.println("Your ship is in no position to fly! Get it repaired and refueled!");
+            return;
+        }
         JobBoardSceneControl.startJob(choice);
     }
 }
